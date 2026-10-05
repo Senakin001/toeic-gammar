@@ -1,0 +1,4351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>TOEIC文法対策 金の文法マスター</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="金の文法">
+  <meta name="theme-color" content="#0f172a">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    body { font-feature-settings: "palt"; overscroll-behavior-y: none; -webkit-font-smoothing: antialiased; }
+    button, input, select { touch-action: manipulation; }
+    .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950 pb-safe">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-amber-500/20 pt-safe px-4 py-3 shadow-md">
+    <div class="max-w-3xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-2.5">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 text-slate-950 font-black text-sm">
+          金
+        </div>
+        <div>
+          <h1 class="text-base font-bold text-slate-100 flex items-center gap-1.5 tracking-tight">
+            金の文法マスター
+            <span class="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30">
+              Part 5
+            </span>
+          </h1>
+          <p class="text-[11px] text-slate-400">出る問・金の文法 完全対策（SRS＆実績完備）</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button id="soundToggleBtn" class="px-2.5 py-1 rounded-lg text-xs font-medium border bg-amber-500/10 text-amber-400 border-amber-500/30">
+          🔔 音ON
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav id="topNav" class="max-w-3xl mx-auto mt-3 flex items-center gap-1 bg-slate-950/60 p-1 rounded-xl border border-slate-800">
+      <button onclick="switchTab('test')" id="tabBtn-test" class="flex-1 py-2 px-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 shadow-md">
+        ⚡ テスト
+      </button>
+      <button onclick="switchTab('srs')" id="tabBtn-srs" class="flex-1 py-2 px-2 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200">
+        ⏳ 忘却曲線
+      </button>
+      <button onclick="switchTab('achievements')" id="tabBtn-achievements" class="flex-1 py-2 px-2 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200">
+        🏆 実績
+      </button>
+      <button onclick="switchTab('rules')" id="tabBtn-rules" class="flex-1 py-2 px-2 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200">
+        📖 ルール
+      </button>
+      <button onclick="switchTab('stats')" id="tabBtn-stats" class="flex-1 py-2 px-2 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200">
+        📊 記録
+      </button>
+    </nav>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main id="appContainer" class="flex-1 max-w-3xl w-full mx-auto p-4 sm:p-5">
+  </main>
+
+  <!-- DATA LAYER -->
+  <script>
+    const CHAPTER_DATA = [
+  {
+    "id": "ch1-ex01",
+    "numberLabel": "例題01",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "解き方の基本",
+    "sentence": "The ---- of a new digital marketing strategy is on the agenda for this afternoon's meeting.",
+    "options": {
+      "A": "develop",
+      "B": "develops",
+      "C": "developed",
+      "D": "development"
+    },
+    "correctAnswer": "D",
+    "translation": "新たなデジタルマーケティング戦略の立案が、今日の午後の会議の議題に上がっている。",
+    "keyRule": "金のルール 1：品詞問題では、主語には名詞を選ぶ。",
+    "keyPoint": "冠詞 The の直後で述語動詞 is の主語(S)が欠けているため名詞 development が正解",
+    "explanation": "文の骨格となる主語(S)と述語動詞(V)を確認します。冠詞Theの後が空所で、直後の of a new digital marketing strategy は修飾語、isが述語動詞です。文に主語が欠けているため、主語になる名詞 (D) development が正解です。",
+    "vocabulary": [
+      "strategy 名 戦略",
+      "agenda 名 議題",
+      "development 名 立案、開発"
+    ]
+  },
+  {
+    "id": "ch1-ex02",
+    "numberLabel": "例題02",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "解き方の基本",
+    "sentence": "The Berovo Institute ---- publishes the results of its research in renowned scientific journals.",
+    "options": {
+      "A": "regularly",
+      "B": "regulate",
+      "C": "regularity",
+      "D": "regular"
+    },
+    "correctAnswer": "A",
+    "translation": "Berovo研究所は、著名な科学誌で定期的に研究結果を公表している。",
+    "keyRule": "金のルール 2：品詞問題で、空所が名詞以外を修飾していたら副詞を選ぶ。",
+    "keyPoint": "「S [空所] V O」の構造。直後の動詞 publishes を修飾する副詞 regularly が正解",
+    "explanation": "主語 The Berovo Institute、述語動詞 publishes、目的語 the results と文の要素が揃っています。空所に入るのは動詞を修飾する副詞なので、(A) regularly が正解です。",
+    "vocabulary": [
+      "publish 動 公表する",
+      "renowned 形 著名な",
+      "scientific journal 科学誌"
+    ]
+  },
+  {
+    "id": "ch1-q03",
+    "numberLabel": "第3問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Full-scale ---- of the lightweight aircraft is set to begin in the spring of next year.",
+    "options": {
+      "A": "developments",
+      "B": "developed",
+      "C": "develop",
+      "D": "development"
+    },
+    "correctAnswer": "D",
+    "translation": "その軽量の航空機の全面的な開発は、来春始まりそうだ。",
+    "keyRule": "金のルール 3：主語を選ぶ品詞問題では、名詞の単複に注意。",
+    "keyPoint": "述語動詞が is なので単数名詞 development が正解",
+    "explanation": "空所には主語になる名詞が必要です。選択肢(A) developments と (D) development はいずれも名詞ですが、述語動詞が is のため単数形の (D) development が正解です。",
+    "vocabulary": [
+      "aircraft 名 航空機",
+      "be set to do 〜しそうだ"
+    ]
+  },
+  {
+    "id": "ch1-q04",
+    "numberLabel": "第4問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "A ---- from Shaffer University will be discussing her latest research on food additives.",
+    "options": {
+      "A": "nutrition",
+      "B": "nutritional",
+      "C": "nutritionist",
+      "D": "nutritionally"
+    },
+    "correctAnswer": "C",
+    "translation": "Shaffer大学の栄養士が、食品添加物に関する彼女の最新の研究について話す予定だ。",
+    "keyRule": "金のルール 4：名詞を選ぶ品詞問題では、「人」「人以外」の選択肢に注意。",
+    "keyPoint": "研究について話す「人」を表す名詞 nutritionist (栄養士) が正解",
+    "explanation": "主語の位置が空所です。「最新の研究について話す」のは人なので、人名詞の (C) nutritionist (栄養士) が正解です。(A) nutrition は不可算名詞で冠詞Aも付きません。",
+    "vocabulary": [
+      "latest 形 最新の",
+      "additive 名 添加物"
+    ]
+  },
+  {
+    "id": "ch1-q05",
+    "numberLabel": "第5問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Ms. Hopkins shared her ---- regarding the company's overseas operations with the other executive committee members.",
+    "options": {
+      "A": "observe",
+      "B": "observable",
+      "C": "observations",
+      "D": "observably"
+    },
+    "correctAnswer": "C",
+    "translation": "Hopkinsさんは、会社の海外業務に関する自らの気づきを他の執行役員たちと共有した。",
+    "keyRule": "金のルール 5：品詞問題では、他動詞の目的語には名詞を選ぶ。",
+    "keyPoint": "他動詞 shared の目的語。名詞 observations (気づき、見解) が正解",
+    "explanation": "他動詞 shared の目的語となる名詞が必要です。語尾が -tions の名詞 (C) observations が正解です。",
+    "vocabulary": [
+      "regarding 〜に関する",
+      "executive committee 執行役員会"
+    ]
+  },
+  {
+    "id": "ch1-q06",
+    "numberLabel": "第6問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Making an online ---- with Paymodia is fast, easy, and safe.",
+    "options": {
+      "A": "pay",
+      "B": "payment",
+      "C": "paying",
+      "D": "pays"
+    },
+    "correctAnswer": "B",
+    "translation": "Paymodiaでのオンラインのお支払いは、速くて簡単で安全です。",
+    "keyRule": "金のルール 6：名詞が正解になる品詞問題では、何となく動名詞を選ばない。",
+    "keyPoint": "冠詞 an の修飾を受ける可算名詞 payment が正解",
+    "explanation": "主語の動名詞 Making の目的語となる名詞が必要です。冠詞 an があるため可算名詞 (B) payment が正解です。",
+    "vocabulary": [
+      "payment 名 支払い",
+      "safe 形 安全な"
+    ]
+  },
+  {
+    "id": "ch1-q07",
+    "numberLabel": "第7問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Without written ---- from the patient, we are unable to release his medical records.",
+    "options": {
+      "A": "authorize",
+      "B": "authorized",
+      "C": "authorization",
+      "D": "to authorize"
+    },
+    "correctAnswer": "C",
+    "translation": "その患者からの書面による許可なしに、当院は彼の医療記録を公開できません。",
+    "keyRule": "金のルール 7：品詞問題では、前置詞の目的語には名詞を選ぶ。",
+    "keyPoint": "前置詞 Without の目的語名詞 authorization が正解",
+    "explanation": "前置詞 without の目的語となる名詞が必要です。名詞 (C) authorization が正解です。without written authorization は頻出表現。",
+    "vocabulary": [
+      "release 公開する",
+      "medical record 医療記録"
+    ]
+  },
+  {
+    "id": "ch1-q08",
+    "numberLabel": "第8問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Mr. Gideon's article was revised for length and ---- before it was published in the newspaper.",
+    "options": {
+      "A": "clarify",
+      "B": "clarity",
+      "C": "clear",
+      "D": "clearly"
+    },
+    "correctAnswer": "B",
+    "translation": "Gideonさんの記事は、新聞で公表される前に、長さと明快さを見直された。",
+    "keyRule": "金のルール 8：接続詞andを見たら、何と何をつないでいるのかを確認する。",
+    "keyPoint": "名詞 length と and で結ばれる名詞 clarity (明快さ) が正解",
+    "explanation": "前置詞 for の目的語名詞 length と並列になる名詞が入るため、(B) clarity が正解です。",
+    "vocabulary": [
+      "revise 見直す",
+      "length 長さ",
+      "clarity 明快さ"
+    ]
+  },
+  {
+    "id": "ch1-q09",
+    "numberLabel": "第9問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "When the community garden opened, locals were ---- about having a place to grow their own vegetables.",
+    "options": {
+      "A": "enthusiast",
+      "B": "enthusiastically",
+      "C": "enthusiasm",
+      "D": "enthusiastic"
+    },
+    "correctAnswer": "D",
+    "translation": "コミュニティガーデンがオープンした時、地元の人たちは、自分自身の野菜を育てる場所を持つことに夢中になった。",
+    "keyRule": "金のルール 9：品詞問題では、補語には形容詞が最優先。",
+    "keyPoint": "were の補語になる形容詞 enthusiastic が正解（be enthusiastic about = 夢中になる）",
+    "explanation": "be動詞 were の補語(C)として主語の状態を表す形容詞 (D) enthusiastic が正解です。",
+    "vocabulary": [
+      "local 地元の人",
+      "enthusiastic 熱心な"
+    ]
+  },
+  {
+    "id": "ch1-q10",
+    "numberLabel": "第10問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "All three candidates for the management position are ---- in their ability to perform the job effectively.",
+    "options": {
+      "A": "confided",
+      "B": "confident",
+      "C": "confidential",
+      "D": "confidently"
+    },
+    "correctAnswer": "B",
+    "translation": "その管理職の3人の候補者は全員、仕事を効果的に行う自らの能力に自信を持っている。",
+    "keyRule": "金のルール 10：品詞問題では、「副詞から-lyを取ったら形容詞」と頭に入れる。",
+    "keyPoint": "are の補語。副詞 confidently から -ly を取った形容詞 confident が正解",
+    "explanation": "be動詞 are の補語になる形容詞が必要です。副詞 (D) confidently から -ly を取った (B) confident が正解です。",
+    "vocabulary": [
+      "candidate 候補者",
+      "confident 自信がある",
+      "effectively 効果的に"
+    ]
+  },
+  {
+    "id": "ch1-q11",
+    "numberLabel": "第11問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "ZhaoFlex Textile is now the world's leading ---- of bamboo fiber products.",
+    "options": {
+      "A": "manufacture",
+      "B": "manufacturer",
+      "C": "manufacturing",
+      "D": "manufactures"
+    },
+    "correctAnswer": "B",
+    "translation": "ZhaoFlex繊維は、今や竹繊維製品の、世界のトップメーカーだ。",
+    "keyRule": "金のルール 11：補語を選ぶ品詞問題では、主語とイコールになる答えを選ぶ。",
+    "keyPoint": "主語の企業 ZhaoFlex とイコールになる名詞 manufacturer (製造業者) が正解",
+    "explanation": "主語の「会社」とイコールになる補語名詞は (B) manufacturer です。",
+    "vocabulary": [
+      "leading トップの",
+      "manufacturer 製造業者"
+    ]
+  },
+  {
+    "id": "ch1-q12",
+    "numberLabel": "第12問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Hybotech Corporation has built a ---- reputation as a leading developer of hybrid-electric engines.",
+    "options": {
+      "A": "solid",
+      "B": "solidly",
+      "C": "solidify",
+      "D": "solidity"
+    },
+    "correctAnswer": "A",
+    "translation": "Hybotech社は、電気式ハイブリッドエンジンの主要な開発会社として、確固たる評判を築いた。",
+    "keyRule": "金のルール 12：品詞問題で、空所が名詞を修飾していたら形容詞を選ぶ。",
+    "keyPoint": "名詞 reputation を修飾する形容詞 solid が正解 (a solid reputation = 確固たる評判)",
+    "explanation": "名詞 reputation を修飾する形容詞 (A) solid が正解です。",
+    "vocabulary": [
+      "reputation 評判",
+      "solid 確固たる"
+    ]
+  },
+  {
+    "id": "ch1-q13",
+    "numberLabel": "第13問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "The annual All-Telecom Show is one of the most ---- events in the telecommunications industry.",
+    "options": {
+      "A": "anticipate",
+      "B": "anticipated",
+      "C": "anticipating",
+      "D": "anticipation"
+    },
+    "correctAnswer": "B",
+    "translation": "年に1度のAll-Telecom Showは、遠隔通信産業で、最も待ち望まれているイベントの1つだ。",
+    "keyRule": "金のルール 13：名詞を修飾する分詞を選ぶ際は、「する・される」の関係を考える。",
+    "keyPoint": "イベントは人から「期待される」受動の関係。過去分詞 anticipated が正解",
+    "explanation": "events は anticipate される側なので受動の意味の過去分詞 (B) anticipated が正解です。",
+    "vocabulary": [
+      "annual 年に1度の",
+      "anticipated 待ち望まれた"
+    ]
+  },
+  {
+    "id": "ch1-q14",
+    "numberLabel": "第14問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "We are looking to hire a motivated individual who can build ---- relationships with our customers.",
+    "options": {
+      "A": "endure",
+      "B": "endured",
+      "C": "enduring",
+      "D": "endures"
+    },
+    "correctAnswer": "C",
+    "translation": "当社では、お客様と永続的な関係を築ける、やる気のある方を雇おうとしています。",
+    "keyRule": "金のルール 14：名詞を前から修飾する分詞は、意味がわからなければ解けない。",
+    "keyPoint": "enduring relationships (永続的な関係) という形容詞化した現在分詞が正解",
+    "explanation": "現在分詞から形容詞化した (C) enduring (永続的な) が文意に合致します。",
+    "vocabulary": [
+      "motivated やる気のある",
+      "enduring 永続的な"
+    ]
+  },
+  {
+    "id": "ch1-q15",
+    "numberLabel": "第15問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Sisson Labs continually integrates new technologies into the workplace so its employees can work more ----.",
+    "options": {
+      "A": "productively",
+      "B": "productive",
+      "C": "production",
+      "D": "produce"
+    },
+    "correctAnswer": "A",
+    "translation": "Sisson Labs は、社員がより生産的に働けるよう、継続的に新しい技術を職場に取り入れています。",
+    "keyRule": "金のルール 15：品詞問題では、自動詞の後の空所には副詞を選ぶ。",
+    "keyPoint": "自動詞 work を後ろから修飾する副詞 productively が正解",
+    "explanation": "自動詞 work を修飾できるのは副詞なので、(A) productively が正解です。",
+    "vocabulary": [
+      "continually 継続的に",
+      "productively 生産的に"
+    ]
+  },
+  {
+    "id": "ch1-q16",
+    "numberLabel": "第16問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "The Genesis 8-B Griller is ---- regarded as the best gas barbecue on the market.",
+    "options": {
+      "A": "generally",
+      "B": "generalizing",
+      "C": "generalization",
+      "D": "general"
+    },
+    "correctAnswer": "A",
+    "translation": "Genesis 8-B Grillerは、市場で1番のガスバーベキュー台だと一般的にみなされている。",
+    "keyRule": "金のルール 16：品詞問題では、述語動詞の間の空所には副詞を選ぶ。",
+    "keyPoint": "受動態 is regarded の間に入る副詞 generally が正解",
+    "explanation": "be動詞 is と過去分詞 regarded の受動態の間に入るのは副詞 (A) generally です。",
+    "vocabulary": [
+      "generally 一般的に",
+      "regard A as B AをBとみなす"
+    ]
+  },
+  {
+    "id": "ch1-q17",
+    "numberLabel": "第17問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Since all the townhouses on Moore Street are ---- identical, Ms. Caldwell accidentally knocked on the wrong door.",
+    "options": {
+      "A": "nearer",
+      "B": "nearness",
+      "C": "nearest",
+      "D": "nearly"
+    },
+    "correctAnswer": "D",
+    "translation": "Moore通りのすべての集合住宅はほとんど同じなので、Caldwellさんはうっかり間違ったドアをノックした。",
+    "keyRule": "金のルール 17：品詞問題では、be動詞と形容詞の間の空所には副詞を選ぶ。",
+    "keyPoint": "形容詞 identical (同一の) を修飾する副詞 nearly (=almost: ほとんど) が正解",
+    "explanation": "形容詞 identical を修飾する副詞 (D) nearly が正解です。",
+    "vocabulary": [
+      "identical 同一の",
+      "accidentally うっかり",
+      "nearly ほとんど"
+    ]
+  },
+  {
+    "id": "ch1-q18",
+    "numberLabel": "第18問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "With obesity rates on the rise, food companies must promote their breakfast cereals and snack items ----.",
+    "options": {
+      "A": "responsibly",
+      "B": "respond",
+      "C": "responsible",
+      "D": "responded"
+    },
+    "correctAnswer": "A",
+    "translation": "肥満率が上昇中なので、食品会社は自社の朝食用シリアルや軽食の品物を、責任を持って販売促進すべきだ。",
+    "keyRule": "金のルール 18：品詞問題では、文の要素がそろった文末の空所には副詞を選ぶ。",
+    "keyPoint": "SVO文型が完結した文末。動詞 promote を修飾する副詞 responsibly が正解",
+    "explanation": "文の要素がそろった文末で動詞を修飾する副詞 (A) responsibly が正解です。",
+    "vocabulary": [
+      "on the rise 上昇中で",
+      "responsibly 責任を持って"
+    ]
+  },
+  {
+    "id": "ch1-q19",
+    "numberLabel": "第19問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Dr. Hendrick's lecture will explore ---- to current methods of supplying livestock with fresh water.",
+    "options": {
+      "A": "alternatives",
+      "B": "alternatively",
+      "C": "alternate",
+      "D": "alternated"
+    },
+    "correctAnswer": "A",
+    "translation": "Hendrick博士の講義では、家畜に淡水を供給する現在の方法に対する代替案を探る。",
+    "keyRule": "金のルール 19：品詞問題で、注意が必要な語尾が-iveの名詞。",
+    "keyPoint": "他動詞 explore の目的語名詞。-ive 語尾だが名詞の alternatives (代替案) が正解",
+    "explanation": "explore の目的語になる名詞 (A) alternatives (代替案) が正解です。",
+    "vocabulary": [
+      "explore 探る",
+      "alternative 代替案",
+      "livestock 家畜"
+    ]
+  },
+  {
+    "id": "ch1-q20",
+    "numberLabel": "第20問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "The festival coordinator will assign duties to each of the volunteers according to their task ----.",
+    "options": {
+      "A": "preferring",
+      "B": "preference",
+      "C": "preferred",
+      "D": "preferable"
+    },
+    "correctAnswer": "B",
+    "translation": "そのフェスティバルの調整役は、各自の業務希望にしたがって、ボランティア1人1人に任務を割り当てる予定だ。",
+    "keyRule": "金のルール 20：空所が文末で選択肢に副詞がないときは「名詞＋名詞」を疑う。",
+    "keyPoint": "task preference (業務希望) という複合名詞を作る名詞 preference が正解",
+    "explanation": "前の名詞 task と結びついて「名詞＋名詞」を作る (B) preference が正解です。",
+    "vocabulary": [
+      "assign 割り当てる",
+      "preference 希望、好み"
+    ]
+  },
+  {
+    "id": "ch1-q21",
+    "numberLabel": "第21問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Vintage toy sellers must be as ------- as possible when detailing the condition of items in online auctions.",
+    "options": {
+      "A": "thorough",
+      "B": "thoroughly",
+      "C": "thoroughness",
+      "D": "more thoroughly"
+    },
+    "correctAnswer": "A",
+    "translation": "ビンテージ玩具の売り手は、オンラインオークションで品物の状態を説明する際、できる限り漏れなくきっちりしなければならない。",
+    "keyRule": "金のルール 21：asとasの間が空所の品詞問題は、asとas以降を取って考える。",
+    "keyPoint": "must be ------- なのでbe動詞の補語となる形容詞 thorough が正解",
+    "explanation": "asとas以降を取ると「must be -------」となるため、補語の形容詞 (A) thorough が正解です。",
+    "vocabulary": [
+      "detail くわしく説明する",
+      "thorough 徹底的な"
+    ]
+  },
+  {
+    "id": "ch1-q22",
+    "numberLabel": "第22問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Pangflo Corp's new software program makes it easier for small businesses to ------- record sales and expenses.",
+    "options": {
+      "A": "accurately",
+      "B": "accurate",
+      "C": "accuracy",
+      "D": "accuracies"
+    },
+    "correctAnswer": "A",
+    "translation": "Pangflo社の新ソフトプログラムは、小さな会社が正確に売り上げと経費を記録するのを簡単にします。",
+    "keyRule": "金のルール 22：品詞問題で、空所が準動詞を修飾していたら副詞を選ぶ。",
+    "keyPoint": "不定詞 to と原形動詞 record の間に割り込む分離不定詞の副詞 accurately が正解",
+    "explanation": "原形動詞 record を修飾する副詞 (A) accurately が正解です。",
+    "vocabulary": [
+      "expense 経費",
+      "accurately 正確に"
+    ]
+  },
+  {
+    "id": "ch1-q23",
+    "numberLabel": "第23問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "------- after he joined the company, Shigeru Iwata created a best-selling video game.",
+    "options": {
+      "A": "Short",
+      "B": "Shortness",
+      "C": "Shortly",
+      "D": "Shorten"
+    },
+    "correctAnswer": "C",
+    "translation": "会社に加わってすぐに、Shigeru Iwata はビデオゲームのヒット作を作った。",
+    "keyRule": "金のルール 23：品詞問題で、空所が節や文全体を修飾していたら副詞を選ぶ。",
+    "keyPoint": "接続詞 after の副詞節を修飾する副詞 shortly (shortly after = すぐに) が正解",
+    "explanation": "after節を修飾する副詞 (C) Shortly が正解です。shortly after は超頻出。",
+    "vocabulary": [
+      "shortly すぐに",
+      "best-selling ベストセラーの"
+    ]
+  },
+  {
+    "id": "ch1-q24",
+    "numberLabel": "第24問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Although the painting depicts an eighteenth-century tea party, it is still ------- a contemporary piece of art.",
+    "options": {
+      "A": "recognition",
+      "B": "recognizably",
+      "C": "recognizable",
+      "D": "recognize"
+    },
+    "correctAnswer": "B",
+    "translation": "その絵画が描写しているのは、18世紀のティーパーティーだが、それでも現代の芸術作品であることは一目瞭然だ。",
+    "keyRule": "金のルール 24：形容詞は、冠詞を飛び越えて名詞を修飾できない。",
+    "keyPoint": "冠詞 a の外側に入る文修飾の副詞 recognizably が正解",
+    "explanation": "「S is [副詞] a 名詞」の語順になるため、副詞 (B) recognizably が正解です。",
+    "vocabulary": [
+      "depict 描写する",
+      "contemporary 現代の"
+    ]
+  },
+  {
+    "id": "ch1-q25",
+    "numberLabel": "第25問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Salcom Media announced today that it has ------- bid to purchase the Austin Starlings baseball team.",
+    "options": {
+      "A": "successful",
+      "B": "success",
+      "C": "succeeded",
+      "D": "successfully"
+    },
+    "correctAnswer": "D",
+    "translation": "Salcom Mediaは、Austin Starlings 球団を買収する入札に成功したことを今日、発表した。",
+    "keyRule": "金のルール 25：可算名詞は、単数形なら冠詞等が必要。",
+    "keyPoint": "has bid (完了形述語動詞) を修飾する副詞 successfully が正解",
+    "explanation": "bid は過去分詞（has bid）で、動詞を修飾する副詞 (D) successfully が正解です。",
+    "vocabulary": [
+      "bid 入札する",
+      "purchase 購入する"
+    ]
+  },
+  {
+    "id": "ch1-q26",
+    "numberLabel": "第26問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "------- with this letter are a map of Cedarville and a pamphlet with information about the town's history.",
+    "options": {
+      "A": "Include",
+      "B": "Included",
+      "C": "Includes",
+      "D": "Inclusion"
+    },
+    "correctAnswer": "B",
+    "translation": "この手紙に同封されているのは、Cedarvilleの地図と、町の歴史についての情報が掲載された小冊子です。",
+    "keyRule": "金のルール 26：押さえておきたい Part 5で狙われる倒置のパターン。",
+    "keyPoint": "補語の過去分詞が文頭に出た倒置構文 Included が正解",
+    "explanation": "主語が長いため過去分詞 Included が文頭に出た倒置形です。",
+    "vocabulary": [
+      "included 同封された",
+      "pamphlet 小冊子"
+    ]
+  },
+  {
+    "id": "ch1-q27",
+    "numberLabel": "第27問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Although the company was split into two separate firms, they continued to enjoy a ------- working relationship.",
+    "options": {
+      "A": "prosperously",
+      "B": "prosperity",
+      "C": "prosperous",
+      "D": "prosper"
+    },
+    "correctAnswer": "C",
+    "translation": "その会社は、2つの別々の会社に分割されたが、好調な仕事上の関係を維持した。",
+    "keyRule": "金のルール 27：「冠 ------- 形 名」の空所には、形容詞が入る場合もある。",
+    "keyPoint": "working relationship (仕事上の関係) を修飾する形容詞 prosperous が正解",
+    "explanation": "名詞句全体を修飾する形容詞 (C) prosperous が正解です。",
+    "vocabulary": [
+      "separate 別々の",
+      "prosperous 好調な"
+    ]
+  },
+  {
+    "id": "ch1-q28",
+    "numberLabel": "第28問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Ms. Flynn proposed several environmental solutions during the ------- debate on pesticide use in agriculture.",
+    "options": {
+      "A": "liveliness",
+      "B": "lived",
+      "C": "living",
+      "D": "lively"
+    },
+    "correctAnswer": "D",
+    "translation": "Flynnさんは、農業における殺虫剤の使用に関する活発な討論会で、いくつかの環境問題の解決策を提案した。",
+    "keyRule": "金のルール 28：品詞問題で、注意が必要な語尾が-lyの形容詞",
+    "keyPoint": "名詞 debate を修飾する語尾が-lyの形容詞 lively (活発な) が正解",
+    "explanation": "-lyで終わる形容詞 (D) lively (活発な) が正解です。",
+    "vocabulary": [
+      "debate 討論会",
+      "pesticide 殺虫剤",
+      "lively 活発な"
+    ]
+  },
+  {
+    "id": "ch1-q29",
+    "numberLabel": "第29問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Ms. Li's colleagues find her approach to designing architectural spaces quite -------.",
+    "options": {
+      "A": "inspirational",
+      "B": "inspirationally",
+      "C": "inspiration",
+      "D": "inspire"
+    },
+    "correctAnswer": "A",
+    "translation": "Liさんの同僚は、建築空間をデザインする彼女の手法を、とても刺激的だと思っている。",
+    "keyRule": "金のルール 29：find と makeはSVOCのカタチに注意。",
+    "keyPoint": "find O C (OがCだと思う)。補語(C)になる形容詞 inspirational が正解",
+    "explanation": "find OC の文型で、補語の形容詞 (A) inspirational が正解です。",
+    "vocabulary": [
+      "colleague 同僚",
+      "inspirational 刺激的な"
+    ]
+  },
+  {
+    "id": "ch1-q30",
+    "numberLabel": "第30問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "必修問題",
+    "sentence": "Please be aware that express delivery is available upon request but subject to ------- shipping charges.",
+    "options": {
+      "A": "additionally",
+      "B": "add",
+      "C": "additive",
+      "D": "additional"
+    },
+    "correctAnswer": "D",
+    "translation": "リクエストがあれば速達がご利用いただけますが、追加の送料の対象となりますことをご承知おきください。",
+    "keyRule": "金のルール 30：Part 5で注意したいtoの見分け。",
+    "keyPoint": "前置詞 to の目的語 shipping charges を修飾する形容詞 additional が正解",
+    "explanation": "shipping charges を修飾する形容詞 (D) additional が正解です。",
+    "vocabulary": [
+      "upon request リクエストがあれば",
+      "be subject to 〜の対象となる"
+    ]
+  },
+  {
+    "id": "ch1-q31",
+    "numberLabel": "第31問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "The chamber of commerce's annual business plan ------- is a wonderful opportunity for emerging entrepreneurs.",
+    "options": {
+      "A": "competitive",
+      "B": "competition",
+      "C": "competitor",
+      "D": "competitively"
+    },
+    "correctAnswer": "B",
+    "translation": "商工会議所の年に1度のビジネスプランコンテストは、新進気鋭の起業家にとって、素晴らしい機会だ。",
+    "keyRule": "金のルール 1：品詞問題では、主語には名詞を選ぶ。",
+    "keyPoint": "補語 a wonderful opportunity とイコールになる名詞 competition が正解",
+    "explanation": "opportunity とイコールになるイベント名詞 (B) competition が正解です。",
+    "vocabulary": [
+      "chamber of commerce 商工会議所",
+      "entrepreneur 起業家"
+    ]
+  },
+  {
+    "id": "ch1-q32",
+    "numberLabel": "第32問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Mr. Hudson purchased the flooring and tiles for his kitchen ------- before installing them.",
+    "options": {
+      "A": "separately",
+      "B": "separation",
+      "C": "separate",
+      "D": "separating"
+    },
+    "correctAnswer": "A",
+    "translation": "Hudsonさんは、キッチン用の床材とタイルを、設置する前に別々に購入した。",
+    "keyRule": "金のルール 18：品詞問題では、文の要素がそろった文末の空所には副詞を選ぶ。",
+    "keyPoint": "文の要素がそろったカタチの後で動詞 purchased を修飾する副詞 separately が正解",
+    "explanation": "動詞 purchased を修飾する副詞 (A) separately が正解です。",
+    "vocabulary": [
+      "purchase 購入する",
+      "install 設置する"
+    ]
+  },
+  {
+    "id": "ch1-q33",
+    "numberLabel": "第33問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Beginning on December 1, Rhomtel Media will use a new system for sending news updates to its -------.",
+    "options": {
+      "A": "subscription",
+      "B": "subscribe",
+      "C": "subscribers",
+      "D": "subscribing"
+    },
+    "correctAnswer": "C",
+    "translation": "12月1日から、Rhomtel Mediaは、最新ニュースを購読者に送るための新しいシステムを使う予定だ。",
+    "keyRule": "金のルール 4：名詞を選ぶ品詞問題では、「人」「人以外」の選択肢に注意。",
+    "keyPoint": "ニュースを送る相手は「人」なので subscribers (購読者) が正解",
+    "explanation": "送る対象は人なので (C) subscribers が正解です。",
+    "vocabulary": [
+      "update 最新情報",
+      "subscriber 購読者"
+    ]
+  },
+  {
+    "id": "ch1-q34",
+    "numberLabel": "第34問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "We apologize for the delay and will ship the ------- items by February 1.",
+    "options": {
+      "A": "remained",
+      "B": "remain",
+      "C": "remaining",
+      "D": "remains"
+    },
+    "correctAnswer": "C",
+    "translation": "当社は遅れをお詫びし、残りの品物を2月1日までに出荷します。",
+    "keyRule": "金のルール 13：名詞を修飾する分詞を選ぶ際は、「する・される」の関係を考える。",
+    "keyPoint": "自動詞 remain の現在分詞 remaining (残りの) が正解",
+    "explanation": "現在分詞 (C) remaining (残りの) が名詞 items を修飾します。",
+    "vocabulary": [
+      "apologize お詫びする",
+      "remaining 残りの"
+    ]
+  },
+  {
+    "id": "ch1-q35",
+    "numberLabel": "第35問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "The new racing game developed by Bliztech Arts is expected to be extremely -------.",
+    "options": {
+      "A": "excite",
+      "B": "exciting",
+      "C": "excitement",
+      "D": "excited"
+    },
+    "correctAnswer": "B",
+    "translation": "Bliztech Arts が開発した新しいレーシングゲームは、非常にエキサイティングだろうと期待されている。",
+    "keyRule": "金のルール 13：名詞を修飾する分詞を選ぶ際は、「する・される」の関係を考える。",
+    "keyPoint": "ゲームは人を興奮させる側(能動)。現在分詞 exciting が正解",
+    "explanation": "ゲームは人を興奮させる側なので (B) exciting が正解です。",
+    "vocabulary": [
+      "develop 開発する",
+      "exciting エキサイティングな"
+    ]
+  },
+  {
+    "id": "ch1-q36",
+    "numberLabel": "第36問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Among the paralegals at Rubin Law Offices, Marissa Perkins is one of the -------.",
+    "options": {
+      "A": "competency",
+      "B": "competently",
+      "C": "more competency",
+      "D": "most competent"
+    },
+    "correctAnswer": "D",
+    "translation": "Rubin法律事務所の法律事務員の中で、Marissa Perkins は最も有能な1人だ。",
+    "keyRule": "金のルール 12：品詞問題で、空所が名詞を修飾していたら形容詞を選ぶ。",
+    "keyPoint": "名詞 paralegals が省略された one of the most competent (paralegals) が正解",
+    "explanation": "最上級の形容詞 (D) most competent が正解です。",
+    "vocabulary": [
+      "paralegal 法律事務員",
+      "competent 有能な"
+    ]
+  },
+  {
+    "id": "ch1-q37",
+    "numberLabel": "第37問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Adanni Engineering appointed a contractor to carry out repairs and other ------- work at its factory.",
+    "options": {
+      "A": "maintain",
+      "B": "maintained",
+      "C": "maintenance",
+      "D": "maintains"
+    },
+    "correctAnswer": "C",
+    "translation": "Adanni Engineeringは、自社工場で補修やその他の保守点検作業を行うため、請負業者を指名した。",
+    "keyRule": "金のルール 20：空所が文末で選択肢に副詞がないときは「名詞＋名詞」を疑う。",
+    "keyPoint": "maintenance work (保守点検作業) という「名詞+名詞」を作る maintenance が正解",
+    "explanation": "名詞 work と結びつく名詞 (C) maintenance が正解です。",
+    "vocabulary": [
+      "appoint 指名する",
+      "maintenance work 保守点検作業"
+    ]
+  },
+  {
+    "id": "ch1-q38",
+    "numberLabel": "第38問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Job seekers must ------- demonstrate their skills and experience to potential employers.",
+    "options": {
+      "A": "effective",
+      "B": "effect",
+      "C": "effectively",
+      "D": "effected"
+    },
+    "correctAnswer": "C",
+    "translation": "求職者は、潜在的な雇用主に対し、自らのスキルや経験を効果的に示さなければならない。",
+    "keyRule": "金のルール 16：述語動詞の間の空所には副詞を選ぶ。",
+    "keyPoint": "助動詞 must と原形動詞 demonstrate の間に入る副詞 effectively が正解",
+    "explanation": "述語動詞の間に入る副詞 (C) effectively が正解です。",
+    "vocabulary": [
+      "demonstrate はっきり示す",
+      "potential 潜在的な"
+    ]
+  },
+  {
+    "id": "ch1-q39",
+    "numberLabel": "第39問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "A color illustration of the blender will be added to the instruction manual, with all parts ------- labeled.",
+    "options": {
+      "A": "clear",
+      "B": "cleared",
+      "C": "clearly",
+      "D": "clearer"
+    },
+    "correctAnswer": "C",
+    "translation": "すべてのパーツの名前をはっきりラベルで示したカラーイラストが、ミキサーの取扱説明書に追加される。",
+    "keyRule": "金のルール 22：品詞問題で、空所が準動詞を修飾していたら副詞を選ぶ。",
+    "keyPoint": "過去分詞 labeled を修飾する副詞 clearly が正解",
+    "explanation": "過去分詞 labeled を修飾する副詞 (C) clearly が正解です。",
+    "vocabulary": [
+      "instruction manual 取扱説明書",
+      "clearly はっきりと"
+    ]
+  },
+  {
+    "id": "ch1-q40",
+    "numberLabel": "第40問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "------- alert a factory manager when a mechanical problem occurs on the assembly line.",
+    "options": {
+      "A": "Promptly",
+      "B": "Prompt",
+      "C": "Prompting",
+      "D": "Prompts"
+    },
+    "correctAnswer": "A",
+    "translation": "組み立てラインで機械の問題が起こったら、すぐに工場長に通報してください。",
+    "keyRule": "金のルール 2：品詞問題で、空所が名詞以外を修飾していたら副詞を選ぶ。",
+    "keyPoint": "命令文の原形動詞 alert を修飾する副詞 Promptly (すぐに) が正解",
+    "explanation": "動詞 alert を修飾する副詞 (A) Promptly が正解です。",
+    "vocabulary": [
+      "promptly すぐに",
+      "occur 起こる"
+    ]
+  },
+  {
+    "id": "ch1-q41",
+    "numberLabel": "第41問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "The shipping ------- for your package depends on its weight and the distance to the delivery destination.",
+    "options": {
+      "A": "rates",
+      "B": "rater",
+      "C": "rate",
+      "D": "rated"
+    },
+    "correctAnswer": "C",
+    "translation": "あなたの荷物の送料は、重さと配達先までの距離によって決まります。",
+    "keyRule": "金のルール 3：主語を選ぶ品詞問題では、名詞の単複に注意。",
+    "keyPoint": "述語動詞 depends (3単現) に主述一致する単数名詞 rate が正解",
+    "explanation": "述語動詞 depends に呼応する単数名詞 (C) rate が正解です。",
+    "vocabulary": [
+      "shipping 出荷、配送",
+      "depend on 〜によって決まる"
+    ]
+  },
+  {
+    "id": "ch1-q42",
+    "numberLabel": "第42問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "The store manager was extremely ------- about the shipping delay and offered a full refund.",
+    "options": {
+      "A": "apologize",
+      "B": "apology",
+      "C": "apologetic",
+      "D": "apologetically"
+    },
+    "correctAnswer": "C",
+    "translation": "店長は出荷の遅れに関して非常に申し訳なさそうで、全額返金を申し出た。",
+    "keyRule": "金のルール 9：品詞問題では、補語には形容詞が最優先。",
+    "keyPoint": "be動詞 was の補語となる形容詞 apologetic (申し訳なさそうな) が正解",
+    "explanation": "was の補語になる形容詞 (C) apologetic が正解です。",
+    "vocabulary": [
+      "apologetic 申し訳なさそうな",
+      "full refund 全額返金"
+    ]
+  },
+  {
+    "id": "ch1-q43",
+    "numberLabel": "第43問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "A variety of discounts are currently being offered ------- to members of Zavala Clothier's loyalty program.",
+    "options": {
+      "A": "excluding",
+      "B": "exclusively",
+      "C": "exclusion",
+      "D": "exclusive"
+    },
+    "correctAnswer": "B",
+    "translation": "さまざまな割引が、Zavala洋品店のロイヤルティ・プログラムの会員のみに現在提供されている。",
+    "keyRule": "金のルール 23：品詞問題で、空所が節や文全体を修飾していたら副詞を選ぶ。",
+    "keyPoint": "to members... を修飾する副詞 exclusively (~のみに、独占的に) が正解",
+    "explanation": "前置詞句を修飾する副詞 (B) exclusively が正解です。",
+    "vocabulary": [
+      "exclusively 〜のみに",
+      "loyalty program ロイヤルティ・プログラム"
+    ]
+  },
+  {
+    "id": "ch1-q44",
+    "numberLabel": "第44問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Nicki Harris agreed to star in the film after ------- reviewing the script.",
+    "options": {
+      "A": "careful",
+      "B": "care",
+      "C": "carefully",
+      "D": "cared"
+    },
+    "correctAnswer": "C",
+    "translation": "Nicki Harrisは、慎重に台本を検討した後で、その映画に主演することに同意した。",
+    "keyRule": "金のルール 22：品詞問題で、空所が準動詞を修飾していたら副詞を選ぶ。",
+    "keyPoint": "動名詞 reviewing を修飾する副詞 carefully が正解",
+    "explanation": "動名詞 reviewing を修飾する副詞 (C) carefully が正解です。",
+    "vocabulary": [
+      "star 主演する",
+      "carefully 慎重に"
+    ]
+  },
+  {
+    "id": "ch1-q45",
+    "numberLabel": "第45問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "According to its president, Icaro Avionics is planning to open a second assembly ------- in Brandenburg.",
+    "options": {
+      "A": "planted",
+      "B": "planting",
+      "C": "plants",
+      "D": "plant"
+    },
+    "correctAnswer": "D",
+    "translation": "社長によると、Icaro航空電子は、Brandenburg に2つ目の組立工場をオープンする計画だ。",
+    "keyRule": "金のルール 5：品詞問題では、他動詞の目的語には名詞を選ぶ。",
+    "keyPoint": "a second assembly plant (2つ目の組立工場) という単数名詞 plant が正解",
+    "explanation": "冠詞 a に呼応する単数名詞 (D) plant が正解です。",
+    "vocabulary": [
+      "assembly plant 組立工場",
+      "avionics 航空電子工学"
+    ]
+  },
+  {
+    "id": "ch1-q46",
+    "numberLabel": "第46問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "The president asked the directors for innovative yet ------- suggestions for dealing with the company's public relations issues.",
+    "options": {
+      "A": "sensible",
+      "B": "sensibly",
+      "C": "sensibility",
+      "D": "senses"
+    },
+    "correctAnswer": "A",
+    "translation": "会社の広報の課題に対処するための斬新でありつつも実用的な提案を、社長は取締役に求めた。",
+    "keyRule": "金のルール 12：品詞問題で、空所が名詞を修飾していたら形容詞を選ぶ。",
+    "keyPoint": "innovative yet sensible (斬新だが実用的な) と名詞 suggestions を修飾する形容詞 sensible が正解",
+    "explanation": "名詞 suggestions を修飾する形容詞 (A) sensible が正解です。",
+    "vocabulary": [
+      "innovative 斬新な",
+      "sensible 実用的な、妥当な"
+    ]
+  },
+  {
+    "id": "ch1-q47",
+    "numberLabel": "第47問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "The Pritchard Inn in Birmingham ------- ranks highest for guest satisfaction in the region.",
+    "options": {
+      "A": "predictably",
+      "B": "prediction",
+      "C": "predictable",
+      "D": "predictability"
+    },
+    "correctAnswer": "A",
+    "translation": "Birmingham にある Pritchardインは、顧客満足度で、予想通りその地域で1位にランクインしている。",
+    "keyRule": "金のルール 2：品詞問題で、空所が名詞以外を修飾していたら副詞を選ぶ。",
+    "keyPoint": "主語と述語動詞 ranks の間に入る副詞 predictably が正解",
+    "explanation": "述語動詞 ranks を修飾する副詞 (A) predictably が正解です。",
+    "vocabulary": [
+      "rank 順位を占める",
+      "predictably 予想通り"
+    ]
+  },
+  {
+    "id": "ch1-q48",
+    "numberLabel": "第48問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "The salesperson quoted an amount that was ------- higher than what Mr. Garneau had expected.",
+    "options": {
+      "A": "slight",
+      "B": "slightly",
+      "C": "slightness",
+      "D": "slighter"
+    },
+    "correctAnswer": "B",
+    "translation": "その営業担当者は、Garneauさんが予想していたより、わずかに高い金額を提示した。",
+    "keyRule": "金のルール 17：品詞問題では、be動詞と形容詞の間の空所には副詞を選ぶ。",
+    "keyPoint": "形容詞 higher を修飾する副詞 slightly (わずかに) が正解",
+    "explanation": "比較級の形容詞 higher を修飾する副詞 (B) slightly が正解です。",
+    "vocabulary": [
+      "quote 見積もりを提示する",
+      "slightly わずかに"
+    ]
+  },
+  {
+    "id": "ch1-q49",
+    "numberLabel": "第49問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Atanas Electric uses the highest quality parts and materials to ensure that our equipment operates as ------- as possible.",
+    "options": {
+      "A": "efficient",
+      "B": "efficiency",
+      "C": "efficiently",
+      "D": "efficiencies"
+    },
+    "correctAnswer": "C",
+    "translation": "Atanas Electricは、当社の機器ができるだけ効率的に作動することを保証するため、最高品質の部品と材料を使用しています。",
+    "keyRule": "金のルール 21：asとasの間が空所の品詞問題は、asとas以降を取って考える。",
+    "keyPoint": "operates [空所] なので動詞を修飾する副詞 efficiently が正解",
+    "explanation": "動詞 operates を修飾する副詞 (C) efficiently が正解です。",
+    "vocabulary": [
+      "ensure 保証する",
+      "efficiently 効率的に"
+    ]
+  },
+  {
+    "id": "ch1-q50",
+    "numberLabel": "第50問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Jarafi Designs has a wide selection of ------- crafted furniture in its new showroom on Fifth Avenue.",
+    "options": {
+      "A": "beauty",
+      "B": "beautifully",
+      "C": "beautify",
+      "D": "beautified"
+    },
+    "correctAnswer": "B",
+    "translation": "Jarafi Designsの5番通りの新しいショールームには、美しく作り上げられた幅広い種類の家具がある。",
+    "keyRule": "金のルール 22：品詞問題で、空所が準動詞を修飾していたら副詞を選ぶ。",
+    "keyPoint": "過去分詞 crafted を修飾する副詞 beautifully が正解",
+    "explanation": "過去分詞 crafted を修飾する副詞 (B) beautifully が正解です。",
+    "vocabulary": [
+      "craft 精巧に作る",
+      "beautifully 美しく"
+    ]
+  },
+  {
+    "id": "ch1-q51",
+    "numberLabel": "第51問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "From January to March, ------- handbags can be found in the clearance section of all Brocker Fashion stores.",
+    "options": {
+      "A": "discontinued",
+      "B": "discontinue",
+      "C": "discontinuing",
+      "D": "discontinues"
+    },
+    "correctAnswer": "A",
+    "translation": "1月から3月まで、製造中止になったハンドバッグは、Brocker Fashion の全店舗の在庫一掃コーナーで見つかります。",
+    "keyRule": "金のルール 13：名詞を修飾する分詞を選ぶ際は、「する・される」の関係を考える。",
+    "keyPoint": "handbags は製造中止に「される」側。過去分詞 discontinued が正解",
+    "explanation": "受動の意味を表す過去分詞 (A) discontinued (製造中止になった) が正解です。",
+    "vocabulary": [
+      "discontinue 中止する",
+      "clearance 在庫一掃"
+    ]
+  },
+  {
+    "id": "ch1-q52",
+    "numberLabel": "第52問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Vamasoft is currently advertising several job ------- for software engineers based in San Francisco.",
+    "options": {
+      "A": "opens",
+      "B": "openings",
+      "C": "openness",
+      "D": "opened"
+    },
+    "correctAnswer": "B",
+    "translation": "Vamasoftは現在、San Franciscoを拠点とするソフトウェア技術者の求人をいくつか出している。",
+    "keyRule": "金のルール 5：品詞問題では、他動詞の目的語には名詞を選ぶ。",
+    "keyPoint": "several job openings (求人、空き) という複数名詞 openings が正解",
+    "explanation": "several に呼応する複数名詞 (B) openings が正解です。job openings は頻出。",
+    "vocabulary": [
+      "job opening 求人",
+      "based in 〜を拠点とする"
+    ]
+  },
+  {
+    "id": "ch1-q53",
+    "numberLabel": "第53問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Center Park's sprinkler irrigation system will be upgraded in an effort to reduce water -------.",
+    "options": {
+      "A": "consume",
+      "B": "consumable",
+      "C": "consumed",
+      "D": "consumption"
+    },
+    "correctAnswer": "D",
+    "translation": "中央公園のスプリンクラーによる散水システムは、水の消費を減らすため、改良される予定だ。",
+    "keyRule": "金のルール 20：空所が文末で選択肢に副詞がないときは「名詞＋名詞」を疑う。",
+    "keyPoint": "water consumption (水の消費) という名詞+名詞を作る consumption が正解",
+    "explanation": "名詞 water と複合名詞を作る名詞 (D) consumption (消費) が正解です。",
+    "vocabulary": [
+      "reduce 減らす",
+      "consumption 消費"
+    ]
+  },
+  {
+    "id": "ch1-q54",
+    "numberLabel": "第54問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "After multiple failed ------- to log in to her account, Ms. Fischer contacted the newspaper's subscription department.",
+    "options": {
+      "A": "attempt",
+      "B": "attempted",
+      "C": "attempts",
+      "D": "attempting"
+    },
+    "correctAnswer": "C",
+    "translation": "自分のアカウントへのログインに複数回失敗した後、Fischer さんはその新聞の購読部に連絡した。",
+    "keyRule": "金のルール 7：品詞問題では、前置詞の目的語には名詞を選ぶ。",
+    "keyPoint": "multiple (複数の＝2以上) に呼応する複数名詞 attempts が正解",
+    "explanation": "multiple は複数名詞を修飾するため、(C) attempts (試み) が正解です。",
+    "vocabulary": [
+      "multiple 複数の",
+      "attempt 試み"
+    ]
+  },
+  {
+    "id": "ch1-q55",
+    "numberLabel": "第55問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Our Web site offers customers an ------- how-to section on maintaining and repairing Norleigh bicycles.",
+    "options": {
+      "A": "extend",
+      "B": "extension",
+      "C": "extensively",
+      "D": "extensive"
+    },
+    "correctAnswer": "D",
+    "translation": "当社のウェブサイトでは、Norleigh 自転車の維持管理と修理に関するくわしいハウツーコーナーをお客様に提供しています。",
+    "keyRule": "金のルール 27：「冠 ------- 形 名」の空所には、形容詞が入る場合もある。",
+    "keyPoint": "an extensive how-to section (くわしいハウツーコーナー) と名詞句を修飾する形容詞 extensive が正解",
+    "explanation": "名詞句を修飾する形容詞 (D) extensive (くわしい、広範囲の) が正解です。",
+    "vocabulary": [
+      "extensive くわしい、広範囲の",
+      "maintain 維持管理する"
+    ]
+  },
+  {
+    "id": "ch1-q56",
+    "numberLabel": "第56問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Attleberton Hotel is located near Lake Claire and Mount Garber, both ------- from the top-floor observation deck.",
+    "options": {
+      "A": "visible",
+      "B": "vision",
+      "C": "visibility",
+      "D": "visibly"
+    },
+    "correctAnswer": "A",
+    "translation": "Attleberton ホテルは、Claire湖とGarber山の近くにあり、どちらも最上階の展望台から見える。",
+    "keyRule": "金のルール 9：品詞問題では、補語には形容詞が最優先。",
+    "keyPoint": "both (are) visible from... の独立分詞構文で補語の形容詞 visible が正解",
+    "explanation": "both are visible の are が省略された分詞構文で、補語の形容詞 (A) visible が正解です。",
+    "vocabulary": [
+      "visible 目に見える",
+      "observation deck 展望台"
+    ]
+  },
+  {
+    "id": "ch1-q57",
+    "numberLabel": "第57問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Headquartered in Berlin, Seidel Fidelity is a top ------- of high-end stereo equipment.",
+    "options": {
+      "A": "producer",
+      "B": "product",
+      "C": "produce",
+      "D": "production"
+    },
+    "correctAnswer": "A",
+    "translation": "Berlinに本社を置くSeidel Fidelityは、最高級ステレオ機器のトップのメーカーだ。",
+    "keyRule": "金のルール 11：補語を選ぶ品詞問題では、主語とイコールになる答えを選ぶ。",
+    "keyPoint": "主語の企業とイコールになる名詞 producer (生産者、メーカー) が正解",
+    "explanation": "企業＝メーカーとして主語とイコールになる (A) producer が正解です。",
+    "vocabulary": [
+      "headquartered in 〜に本社を置く",
+      "high-end 最高級の"
+    ]
+  },
+  {
+    "id": "ch1-q58",
+    "numberLabel": "第58問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "The designer added some space between the company name and logo to make the packaging more -------.",
+    "options": {
+      "A": "attract",
+      "B": "attractive",
+      "C": "attraction",
+      "D": "attractively"
+    },
+    "correctAnswer": "B",
+    "translation": "そのデザイナーは、パッケージをより魅力的にするため、会社の名義とロゴの間にスペースを加えた。",
+    "keyRule": "金のルール 29：find と makeはSVOCのカタチに注意。",
+    "keyPoint": "make O C (OをCにする)。補語(C)になる形容詞 attractive が正解",
+    "explanation": "make the packaging [O] more [C] のSVOC構文で、形容詞 (B) attractive が正解です。",
+    "vocabulary": [
+      "packaging パッケージ",
+      "attractive 魅力的な"
+    ]
+  },
+  {
+    "id": "ch1-q59",
+    "numberLabel": "第59問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "Barry's Tackle not only sells a range of lures but also repairs ------- fishing equipment.",
+    "options": {
+      "A": "specializing",
+      "B": "specially",
+      "C": "specialty",
+      "D": "specialize"
+    },
+    "correctAnswer": "C",
+    "translation": "Barry's Tackleは、さまざまなルアーの販売だけでなく、専門釣具の修理も行っている。",
+    "keyRule": "金のルール 20：空所が文末で選択肢に副詞がないときは「名詞＋名詞」を疑う。",
+    "keyPoint": "specialty fishing equipment (専門釣具) と名詞が3つ並ぶカタチで specialty が正解",
+    "explanation": "名詞 fishing equipment を修飾する名詞 (C) specialty (専門) が正解です。",
+    "vocabulary": [
+      "lure ルアー",
+      "specialty 専門"
+    ]
+  },
+  {
+    "id": "ch1-q60",
+    "numberLabel": "第60問",
+    "chapterId": 1,
+    "chapterTitle": "第1章：品詞",
+    "category": "実戦問題",
+    "sentence": "The company name must always be displayed in legible characters and the logo ------- in the corporate colors.",
+    "options": {
+      "A": "print",
+      "B": "prints",
+      "C": "printed",
+      "D": "printing"
+    },
+    "correctAnswer": "C",
+    "translation": "社名は常に読める文字で表示し、ロゴは会社のイメージカラーで印刷しなければならない。",
+    "keyRule": "金のルール 8：接続詞andを見たら、何と何をつないでいるのかを確認する。",
+    "keyPoint": "must be が省略された the logo (must be) printed の受動態を作る過去分詞 printed が正解",
+    "explanation": "ロゴは印刷される側で must be が共通省略されているため、受動態の過去分詞 (C) printed が正解です。",
+    "vocabulary": [
+      "legible 読める",
+      "corporate color 会社のイメージカラー"
+    ]
+  },
+  {
+    "id": "ch2-q62",
+    "numberLabel": "第62問",
+    "chapterId": 2,
+    "chapterTitle": "第2章：動詞",
+    "category": "解き方の基本",
+    "sentence": "The following suggestions were ------- from members of the local community.",
+    "options": {
+      "A": "solicit",
+      "B": "soliciting",
+      "C": "solicited",
+      "D": "solicits"
+    },
+    "correctAnswer": "C",
+    "translation": "以下の提案が、地元のコミュニティのメンバーから求められた。",
+    "keyRule": "金のルール 32：受動態の基本形（be ＋ 過去分詞）。",
+    "keyPoint": "「提案」は求められる側(受動)＆空所後に目的語がなく前置詞 from が続くため受動態 solicited が正解",
+    "explanation": "主語 The following suggestions に対し were の直後が空所です。「提案」は solicit (求める) される側であり、かつ直後に名詞目的語がなく前置詞 from が続いているため、受動態を作る過去分詞 (C) solicited が正解です。",
+    "vocabulary": [
+      "solicit 求める、嘆願する",
+      "following 以下の"
+    ]
+  },
+  {
+    "id": "ch2-q76",
+    "numberLabel": "第76問",
+    "chapterId": 2,
+    "chapterTitle": "第2章：動詞",
+    "category": "必修問題",
+    "sentence": "Had the deal gone through, the combined company ------- one of the nation's largest exporters of agricultural products.",
+    "options": {
+      "A": "will be becoming",
+      "B": "is becoming",
+      "C": "would have become",
+      "D": "has become"
+    },
+    "correctAnswer": "C",
+    "translation": "もし取引が成立していたら、その合併会社は、農業用製品の、国で最大の輸出会社の1つになっていただろう。",
+    "keyRule": "金のルール 46：頭に入れておきたい仮定法の公式。",
+    "keyPoint": "Had the deal gone through (倒置仮定法過去完了) に対する主節は would have become",
+    "explanation": "文頭の Had the deal gone through は If the deal had gone through の if が省略された倒置形です。仮定法過去完了の主節は「助動詞の過去形(would) ＋ have ＋ 過去分詞」なので、(C) would have become が正解です。",
+    "vocabulary": [
+      "go through 成立する",
+      "exporter 輸出業者"
+    ]
+  },
+  {
+    "id": "ch2-q77",
+    "numberLabel": "第77問",
+    "chapterId": 2,
+    "chapterTitle": "第2章：動詞",
+    "category": "実戦問題",
+    "sentence": "The presentation ------- by Ms. Batista on password protection and encryption lasted about 75 minutes.",
+    "options": {
+      "A": "given",
+      "B": "was given",
+      "C": "has given",
+      "D": "gave"
+    },
+    "correctAnswer": "A",
+    "translation": "パスワード保護と暗号化に関してBatista さんが行ったプレゼンは、約75分続いた。",
+    "keyRule": "金のルール 31：文全体の述語動詞の有無を確認する。",
+    "keyPoint": "文後半の lasted が述語動詞(V)。空所は主語を修飾する過去分詞 given が正解",
+    "explanation": "文の述語動詞は lasted (続いた) です。空所は The presentation を修飾する過去分詞 (A) given が正解です。",
+    "vocabulary": [
+      "encryption 暗号化",
+      "last 続く"
+    ]
+  },
+  {
+    "id": "ch2-q78",
+    "numberLabel": "第78問",
+    "chapterId": 2,
+    "chapterTitle": "第2章：動詞",
+    "category": "実戦問題",
+    "sentence": "Ms. O'Connell received a confirmation e-mail from the prospective employer immediately after ------- her job application.",
+    "options": {
+      "A": "submit",
+      "B": "submitting",
+      "C": "submits",
+      "D": "submitted"
+    },
+    "correctAnswer": "B",
+    "translation": "仕事の応募書類を提出した後すぐに、O'Connell さんは、将来の雇用主から確認メールを受け取った。",
+    "keyRule": "金のルール 35：前置詞の直後には動名詞を置く。",
+    "keyPoint": "前置詞 after の直後で名詞目的語 her job application を従える動名詞 submitting が正解",
+    "explanation": "after は前置詞で、目的語として名詞句を従えるため、動名詞 (B) submitting が正解です。",
+    "vocabulary": [
+      "prospective 見込みのある",
+      "immediately ただちに"
+    ]
+  },
+  {
+    "id": "ch2-q87",
+    "numberLabel": "第87問",
+    "chapterId": 2,
+    "chapterTitle": "第2章：動詞",
+    "category": "実戦問題",
+    "sentence": "By the time the tourism season begins, the contractor ------- construction of a second terminal at Nowak Airport.",
+    "options": {
+      "A": "will have completed",
+      "B": "are completing",
+      "C": "has been completing",
+      "D": "had completed"
+    },
+    "correctAnswer": "A",
+    "translation": "観光シーズンが始まるまでには、その請負業者は、Nowak空港での2つ目のターミナルの建設を完了しているだろう。",
+    "keyRule": "金のルール 38：未来の時点までの完了は未来完了形（will have ＋ 過去分詞）。",
+    "keyPoint": "By the time 現在形(未来の時点) に呼応する未来完了 will have completed が正解",
+    "explanation": "By the time begins (未来の基準点) までに完了していることを表すため、未来完了形の (A) will have completed が正解です。",
+    "vocabulary": [
+      "tourism 観光業",
+      "contractor 請負業者"
+    ]
+  },
+  {
+    "id": "ch2-q88",
+    "numberLabel": "第88問",
+    "chapterId": 2,
+    "chapterTitle": "第2章：動詞",
+    "category": "実戦問題",
+    "sentence": "When -------, over half of the shoppers indicated that they are familiar with the Accelestar brand of sports drinks.",
+    "options": {
+      "A": "survey",
+      "B": "surveys",
+      "C": "surveying",
+      "D": "surveyed"
+    },
+    "correctAnswer": "D",
+    "translation": "アンケート調査を受けた際、買い物客の半数以上が、Accelestar ブランドのスポーツドリンクをよく知っていることを示した。",
+    "keyRule": "金のルール 44：接続詞＋分詞構文での受動と能動。",
+    "keyPoint": "shoppers は調査される側(受動)。過去分詞 surveyed が正解",
+    "explanation": "When they were surveyed の主語＋be動詞が省略された分詞構文で、受動の過去分詞 (D) surveyed が正解です。",
+    "vocabulary": [
+      "be familiar with 〜をよく知っている",
+      "indicate 示す"
+    ]
+  },
+  {
+    "id": "ch3-q89",
+    "numberLabel": "第89問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "解き方の基本",
+    "sentence": "The food at the Bluewater Café is both wholesome and tasty, ------- the service is rather slow.",
+    "options": {
+      "A": "also",
+      "B": "or",
+      "C": "but",
+      "D": "through"
+    },
+    "correctAnswer": "C",
+    "translation": "Bluewater Caféの食事は健康に良くて美味しいが、サービスはかなり遅い。",
+    "keyRule": "金のルール 47：「前置詞 or 接続詞」問題は、「文のカタチ」「意味のつながり」を考える。",
+    "keyPoint": "2つの節(SV)をつなぐ逆接の等位接続詞 but が正解",
+    "explanation": "カンマの前後がともに節(SV)です。節と節をつなぐ逆接の接続詞 (C) but が正解です。",
+    "vocabulary": [
+      "wholesome 健康に良い",
+      "rather かなり"
+    ]
+  },
+  {
+    "id": "ch3-q90",
+    "numberLabel": "第90問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "必修問題",
+    "sentence": "The Lobster Hut is currently offering discounts on meals ------- off-peak hours at its three locations.",
+    "options": {
+      "A": "while",
+      "B": "otherwise",
+      "C": "during",
+      "D": "afterward"
+    },
+    "correctAnswer": "C",
+    "translation": "Lobster Hutは、現在、3店舗でピーク時ではない時間帯に食事の割引を提供している。",
+    "keyRule": "金のルール 48：while は接続詞、during は前置詞。",
+    "keyPoint": "空所後は名詞句 off-peak hours なので前置詞 during が正解",
+    "explanation": "空所後は名詞句なので前置詞 (C) during が正解です。while は節を伴います。",
+    "vocabulary": [
+      "off-peak hours 混雑していない時間帯",
+      "discount 割引"
+    ]
+  },
+  {
+    "id": "ch3-q91",
+    "numberLabel": "第91問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "必修問題",
+    "sentence": "------- many challenges facing the financial sector, it will probably remain stable for the foreseeable future.",
+    "options": {
+      "A": "Although",
+      "B": "Meanwhile",
+      "C": "However",
+      "D": "Despite"
+    },
+    "correctAnswer": "D",
+    "translation": "金融部門は、直面する多くの困難にもかかわらず、見通せる範囲の将来、おそらく安定を維持するだろう。",
+    "keyRule": "金のルール 49：althoughは接続詞、despiteは前置詞。",
+    "keyPoint": "名詞句 many challenges を伴う前置詞 Despite が正解",
+    "explanation": "カンマまでが名詞句なので前置詞 (D) Despite が正解です。Although は節を伴います。",
+    "vocabulary": [
+      "financial sector 金融部門",
+      "foreseeable 予見可能な"
+    ]
+  },
+  {
+    "id": "ch3-q92",
+    "numberLabel": "第92問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "必修問題",
+    "sentence": "After ten years, the water pump had to be replaced ------- it was no longer working.",
+    "options": {
+      "A": "due to",
+      "B": "unless",
+      "C": "because",
+      "D": "in fact"
+    },
+    "correctAnswer": "C",
+    "translation": "10年経過し、その送水ポンプは、もはや機能していなかったので、取り換える必要があった。",
+    "keyRule": "金のルール 50：接続詞 because は必ず節 (SV) を伴う。",
+    "keyPoint": "節 it was no longer working をつなぐ理由の接続詞 because が正解",
+    "explanation": "空所後は節(SV)なので理由の接続詞 (C) because が正解です。due to は前置詞です。",
+    "vocabulary": [
+      "no longer もう〜ない",
+      "replace 交換する"
+    ]
+  },
+  {
+    "id": "ch3-q93",
+    "numberLabel": "第93問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "必修問題",
+    "sentence": "------- the funding is approved, Lombard Hospital will remodel its reception and patient waiting area.",
+    "options": {
+      "A": "Once",
+      "B": "Soon",
+      "C": "Only",
+      "D": "That"
+    },
+    "correctAnswer": "A",
+    "translation": "資金提供が承認されたらすぐに、Lombard病院は受付と患者の待合室を改装する予定だ。",
+    "keyRule": "金のルール 51：once は接続詞としても Part 5頻出。",
+    "keyPoint": "2つの節をつなぎ「〜したらすぐに」を表す接続詞 Once が正解",
+    "explanation": "2つの節をつなぐ接続詞で「〜したらすぐに」を表す (A) Once が正解です。",
+    "vocabulary": [
+      "funding 資金提供",
+      "remodel 改装する"
+    ]
+  },
+  {
+    "id": "ch3-q94",
+    "numberLabel": "第94問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "必修問題",
+    "sentence": "------- the directors reach an agreement, the company's advertising budget will increase by 1.5 million dollars.",
+    "options": {
+      "A": "Provided that",
+      "B": "Nevertheless",
+      "C": "Regardless of",
+      "D": "In the event of"
+    },
+    "correctAnswer": "A",
+    "translation": "役員たちが合意に達するという条件で、その会社の宣伝予算は150万ドル増える予定だ。",
+    "keyRule": "金のルール 52：that は接続詞の目印。",
+    "keyPoint": "「〜という条件で」を表す接続詞 Provided that が正解",
+    "explanation": "2つの節をつなぐ接続詞 (A) Provided that (=only if) が正解です。",
+    "vocabulary": [
+      "reach an agreement 合意に達する",
+      "budget 予算"
+    ]
+  },
+  {
+    "id": "ch3-q95",
+    "numberLabel": "第95問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "必修問題",
+    "sentence": "------- authorized by the finance officer, changes cannot be made to the company's financial documents.",
+    "options": {
+      "A": "Unless",
+      "B": "After",
+      "C": "Because",
+      "D": "During"
+    },
+    "correctAnswer": "A",
+    "translation": "財務責任者の許可がない限り、会社の財務書類の変更はできない。",
+    "keyRule": "金のルール 53：Part 5で出題される、分詞を伴う接続詞。",
+    "keyPoint": "Unless (they are) authorized... と過去分詞を従える接続詞 Unless が正解",
+    "explanation": "主語＋be動詞が省略され過去分詞を従える接続詞 (A) Unless (〜しない限り) が正解です。",
+    "vocabulary": [
+      "authorized 許可された",
+      "financial document 財務書類"
+    ]
+  },
+  {
+    "id": "ch3-q96",
+    "numberLabel": "第96問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "必修問題",
+    "sentence": "Mr. Shin asked ------- the office in Düsseldorf could be open by the end of October.",
+    "options": {
+      "A": "in",
+      "B": "whether",
+      "C": "when",
+      "D": "regarding"
+    },
+    "correctAnswer": "B",
+    "translation": "Shinさんは、Düsseldorfのオフィスが10月末までにオープンできるかどうかを尋ねた。",
+    "keyRule": "金のルール 54：名詞節を作る接続詞は、whether、if、thatの3つ。",
+    "keyPoint": "ask の目的語名詞節を作る接続詞 whether (〜かどうか) が正解",
+    "explanation": "ask whether SV (〜かどうか尋ねる) を作る名詞節接続詞 (B) whether が正解です。",
+    "vocabulary": [
+      "by the end of 〜の末までに",
+      "inquire 問い合わせる"
+    ]
+  },
+  {
+    "id": "ch3-q97",
+    "numberLabel": "第97問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "Our employees are generally satisfied with the cafeteria, ------- some wish it would stay open later.",
+    "options": {
+      "A": "notwithstanding",
+      "B": "although",
+      "C": "furthermore",
+      "D": "initially"
+    },
+    "correctAnswer": "B",
+    "translation": "当社の従業員は全体的に社員食堂に満足しているが、もっと遅くまで開いていることを望む者もいる。",
+    "keyRule": "金のルール 49：althoughは接続詞、despite/notwithstandingは前置詞。",
+    "keyPoint": "2つの節をつなぐ接続詞 although が正解",
+    "explanation": "節と節をつなぐ接続詞 (B) although が正解です。notwithstanding は前置詞です。",
+    "vocabulary": [
+      "satisfied with 〜に満足している",
+      "cafeteria 社員食堂"
+    ]
+  },
+  {
+    "id": "ch3-q98",
+    "numberLabel": "第98問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "You should always wear a properly fitted helmet and reflective clothing ------- riding a bicycle.",
+    "options": {
+      "A": "also",
+      "B": "even",
+      "C": "unlike",
+      "D": "while"
+    },
+    "correctAnswer": "D",
+    "translation": "自転車に乗っている間は、きちんとサイズの合ったヘルメットと、反射材を使った衣類を常に着用すべきだ。",
+    "keyRule": "金のルール 53：接続詞 while は直後に現在分詞を伴える。",
+    "keyPoint": "while (you are) riding a bicycle の接続詞 while が正解",
+    "explanation": "分詞構文で現在分詞を従える接続詞 (D) while が正解です。",
+    "vocabulary": [
+      "reflective clothing 反射材を使った衣類",
+      "properly きちんと"
+    ]
+  },
+  {
+    "id": "ch3-q99",
+    "numberLabel": "第99問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "------- predictions by biologists, the algae in the lake did not harm any species of fish.",
+    "options": {
+      "A": "Alike",
+      "B": "In the event that",
+      "C": "As if",
+      "D": "In contrast to"
+    },
+    "correctAnswer": "D",
+    "translation": "生物学者たちの予想に反して、その湖の藻はどの魚類にも害を与えなかった。",
+    "keyRule": "金のルール 47：前置詞 vs 接続詞の識別。",
+    "keyPoint": "名詞句 predictions... と結びつく群前置詞 In contrast to (〜に反して) が正解",
+    "explanation": "名詞句を従える前置詞 (D) In contrast to が正解です。B, C は接続詞です。",
+    "vocabulary": [
+      "prediction 予想",
+      "harm 害を与える"
+    ]
+  },
+  {
+    "id": "ch3-q100",
+    "numberLabel": "第100問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "The mannequins at Milstitch Fashions are dressed in matching accessories, ------- scarves and gloves.",
+    "options": {
+      "A": "such as",
+      "B": "moreover",
+      "C": "in addition",
+      "D": "rather"
+    },
+    "correctAnswer": "A",
+    "translation": "Milstitch Fashions にあるマネキンは、スカーフや手袋のようなそろいの装飾品を身に着けている。",
+    "keyRule": "金のルール 47：前置詞 such as の具体例提示。",
+    "keyPoint": "名詞句 scarves and gloves を導く前置詞 such as (〜のような) が正解",
+    "explanation": "具体例を示す名詞句を導く前置詞 (A) such as が正解です。B, C, D は副詞です。",
+    "vocabulary": [
+      "matching そろいの",
+      "accessory 装飾品"
+    ]
+  },
+  {
+    "id": "ch3-q101",
+    "numberLabel": "第101問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "The Yorkdale Clinic introduced online access to test results ------- paper records were occasionally being misplaced.",
+    "options": {
+      "A": "likewise",
+      "B": "since",
+      "C": "concerning",
+      "D": "until"
+    },
+    "correctAnswer": "B",
+    "translation": "紙の記録がときどき置き忘れられていたので、Yorkdaleクリニックは、オンラインで検査結果を照会できるようにした。",
+    "keyRule": "金のルール 47：理由を表す接続詞 since。",
+    "keyPoint": "節 paper records were... をつなぐ理由の接続詞 since が正解",
+    "explanation": "2つの節をつなぎ理由を表す接続詞 (B) since が正解です。",
+    "vocabulary": [
+      "misplace 置き忘れる",
+      "occasionally たまに"
+    ]
+  },
+  {
+    "id": "ch3-q102",
+    "numberLabel": "第102問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "Some roses in the garden bloom only once a year, ------- other varieties do so about every six months.",
+    "options": {
+      "A": "instead of",
+      "B": "only",
+      "C": "by contrast",
+      "D": "whereas"
+    },
+    "correctAnswer": "D",
+    "translation": "その庭園にあるバラの一部は年に1度しか咲かないが、一方で、約半年ごとに咲く品種もある。",
+    "keyRule": "金のルール 47：対比を表すフォーマル接続詞 whereas。",
+    "keyPoint": "2つの節をつなぎ対比を表す接続詞 whereas (〜であるのに対して) が正解",
+    "explanation": "2つの節をつなぐ接続詞 (D) whereas が正解です。C は副詞のため節をつなげません。",
+    "vocabulary": [
+      "bloom 咲く",
+      "whereas 〜であるのに対して"
+    ]
+  },
+  {
+    "id": "ch3-q103",
+    "numberLabel": "第103問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "------- a reduction in competition, Pancean Airlines decided to raise its ticket prices and baggage fees.",
+    "options": {
+      "A": "After all",
+      "B": "In case",
+      "C": "Only if",
+      "D": "Because of"
+    },
+    "correctAnswer": "D",
+    "translation": "競争が減少したので、Pancean航空は、チケット価格と手荷物運賃を値上げすることに決めた。",
+    "keyRule": "金のルール 50：because of は名詞句を伴う前置詞。",
+    "keyPoint": "名詞句 a reduction... を伴う前置詞 Because of が正解",
+    "explanation": "空所後は名詞句なので前置詞 (D) Because of が正解です。B, C は接続詞です。",
+    "vocabulary": [
+      "reduction 減少",
+      "baggage fee 手荷物運賃"
+    ]
+  },
+  {
+    "id": "ch3-q104",
+    "numberLabel": "第104問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "The next monthly meeting will be held on Friday ------- Monday due to the national holiday.",
+    "options": {
+      "A": "except",
+      "B": "instead of",
+      "C": "whereas",
+      "D": "in particular"
+    },
+    "correctAnswer": "B",
+    "translation": "次の月例会議は、国民の休日のため、月曜日ではなく金曜日に行われます。",
+    "keyRule": "金のルール 47：前置詞 instead of (〜ではなく)。",
+    "keyPoint": "名詞 Monday を伴い「月曜ではなく」を表す前置詞 instead of が正解",
+    "explanation": "名詞 Monday と結びつく前置詞 (B) instead of が正解です。",
+    "vocabulary": [
+      "instead of 〜の代わりに",
+      "due to 〜が理由で"
+    ]
+  },
+  {
+    "id": "ch3-q105",
+    "numberLabel": "第105問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "------- contractor delays, the opening date for Salmon Creek Bridge has been pushed back from November.",
+    "options": {
+      "A": "If",
+      "B": "Owing to",
+      "C": "Therefore",
+      "D": "Given that"
+    },
+    "correctAnswer": "B",
+    "translation": "請負業者の遅れのため、Salmon Creek橋の開通日は、11月から先送りになった。",
+    "keyRule": "金のルール 47：理由を表す前置詞 owing to。",
+    "keyPoint": "複合名詞 contractor delays を伴う前置詞 Owing to (〜が理由で) が正解",
+    "explanation": "空所後は名詞句なので前置詞 (B) Owing to が正解です。A, D は接続詞です。",
+    "vocabulary": [
+      "contractor 請負業者",
+      "push back 先送りにする"
+    ]
+  },
+  {
+    "id": "ch3-q106",
+    "numberLabel": "第106問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "The Sonava Resort will be built in three phases ------- minimize the impact of construction on local traffic.",
+    "options": {
+      "A": "prior to",
+      "B": "in addition to",
+      "C": "contrary to",
+      "D": "in order to"
+    },
+    "correctAnswer": "D",
+    "translation": "Sonava Resortは、工事の地元の交通への影響を最小限に抑えるため、3段階に分けて建てられる予定だ。",
+    "keyRule": "金のルール 30：原形動詞を伴う目的の不定詞 in order to do。",
+    "keyPoint": "原形動詞 minimize を従える不定詞 in order to (〜するために) が正解",
+    "explanation": "原形動詞を伴う (D) in order to が正解です。A, B, C は前置詞で名詞・動名詞が必要です。",
+    "vocabulary": [
+      "phase 段階",
+      "minimize 最小化する"
+    ]
+  },
+  {
+    "id": "ch3-q107",
+    "numberLabel": "第107問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "The city widened Burridge River last year, ------- many boaters still find it difficult to access Kingston Port.",
+    "options": {
+      "A": "also",
+      "B": "because",
+      "C": "soon",
+      "D": "yet"
+    },
+    "correctAnswer": "D",
+    "translation": "市は昨年、Burridge川を拡張したが、ボートに乗る多くの人は、Kingston 港にアクセスするのが依然として難しいと感じている。",
+    "keyRule": "金のルール 47：等位接続詞 yet (しかし)。",
+    "keyPoint": "2つの節をつなぐ逆接の等位接続詞 yet が正解",
+    "explanation": "but の意味で2つの節をつなぐ等位接続詞 (D) yet が正解です。",
+    "vocabulary": [
+      "widen 広げる",
+      "access アクセスする"
+    ]
+  },
+  {
+    "id": "ch3-q108",
+    "numberLabel": "第108問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "To participate in the Frankfurt Health Symposium, please fill out the registration form and ------- proceed to payment.",
+    "options": {
+      "A": "as soon as",
+      "B": "while",
+      "C": "then",
+      "D": "even though"
+    },
+    "correctAnswer": "C",
+    "translation": "Frankfurt健康討論会に参加するためには、登録用紙に記入し、それからお支払いに進んでください。",
+    "keyRule": "金のルール 47：命令文をつなぐ副詞 then。",
+    "keyPoint": "原形動詞 proceed を修飾する副詞 then (それから) が正解",
+    "explanation": "接続詞 and で2つの動詞が結ばれており、動詞を修飾する副詞 (C) then が正解です。",
+    "vocabulary": [
+      "fill out 記入する",
+      "proceed 進む"
+    ]
+  },
+  {
+    "id": "ch3-q109",
+    "numberLabel": "第109問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "The construction crew has to complete the first phase of the project ------- moving on to the second.",
+    "options": {
+      "A": "still",
+      "B": "during",
+      "C": "before",
+      "D": "only"
+    },
+    "correctAnswer": "C",
+    "translation": "建設作業員は、第2工程に進む前に、プロジェクトの第1工程を完了しなければならない。",
+    "keyRule": "金のルール 47：動名詞を伴う前置詞 before。",
+    "keyPoint": "動名詞 moving on... を伴う前置詞 before が正解（duringは動名詞を伴えない）",
+    "explanation": "動名詞を伴い「〜する前に」を表す前置詞 (C) before が正解です。",
+    "vocabulary": [
+      "construction crew 建設作業員",
+      "move on to 〜に進む"
+    ]
+  },
+  {
+    "id": "ch3-q110",
+    "numberLabel": "第110問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "State-of-the-art equipment is being installed in the factory ------- we can start a new assembly process in June.",
+    "options": {
+      "A": "so that",
+      "B": "although",
+      "C": "rather than",
+      "D": "whenever"
+    },
+    "correctAnswer": "A",
+    "translation": "我々が6月に新たな組立工程を始められるよう、最新式の機器を工場に設置中だ。",
+    "keyRule": "金のルール 52：目的を表す接続詞 so that S can V。",
+    "keyPoint": "「〜できるように」を表す目的の接続詞 so that が正解",
+    "explanation": "行為と目的をつなぐ接続詞 (A) so that が正解です。",
+    "vocabulary": [
+      "state-of-the-art 最新式の",
+      "assembly process 組立工程"
+    ]
+  },
+  {
+    "id": "ch3-q111",
+    "numberLabel": "第111問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "------- the top five historical sites tourists want to see, the amphitheater welcomes the most visitors.",
+    "options": {
+      "A": "When",
+      "B": "Consequently",
+      "C": "Among",
+      "D": "Since"
+    },
+    "correctAnswer": "C",
+    "translation": "観光客が見たい歴史の名所のトップ5の中で、円形競技場が最も来場者数が多い。",
+    "keyRule": "金のルール 47：最上級と相性の良い前置詞 Among。",
+    "keyPoint": "名詞句 the top five... を伴い「〜の中で」を表す前置詞 Among が正解",
+    "explanation": "名詞句を従え集団の中を表す前置詞 (C) Among が正解です。",
+    "vocabulary": [
+      "historical site 史跡",
+      "amphitheater 円形競技場"
+    ]
+  },
+  {
+    "id": "ch3-q112",
+    "numberLabel": "第112問",
+    "chapterId": 3,
+    "chapterTitle": "第3章：前置詞 or 接続詞",
+    "category": "実戦問題",
+    "sentence": "------- her contribution to improving Arkney City's transportation network, Ms. Rosenberg would make a good mayor.",
+    "options": {
+      "A": "Given",
+      "B": "Even if",
+      "C": "Since",
+      "D": "As well as"
+    },
+    "correctAnswer": "A",
+    "translation": "Arkney市の交通網の改善への貢献を考えると、Rosenberg さんは良い市長になるだろう。",
+    "keyRule": "金のルール 47：前置詞 Given (=considering: 〜を考慮すると)。",
+    "keyPoint": "名詞句 contribution... を伴い「〜を考慮すると」を表す前置詞 Given が正解",
+    "explanation": "理由・考慮を表す前置詞 (A) Given が正解です。",
+    "vocabulary": [
+      "contribution 貢献",
+      "mayor 市長"
+    ]
+  },
+  {
+    "id": "ch4-q119",
+    "numberLabel": "第119問",
+    "chapterId": 4,
+    "chapterTitle": "第4章：代名詞",
+    "category": "必修問題",
+    "sentence": "For ------- who wish to enjoy a taste of Thai cuisine, go to the Siam Food Festival this weekend.",
+    "options": {
+      "A": "they",
+      "B": "them",
+      "C": "those",
+      "D": "that"
+    },
+    "correctAnswer": "C",
+    "translation": "タイ料理の味を楽しみたい人は、今週末、Siamフードフェスティバルに行きましょう。",
+    "keyRule": "金のルール 61：人称代名詞は修飾語を伴わない。",
+    "keyPoint": "関係代名詞 who wish... の修飾を受ける複数代名詞 those (those who = 〜する人々) が正解",
+    "explanation": "人称代名詞 they/them は修飾語を伴えず、直後の動詞 wish が複数形なので複数代名詞 (C) those が正解です。",
+    "vocabulary": [
+      "cuisine 料理",
+      "taste 味"
+    ]
+  },
+  {
+    "id": "ch5-q120",
+    "numberLabel": "第120問",
+    "chapterId": 5,
+    "chapterTitle": "第5章：前置詞",
+    "category": "解き方の基本",
+    "sentence": "Zappish Online guarantees that orders placed in North America will arrive ------- seven days of shipping.",
+    "options": {
+      "A": "among",
+      "B": "beside",
+      "C": "since",
+      "D": "within"
+    },
+    "correctAnswer": "D",
+    "translation": "Zappish Onlineは、北米で出された注文は、出荷後7日以内に届くと保証している。",
+    "keyRule": "金のルール 62：within の基本イメージは「範囲内」。",
+    "keyPoint": "期間を表す seven days を伴い「7日以内に」を表す within が正解",
+    "explanation": "期間の範囲内を表す前置詞 (D) within (〜以内) が正解です。",
+    "vocabulary": [
+      "guarantee 保証する",
+      "shipping 出荷"
+    ]
+  },
+  {
+    "id": "ch5-q121",
+    "numberLabel": "第121問",
+    "chapterId": 5,
+    "chapterTitle": "第5章：前置詞",
+    "category": "必修問題",
+    "sentence": "The Lilium Giftshop will be open daily from 9:00 A.M. to 7:00 P.M. ------- the holiday season.",
+    "options": {
+      "A": "about",
+      "B": "between",
+      "C": "throughout",
+      "D": "onto"
+    },
+    "correctAnswer": "C",
+    "translation": "Lilium Giftshopは、休暇シーズンを通してずっと、毎日午前9時から午後7時まで営業します。",
+    "keyRule": "金のルール 63：throughoutは、「期間」と「場所」を伴う。",
+    "keyPoint": "期間 the holiday season を伴い「〜を通してずっと」を表す throughout が正解",
+    "explanation": "期間中ずっとを表す前置詞 (C) throughout が正解です。",
+    "vocabulary": [
+      "daily 毎日",
+      "throughout 〜を通してずっと"
+    ]
+  },
+  {
+    "id": "ch5-q122",
+    "numberLabel": "第122問",
+    "chapterId": 5,
+    "chapterTitle": "第5章：前置詞",
+    "category": "必修問題",
+    "sentence": "------- the direction of Catherine Smith, the Woodlawn Theater has become one of the most exciting venues in Melbourne.",
+    "options": {
+      "A": "Across",
+      "B": "Inside",
+      "C": "Over",
+      "D": "Under"
+    },
+    "correctAnswer": "D",
+    "translation": "Catherine Smithの監督下で、Woodlawn 劇場は、Melbourneで最も刺激的な会場の1つとなった。",
+    "keyRule": "金のルール 64：underの基本イメージは「下」。",
+    "keyPoint": "under the direction of X (Xの監督下で) の前置詞 Under が正解",
+    "explanation": "監督下・指導下を表す前置詞 (D) Under が正解です。",
+    "vocabulary": [
+      "direction 監督、指示",
+      "venue 会場"
+    ]
+  },
+  {
+    "id": "ch5-q123",
+    "numberLabel": "第123問",
+    "chapterId": 5,
+    "chapterTitle": "第5章：前置詞",
+    "category": "必修問題",
+    "sentence": "The Pennington Company processes recycled glass and plastic ------- various products.",
+    "options": {
+      "A": "along",
+      "B": "into",
+      "C": "before",
+      "D": "beyond"
+    },
+    "correctAnswer": "B",
+    "translation": "Pennington社は、リサイクルされたガラスやプラスチックを加工して、さまざまな製品にします。",
+    "keyRule": "金のルール 65：intoは「変化」を表す。",
+    "keyPoint": "process X into Y (Xを加工してYにする) の前置詞 into が正解",
+    "explanation": "加工・変化を表す前置詞 (B) into が正解です。",
+    "vocabulary": [
+      "process 加工する",
+      "various さまざまな"
+    ]
+  },
+  {
+    "id": "ch5-q124",
+    "numberLabel": "第124問",
+    "chapterId": 5,
+    "chapterTitle": "第5章：前置詞",
+    "category": "必修問題",
+    "sentence": "------- the next few weeks, the Vesmar Group will be holding various events to mark its centennial anniversary.",
+    "options": {
+      "A": "Over",
+      "B": "From",
+      "C": "By",
+      "D": "At"
+    },
+    "correctAnswer": "A",
+    "translation": "次の数週間にわたって、Vesmarグループは、100周年を記念するさまざまなイベントを行う予定だ。",
+    "keyRule": "金のルール 66：overの基本イメージは「虹の架け橋」。",
+    "keyPoint": "期間 the next few weeks を伴い「〜にわたって」を表す Over が正解",
+    "explanation": "期間にわたる継続を表す前置詞 (A) Over が正解です。",
+    "vocabulary": [
+      "mark 記念する",
+      "centennial 100周年の"
+    ]
+  },
+  {
+    "id": "ch5-q125",
+    "numberLabel": "第125問",
+    "chapterId": 5,
+    "chapterTitle": "第5章：前置詞",
+    "category": "必修問題",
+    "sentence": "------- the three menu items on special today, the most popular is the turkey sandwich with tomato soup.",
+    "options": {
+      "A": "Toward",
+      "B": "Of",
+      "C": "As",
+      "D": "Without"
+    },
+    "correctAnswer": "B",
+    "translation": "今日の特別料理の3つのメニューの品のうち、1番人気は、トマトスープ付きの七面鳥のサンドイッチです。",
+    "keyRule": "金のルール 67：ofは「全体の一部」を表す。",
+    "keyPoint": "最上級とともに用いられ「〜のうちで」を表す前置詞 Of が正解",
+    "explanation": "最上級とともに全体の中の一部を表す (B) Of が正解です。",
+    "vocabulary": [
+      "special 特別料理",
+      "popular 人気の"
+    ]
+  },
+  {
+    "id": "ch5-q126",
+    "numberLabel": "第126問",
+    "chapterId": 5,
+    "chapterTitle": "第5章：前置詞",
+    "category": "必修問題",
+    "sentence": "------- entering the facility, Mr. Morris showed his security badge to the guard by the door.",
+    "options": {
+      "A": "During",
+      "B": "Until",
+      "C": "From",
+      "D": "Upon"
+    },
+    "correctAnswer": "D",
+    "translation": "施設に入ったらすぐに、Morrisさんは、ドアのそばの警備員に身分証明書を見せた。",
+    "keyRule": "金のルール 68：uponは、「~したらすぐに、〜時に」の意味で頻出。",
+    "keyPoint": "動名詞 entering を伴い「〜したらすぐに」を表す前置詞 Upon が正解",
+    "explanation": "動名詞を伴い「〜するとすぐに」を表す (D) Upon が正解です。",
+    "vocabulary": [
+      "facility 施設",
+      "security badge 身分証明書"
+    ]
+  },
+  {
+    "id": "ch5-q127",
+    "numberLabel": "第127問",
+    "chapterId": 5,
+    "chapterTitle": "第5章：前置詞",
+    "category": "必修問題",
+    "sentence": "The building inspector confirmed the factory had been constructed ------- government regulations.",
+    "options": {
+      "A": "in order of",
+      "B": "in accordance with",
+      "C": "in line for",
+      "D": "in place of"
+    },
+    "correctAnswer": "B",
+    "translation": "建築検査官は、その工場が、政府の規制に従って建てられたことを確認した。",
+    "keyRule": "金のルール 69：熟語の問題は考え込まない（群前置詞）。",
+    "keyPoint": "「〜に従って、則って」を表す群前置詞 in accordance with が正解",
+    "explanation": "規則に従ってを表す群前置詞 (B) in accordance with が正解です。",
+    "vocabulary": [
+      "inspector 検査官",
+      "regulation 規制"
+    ]
+  },
+  {
+    "id": "ch6-q128",
+    "numberLabel": "第128問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "解き方の基本",
+    "sentence": "Sprinklex will get rid of those stubborn carpet stains ------- seem impossible to remove.",
+    "options": {
+      "A": "who",
+      "B": "they",
+      "C": "that",
+      "D": "whose"
+    },
+    "correctAnswer": "C",
+    "translation": "Sprinklexは、取り除くのが不可能に思える頑固なカーペットの染みも取り除く。",
+    "keyRule": "金のルール 70：関係代名詞の問題は、「先行詞」と「空所後のカタチ」がポイント。",
+    "keyPoint": "先行詞 stains (モノ) ＋ 主語欠け不完全文。主格関係代名詞 that が正解",
+    "explanation": "先行詞がモノで述語動詞 seem の主語が欠けているため主格関係代名詞 (C) that が正解です。",
+    "vocabulary": [
+      "get rid of 〜を除去する",
+      "stubborn 頑固な"
+    ]
+  },
+  {
+    "id": "ch6-q129",
+    "numberLabel": "第129問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "必修問題",
+    "sentence": "Eight businesses sell antique toys in the Monroe Building, all of ------- are on its seventh floor.",
+    "options": {
+      "A": "whose",
+      "B": "them",
+      "C": "which",
+      "D": "they"
+    },
+    "correctAnswer": "C",
+    "translation": "Monroe Building にはアンティーク玩具を販売する8つの店があり、それらはすべて7階にある。",
+    "keyRule": "金のルール 71：関係代名詞と普通の代名詞の文法的な違いに注意。",
+    "keyPoint": "2つの節をつなぐ前置詞 of の目的格関係代名詞 which が正解",
+    "explanation": "前置詞 of の目的語となり先行詞 businesses を受ける関係代名詞 (C) which が正解です。",
+    "vocabulary": [
+      "antique 骨董の",
+      "business 店、企業"
+    ]
+  },
+  {
+    "id": "ch6-q130",
+    "numberLabel": "第130問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "必修問題",
+    "sentence": "Aloganics is a business ------- products are healthier than ice creams made by other manufacturers.",
+    "options": {
+      "A": "what",
+      "B": "whose",
+      "C": "which",
+      "D": "when"
+    },
+    "correctAnswer": "B",
+    "translation": "Aloganicsの製品は、他のメーカーが作るアイスクリームよりヘルシーだ。",
+    "keyRule": "金のルール 72：関係詞の問題は、2文に分けて考えるのが基本。",
+    "keyPoint": "Its products are... と所有格で文がつながる所有格関係代名詞 whose が正解",
+    "explanation": "先行詞 business を所有格 (its) として補うと文が成立するため、(B) whose が正解です。",
+    "vocabulary": [
+      "manufacturer 製造業者",
+      "healthy 健康に良い"
+    ]
+  },
+  {
+    "id": "ch6-q131",
+    "numberLabel": "第131問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "必修問題",
+    "sentence": "Madras & Associates specializes in ------- that help clients optimize workplace efficiency and profitability.",
+    "options": {
+      "A": "strategy",
+      "B": "strategic",
+      "C": "strategically",
+      "D": "strategies"
+    },
+    "correctAnswer": "D",
+    "translation": "Madras & Associatesは、顧客が職場の効率と利益性を最適化するのに役立つ戦略を専門にしている。",
+    "keyRule": "金のルール 73：主格の関係代名詞の先行詞と、直後の述語動詞は主述が一致する。",
+    "keyPoint": "that直後の動詞 help (3単現なし) と呼応する複数先行詞 strategies が正解",
+    "explanation": "主格関係代名詞 that に続く動詞 help が複数扱いのため、複数名詞 (D) strategies が正解です。",
+    "vocabulary": [
+      "specialize in 〜を専門とする",
+      "profitability 利益性"
+    ]
+  },
+  {
+    "id": "ch6-q132",
+    "numberLabel": "第132問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "必修問題",
+    "sentence": "------- who has not yet registered for the Virtual Energy Forum should do so by the end of today.",
+    "options": {
+      "A": "Those",
+      "B": "Other",
+      "C": "They",
+      "D": "Anyone"
+    },
+    "correctAnswer": "D",
+    "translation": "Virtual Energy Forum にまだ登録していない人は、今日中にそうしてください。",
+    "keyRule": "金のルール 74：代名詞のthose は複数扱い、anyoneは単数扱い。",
+    "keyPoint": "who has not... と述語動詞が単数扱い(has)なので単数代名詞 Anyone が正解",
+    "explanation": "直後の動詞が has なので単数代名詞 (D) Anyone が正解です。Those は have を伴います。",
+    "vocabulary": [
+      "register for 〜に登録する",
+      "by the end of 〜の末までに"
+    ]
+  },
+  {
+    "id": "ch6-q133",
+    "numberLabel": "第133問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "必修問題",
+    "sentence": "The supermarket owner's decision to close the business disappointed ------- who live in the neighborhood.",
+    "options": {
+      "A": "everyone",
+      "B": "many",
+      "C": "another",
+      "D": "nobody"
+    },
+    "correctAnswer": "B",
+    "translation": "店を閉めるという、そのスーパーのオーナーの決定は、地域住民の多くを落胆させた。",
+    "keyRule": "金のルール 75：注意が必要な manyとmuchの用法。",
+    "keyPoint": "who live... と述語動詞が複数形(3単現sなし)なので複数代名詞 many が正解",
+    "explanation": "関係代名詞直後の動詞 live が複数形のため、複数扱いの代名詞 (B) many が正解です。",
+    "vocabulary": [
+      "disappoint 落胆させる",
+      "neighborhood 地域"
+    ]
+  },
+  {
+    "id": "ch6-q134",
+    "numberLabel": "第134問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "必修問題",
+    "sentence": "Please fill out the customer satisfaction survey and leave it with ------- is working at the front desk.",
+    "options": {
+      "A": "those",
+      "B": "who",
+      "C": "anyone",
+      "D": "whoever"
+    },
+    "correctAnswer": "D",
+    "translation": "顧客満足度調査にご記入いただき、受付で働いている者に預けてください。",
+    "keyRule": "金のルール 76：those と anyone、whoever の文法的な違いに注意。",
+    "keyPoint": "前置詞 with の目的語名詞節を作る複合関係代名詞 whoever (=anyone who) が正解",
+    "explanation": "先行詞を含み名詞節を作る複合関係代名詞 (D) whoever が正解です。",
+    "vocabulary": [
+      "fill out 記入する",
+      "satisfaction 満足度"
+    ]
+  },
+  {
+    "id": "ch6-q135",
+    "numberLabel": "第135問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "必修問題",
+    "sentence": "Much of the redecorating was done in the room ------- Mr. Wilson often has tea with his friends.",
+    "options": {
+      "A": "where",
+      "B": "which",
+      "C": "what",
+      "D": "whose"
+    },
+    "correctAnswer": "A",
+    "translation": "模様替えの多くは、Wilsonさんがよく友人とお茶を飲む部屋で行われた。",
+    "keyRule": "金のルール 77：関係代名詞の後は「不完全」、関係副詞の後は「完全」なカタチ。",
+    "keyPoint": "空所後はSV揃った完全文。場所の先行詞 the room を受ける関係副詞 where が正解",
+    "explanation": "空所後は文の要素がそろった完全文なので関係副詞 (A) where が正解です。",
+    "vocabulary": [
+      "redecorating 模様替え"
+    ]
+  },
+  {
+    "id": "ch6-q136",
+    "numberLabel": "第136問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "The president only wants to hear the opinions of managers ------- work closely with employees.",
+    "options": {
+      "A": "they",
+      "B": "whose",
+      "C": "those",
+      "D": "who"
+    },
+    "correctAnswer": "D",
+    "translation": "社長が聞きたいのは、従業員と密に仕事をしている管理職の意見だけだ。",
+    "keyRule": "金のルール 70：主格関係代名詞の選択。",
+    "keyPoint": "先行詞 managers (人) ＋ 主語欠け。主格関係代名詞 who が正解",
+    "explanation": "人を先行詞とする主格関係代名詞 (D) who が正解です。",
+    "vocabulary": [
+      "opinion 意見",
+      "closely 密に"
+    ]
+  },
+  {
+    "id": "ch6-q137",
+    "numberLabel": "第137問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "At the awards banquet, Mr. Santiago expressed his gratitude to Professor Mary Cho, ------- help in his research was invaluable.",
+    "options": {
+      "A": "that",
+      "B": "whose",
+      "C": "her",
+      "D": "who"
+    },
+    "correctAnswer": "B",
+    "translation": "受賞夕食会で、Santiagoさんは、その助けが彼の研究において計り知れない価値があった Mary Cho教授に対し、感謝の意を表した。",
+    "keyRule": "金のルール 72：所有格関係代名詞 whose。",
+    "keyPoint": "Her help was invaluable... と所有格でつながる whose が正解",
+    "explanation": "先行詞 Mary Cho の所有格 Her help となるため所有格 (B) whose が正解です。",
+    "vocabulary": [
+      "invaluable 計り知れない価値がある",
+      "gratitude 感謝"
+    ]
+  },
+  {
+    "id": "ch6-q138",
+    "numberLabel": "第138問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "An ancient myth was the theme that Erica Akin returned to ------- during her years as a watercolor artist.",
+    "options": {
+      "A": "repeat",
+      "B": "repetition",
+      "C": "repeatable",
+      "D": "repeatedly"
+    },
+    "correctAnswer": "D",
+    "translation": "古代の神話は、Erica Akinが、水彩画家としての長年の間にたびたび立ち返るテーマだった。",
+    "keyRule": "金のルール 72：関係代名詞節内の副詞修飾。",
+    "keyPoint": "動詞 returned を修飾する副詞 repeatedly (たびたび) が正解",
+    "explanation": "動詞 returned を修飾する副詞 (D) repeatedly が正解です。",
+    "vocabulary": [
+      "ancient 古代の",
+      "repeatedly たびたび"
+    ]
+  },
+  {
+    "id": "ch6-q139",
+    "numberLabel": "第139問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "Mr. Miller has joined the awards committee, ------- consists of eight distinguished scholars in the field of chemistry.",
+    "options": {
+      "A": "it",
+      "B": "which",
+      "C": "that",
+      "D": "what"
+    },
+    "correctAnswer": "B",
+    "translation": "Millerさんは、化学の分野の著名な8名の学者で構成される表彰委員会に加わった。",
+    "keyRule": "金のルール 70：カンマ後の関係代名詞 that は不可。",
+    "keyPoint": "継続用法の主格関係代名詞 which が正解（カンマ後に that は置けない）",
+    "explanation": "先行詞 committee を補足説明する主格関係代名詞 (B) which が正解です。",
+    "vocabulary": [
+      "distinguished 著名な",
+      "consist of 〜で構成される"
+    ]
+  },
+  {
+    "id": "ch6-q140",
+    "numberLabel": "第140問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "When Mr. Robinson applied for a building permit, he provided a document that ------- that he owns the land.",
+    "options": {
+      "A": "proves",
+      "B": "proving",
+      "C": "is proved",
+      "D": "to prove"
+    },
+    "correctAnswer": "A",
+    "translation": "Robinsonさんは、建築許可証を申請した際、彼がその土地を所有していることを証明する書類を提供した。",
+    "keyRule": "金のルール 73：関係代名詞節内の述語動詞の主述一致。",
+    "keyPoint": "先行詞 a document (単数) ＋ 目的語that節を伴う能動態 proves が正解",
+    "explanation": "先行詞が単数で目的語のthat節を伴う能動態の述語動詞 (A) proves が正解です。",
+    "vocabulary": [
+      "building permit 建築許可証",
+      "prove 証明する"
+    ]
+  },
+  {
+    "id": "ch6-q141",
+    "numberLabel": "第141問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "------- would like to attend Professor Howard's seminar on May 8 should sign up for it by Friday.",
+    "options": {
+      "A": "Whenever",
+      "B": "Wherever",
+      "C": "Whatever",
+      "D": "Whoever"
+    },
+    "correctAnswer": "D",
+    "translation": "Howard教授の5月8日のセミナーに出席したい皆さんは、金曜日までに申し込んでください。",
+    "keyRule": "金のルール 76：複合関係代名詞 Whoever (=anyone who)。",
+    "keyPoint": "文の主語になる名詞節を作り「〜する人は誰でも」を表す Whoever が正解",
+    "explanation": "主語になる名詞節を作り「人は誰でも」を表す (D) Whoever が正解です。",
+    "vocabulary": [
+      "sign up for 〜に申し込む"
+    ]
+  },
+  {
+    "id": "ch6-q142",
+    "numberLabel": "第142問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "As consumers seek to reduce their expenses, the number of cars that ------- has risen significantly.",
+    "options": {
+      "A": "leased",
+      "B": "is leased",
+      "C": "are being leased",
+      "D": "are leasing"
+    },
+    "correctAnswer": "C",
+    "translation": "消費者が支出を減らそうとするにつれて、リースされる車の数がかなり増えた。",
+    "keyRule": "金のルール 73：関係代名詞の先行詞と動詞の一致。",
+    "keyPoint": "先行詞 cars (複数) ＋ 車はリースされる受動態 are being leased が正解",
+    "explanation": "先行詞 cars (複数) に呼応する受動態 (C) are being leased が正解です。",
+    "vocabulary": [
+      "significantly かなり",
+      "expense 支出"
+    ]
+  },
+  {
+    "id": "ch6-q143",
+    "numberLabel": "第143問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "Online shoppers can choose home delivery or in-store pickup, ------- is more convenient.",
+    "options": {
+      "A": "whereas",
+      "B": "if",
+      "C": "whichever",
+      "D": "either"
+    },
+    "correctAnswer": "C",
+    "translation": "オンラインでお買い物されたお客様は、宅配か店内受け取りか、どちらがより便利でも、お選びいただけます。",
+    "keyRule": "金のルール 71：複合関係代名詞 whichever。",
+    "keyPoint": "2つの選択肢から「どちらが〜でも」を表す副詞節をつなぐ whichever が正解",
+    "explanation": "2者から「どちらが〜でも」を表す複合関係代名詞 (C) whichever が正解です。",
+    "vocabulary": [
+      "in-store pickup 店内受け取り",
+      "convenient 便利な"
+    ]
+  },
+  {
+    "id": "ch6-q144",
+    "numberLabel": "第144問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "Across from the train station, visitors can access the seafood market ------- which the town is renowned.",
+    "options": {
+      "A": "for",
+      "B": "as",
+      "C": "to",
+      "D": "about"
+    },
+    "correctAnswer": "A",
+    "translation": "その駅の反対側で、観光客は、その町の有名な海鮮市場に行ける。",
+    "keyRule": "金のルール 72：前置詞＋関係代名詞。",
+    "keyPoint": "be renowned for X (Xで有名だ) に呼応する前置詞 for が正解",
+    "explanation": "be renowned for it の語法から、前置詞 (A) for which が正解です。",
+    "vocabulary": [
+      "renowned 有名な",
+      "across from 〜の反対側に"
+    ]
+  },
+  {
+    "id": "ch6-q145",
+    "numberLabel": "第145問",
+    "chapterId": 6,
+    "chapterTitle": "第6章：関係詞",
+    "category": "実戦問題",
+    "sentence": "Mr. Anderson found a location for his new office that he thinks ------- all of his requirements.",
+    "options": {
+      "A": "meet",
+      "B": "meets",
+      "C": "meeting",
+      "D": "to meet"
+    },
+    "correctAnswer": "B",
+    "translation": "Andersonさんは、すべての必要条件を満たしていると思う新しいオフィスの場所を見つけた。",
+    "keyRule": "金のルール 73：連鎖関係詞節内の主述一致。",
+    "keyPoint": "he thinksの挿入節を除くと that [空所] all...。先行詞 a location (単数) に一致する meets が正解",
+    "explanation": "先行詞 a location に呼応する単数動詞 (B) meets が正解です。",
+    "vocabulary": [
+      "requirement 必要条件",
+      "location 場所"
+    ]
+  },
+  {
+    "id": "ch7-q146",
+    "numberLabel": "第146問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "必修問題",
+    "sentence": "Submit your photographs ------- by sending them as e-mail attachments or by uploading them to our Web site.",
+    "options": {
+      "A": "either",
+      "B": "both",
+      "C": "neither",
+      "D": "but"
+    },
+    "correctAnswer": "A",
+    "translation": "写真は、メールの添付ファイルとして送るか、我々のウェブサイト上にアップロードするかどちらかでご提出ください。",
+    "keyRule": "金のルール 78：覚えておきたい Part 5に出るペア表現。",
+    "keyPoint": "文後半の or と呼応する either X or Y (XかYのどちらか) が正解",
+    "explanation": "or とペアになる相関接続詞 (A) either が正解です。",
+    "vocabulary": [
+      "attachment 添付ファイル",
+      "submit 提出する"
+    ]
+  },
+  {
+    "id": "ch7-q147",
+    "numberLabel": "第147問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "必修問題",
+    "sentence": "At Sangson Automotive, we continuously seek ways to become more sustainable in ------- facets of our business.",
+    "options": {
+      "A": "all",
+      "B": "another",
+      "C": "much",
+      "D": "every"
+    },
+    "correctAnswer": "A",
+    "translation": "Sangson 自動車では、ビジネスのあらゆる面において、より持続可能になるための方法を常に探し求めています。",
+    "keyRule": "金のルール 79：頭に入れたい「数」を表す語句。",
+    "keyPoint": "複数可算名詞 facets を修飾できる all が正解（another/everyは単数名詞）",
+    "explanation": "複数名詞 facets を修飾できる (A) all が正解です。",
+    "vocabulary": [
+      "sustainable 持続可能な",
+      "facet 面"
+    ]
+  },
+  {
+    "id": "ch7-q148",
+    "numberLabel": "第148問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "必修問題",
+    "sentence": "Candidates for the snow removal position must be ------- to work on December 25.",
+    "options": {
+      "A": "possible",
+      "B": "convenient",
+      "C": "available",
+      "D": "easy"
+    },
+    "correctAnswer": "C",
+    "translation": "除雪の職の候補者は、12月25日に勤務する都合が付けられなければならない。",
+    "keyRule": "金のルール 80：意味で解けない問題は、「語法」に視点を切り替える。",
+    "keyPoint": "「人」を主語にとり「都合がつく」を表せる形容詞 available が正解",
+    "explanation": "人を主語にして都合がつくを表せるのは (C) available のみです。",
+    "vocabulary": [
+      "candidate 候補者",
+      "available 都合がつく"
+    ]
+  },
+  {
+    "id": "ch7-q149",
+    "numberLabel": "第149問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "必修問題",
+    "sentence": "Shannon Bremmer's hit album Starlite Motions ------- her an award at the Sydney Music Awards last night.",
+    "options": {
+      "A": "achieved",
+      "B": "earned",
+      "C": "made",
+      "D": "honored"
+    },
+    "correctAnswer": "B",
+    "translation": "Shannon Bremmerのヒットアルバム 『Starlite Motions』は、昨晩、Sydney音楽賞で彼女に賞をもたらした。",
+    "keyRule": "金のルール 81：注意したい二重目的語をとる動詞。",
+    "keyPoint": "SVOO構文（人にモノをもたらす）をとる動詞 earned が正解",
+    "explanation": "「earn 人 モノ」のSVOO構文をとれる (B) earned が正解です。",
+    "vocabulary": [
+      "earn もたらす、獲得させる"
+    ]
+  },
+  {
+    "id": "ch7-q150",
+    "numberLabel": "第150問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "必修問題",
+    "sentence": "After the renovation, the stylish décor will make the dining experience ------- more enjoyable for our guests.",
+    "options": {
+      "A": "very",
+      "B": "enough",
+      "C": "better",
+      "D": "even"
+    },
+    "correctAnswer": "D",
+    "translation": "改装後、おしゃれな装飾品が、当店のお客様にとっての食事の経験を、より一層楽しくするでしょう。",
+    "keyRule": "金のルール 82：覚えておきたい比較級を強調する副詞。",
+    "keyPoint": "比較級 more enjoyable を強調する副詞 even が正解（veryは原級を修飾）",
+    "explanation": "比較級を強調する副詞 (D) even (さらに) が正解です。",
+    "vocabulary": [
+      "renovation 改装",
+      "decor 装飾品"
+    ]
+  },
+  {
+    "id": "ch7-q151",
+    "numberLabel": "第151問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "実戦問題",
+    "sentence": "Some Denver stores operate around the clock, but ------- remain open at night outside the city.",
+    "options": {
+      "A": "each",
+      "B": "other",
+      "C": "few",
+      "D": "much"
+    },
+    "correctAnswer": "C",
+    "translation": "Denverには24時間営業の店もあるが、市外では夜間営業している店はほとんどない。",
+    "keyRule": "金のルール 79：頭に入れたい「数」を表す語句。",
+    "keyPoint": "動詞 remain (複数扱い) の主語になる複数代名詞 few (ほとんど〜ない) が正解",
+    "explanation": "動詞 remain に呼応する複数代名詞 (C) few が正解です。",
+    "vocabulary": [
+      "around the clock 24時間",
+      "remain open 営業を続ける"
+    ]
+  },
+  {
+    "id": "ch7-q152",
+    "numberLabel": "第152問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "実戦問題",
+    "sentence": "Denton Publishing is ------- to environmentally friendly practices including the recycling of used paper.",
+    "options": {
+      "A": "expected",
+      "B": "intended",
+      "C": "hoped",
+      "D": "committed"
+    },
+    "correctAnswer": "D",
+    "translation": "Denton 出版は、使用済みの紙のリサイクルを含む、環境にやさしい活動に尽力している。",
+    "keyRule": "金のルール 30：前置詞 to を伴うイディオム。",
+    "keyPoint": "be committed to 名詞 (〜に尽力している) の committed が正解",
+    "explanation": "前置詞 to を伴い「〜に尽力する」を表す (D) committed が正解です。",
+    "vocabulary": [
+      "environmentally friendly 環境にやさしい",
+      "be committed to 〜に尽力している"
+    ]
+  },
+  {
+    "id": "ch7-q153",
+    "numberLabel": "第153問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "実戦問題",
+    "sentence": "------- are the business seminars free to attend in person, but they can also be viewed live online.",
+    "options": {
+      "A": "Not only",
+      "B": "Additionally",
+      "C": "Only when",
+      "D": "Besides"
+    },
+    "correctAnswer": "A",
+    "translation": "そのビジネスセミナーは直接無料で参加できるだけでなく、オンラインで、ライブで観ることもできる。",
+    "keyRule": "金のルール 78：Not only VS, but also... の倒置構文。",
+    "keyPoint": "倒置疑問文語順 are the seminars free... に呼応する Not only が正解",
+    "explanation": "文頭の否定語による倒置構文と but also に呼応する (A) Not only が正解です。",
+    "vocabulary": [
+      "in person 直接",
+      "attend 参加する"
+    ]
+  },
+  {
+    "id": "ch7-q154",
+    "numberLabel": "第154問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "実戦問題",
+    "sentence": "All guests receive a breakfast voucher that can be used at ------- of the two hotel restaurants.",
+    "options": {
+      "A": "some",
+      "B": "every",
+      "C": "other",
+      "D": "either"
+    },
+    "correctAnswer": "D",
+    "translation": "お客様は全員、ホテルの2つのレストランのどちらでも使える朝食の引換券を受け取ります。",
+    "keyRule": "金のルール 79：2つのものを指す代名詞 either。",
+    "keyPoint": "of the two hotel restaurants (2つのうちの) に呼応する代名詞 either が正解",
+    "explanation": "2者のうちどちらでもを表す代名詞 (D) either が正解です。",
+    "vocabulary": [
+      "voucher 引換券"
+    ]
+  },
+  {
+    "id": "ch7-q155",
+    "numberLabel": "第155問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "実戦問題",
+    "sentence": "The luncheon will provide a unique opportunity to ------- acquainted with attorneys from a variety of Jakarta law firms.",
+    "options": {
+      "A": "become",
+      "B": "develop",
+      "C": "learn",
+      "D": "know"
+    },
+    "correctAnswer": "A",
+    "translation": "その昼食会は、さまざまなJakartaの法律事務所の弁護士と知り合いになる、他にはない機会を提供するだろう。",
+    "keyRule": "金のルール 80：形容詞を補語にとるSVC動詞 become。",
+    "keyPoint": "become acquainted with X (Xと知り合いになる) の SVC動詞 become が正解",
+    "explanation": "形容詞 acquainted を補語にとるSVC動詞 (A) become が正解です。",
+    "vocabulary": [
+      "acquainted 知り合いの",
+      "attorney 弁護士"
+    ]
+  },
+  {
+    "id": "ch7-q156",
+    "numberLabel": "第156問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "実戦問題",
+    "sentence": "Whether the golf tournament will be held in Scotland ------- Wales has yet to be decided.",
+    "options": {
+      "A": "if",
+      "B": "or",
+      "C": "so",
+      "D": "neither"
+    },
+    "correctAnswer": "B",
+    "translation": "そのゴルフトーナメントが開催されるのが、Scotland か Wales かはまだ決まっていない。",
+    "keyRule": "金のルール 78：whether X or Y のペア表現。",
+    "keyPoint": "whether とペアを組み名詞節を作る接続詞 or が正解",
+    "explanation": "whether とペアになる接続詞 (B) or が正解です。",
+    "vocabulary": [
+      "has yet to do まだ〜していない"
+    ]
+  },
+  {
+    "id": "ch7-q157",
+    "numberLabel": "第157問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "実戦問題",
+    "sentence": "Radio advertising has ------- to be highly effective for reaching certain types of consumers.",
+    "options": {
+      "A": "proven",
+      "B": "handled",
+      "C": "ensured",
+      "D": "taken"
+    },
+    "correctAnswer": "A",
+    "translation": "ラジオ広告は、特定のタイプの消費者に情報を伝えるのに非常に効果的だと判明した。",
+    "keyRule": "金のルール 80：prove to be (〜だと判明する)。",
+    "keyPoint": "prove to be 形容詞の語法をとる過去分詞 proven が正解",
+    "explanation": "prove to be の語法をとる (A) proven が正解です。",
+    "vocabulary": [
+      "proven 判明した",
+      "reach 情報を伝える"
+    ]
+  },
+  {
+    "id": "ch7-q158",
+    "numberLabel": "第158問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "実戦問題",
+    "sentence": "Calvelo Pharma's latest advertising campaign ------- in a significant increase in sales of its health supplements.",
+    "options": {
+      "A": "generated",
+      "B": "resulted",
+      "C": "caused",
+      "D": "included"
+    },
+    "correctAnswer": "B",
+    "translation": "Calvelo Pharmaの最新の広告キャンペーンは、自社の健康栄養補助食品の大幅な売り上げ増につながった。",
+    "keyRule": "金のルール 80：自動詞 result in X (Xにつながる)。",
+    "keyPoint": "前置詞 in とセットで「〜という結果につながる」を表す自動詞 resulted が正解",
+    "explanation": "result in X で「Xにつながる」を表す自動詞 (B) resulted が正解です。",
+    "vocabulary": [
+      "result in 〜につながる",
+      "significant 大幅な"
+    ]
+  },
+  {
+    "id": "ch7-q159",
+    "numberLabel": "第159問",
+    "chapterId": 7,
+    "chapterTitle": "第7章：その他",
+    "category": "実戦問題",
+    "sentence": "Artificial intelligence is being incorporated into marketing tools that ------- users anticipate consumer needs.",
+    "options": {
+      "A": "support",
+      "B": "enable",
+      "C": "allow",
+      "D": "help"
+    },
+    "correctAnswer": "D",
+    "translation": "人工知能(AI)は、ユーザーが消費者のニーズを予想するのを手助けするマーケティングツールに取り入れられつつある。",
+    "keyRule": "金のルール 80：help O (to) do の語法。",
+    "keyPoint": "目的語 users の直後に原形動詞 anticipate をとれる動詞 help が正解",
+    "explanation": "help O 原形動詞の語法をとる (D) help が正解です。enable/allow は to不定詞が必要です。",
+    "vocabulary": [
+      "incorporate 取り入れる",
+      "anticipate 予想する"
+    ]
+  }
+];
+    const CHAPTER_METAS = [
+  {
+    "id": 1,
+    "title": "第1章：品詞問題",
+    "shortName": "品詞",
+    "themeColor": "amber",
+    "description": "Part 5の約半数を占める最重要項目。文構造(SVOC)と修飾語の見極めが鍵。",
+    "lectureSummary": "Part 5で毎回7〜9問出題。文の要素(SVOC)が欠けているタイプ（主語・目的語・補語・述語動詞）と、そろっていて修飾語（名詞修飾＝形容詞、名詞以外修飾＝副詞）を補うタイプの2大原則をマスターする。"
+  },
+  {
+    "id": 2,
+    "title": "第2章：動詞問題",
+    "shortName": "動詞",
+    "themeColor": "emerald",
+    "description": "述語動詞vs準動詞、能動態vs受動態、時制、仮定法の識別。",
+    "lectureSummary": "空所が述語動詞か準動詞かを見極め、主語との人称・単複一致、能動態と受動態、時制（完了形・進行形・仮定法）を順序立てて判定する。"
+  },
+  {
+    "id": 3,
+    "title": "第3章：前置詞 or 接続詞",
+    "shortName": "前置詞/接続詞",
+    "themeColor": "sky",
+    "description": "節(SV)をつなぐ接続詞か、名詞句を伴う前置詞かの判別。",
+    "lectureSummary": "空所後に節(SV)があれば接続詞、名詞(句)があれば前置詞。意味の前に文のカタチで選択肢を絞り込み、最後に文脈（順接・逆接・理由など）で決定する。"
+  },
+  {
+    "id": 4,
+    "title": "第4章：代名詞問題",
+    "shortName": "代名詞",
+    "themeColor": "purple",
+    "description": "主格・所有格・目的格・再帰代名詞・指示代名詞(those who等)の使い分け。",
+    "lectureSummary": "人称代名詞は単独で用いられ修飾語を伴わない。those who (〜する人々)や主述の一致に留意する。"
+  },
+  {
+    "id": 5,
+    "title": "第5章：前置詞問題",
+    "shortName": "前置詞",
+    "themeColor": "rose",
+    "description": "within, throughout, under, into, over, upon, of等の語法とコアイメージ。",
+    "lectureSummary": "前置詞ごとのコアイメージ（within=範囲内, throughout=期間/場所全体, under=下・状況下, into=変化, over=円弧, upon=接触・〜するとすぐ）を掴み、直感的に解く。"
+  },
+  {
+    "id": 6,
+    "title": "第6章：関係詞問題",
+    "shortName": "関係詞",
+    "themeColor": "indigo",
+    "description": "関係代名詞（who/which/that/whose）と関係副詞（where/when）、複合関係詞。",
+    "lectureSummary": "先行詞の確認（人/人以外）と、空所後のカタチ（主語・目的語欠け＝不完全文＝関係代名詞、完全文＝関係副詞）で2文に分解して判定する。"
+  },
+  {
+    "id": 7,
+    "title": "第7章：その他の重要文法",
+    "shortName": "その他",
+    "themeColor": "teal",
+    "description": "相関接続詞(either...or)、数詞・限定詞、SVOC・二重目的語、比較級の強調など。",
+    "lectureSummary": "either X or Y, both X and Y, neither X nor Y などのペア表現、可算・不可算名詞の修飾語、SVOC動詞やSVOO動詞の語法を攻略する。"
+  }
+];
+    const GOLDEN_RULES = [
+  {
+    "ruleNo": 1,
+    "chapterId": 1,
+    "title": "品詞問題では、主語には名詞を選ぶ。",
+    "summary": "基本4品詞のうち主語になるのは名詞のみ。文頭The ---- of... は名詞の定位置。",
+    "content": "品詞問題では、「主語には名詞を選ぶ」のが鉄則です。英語の基本4品詞のうち主語になるのは名詞だけです。文の骨格SVOCを見極め、Sが欠けていたら名詞を即断しましょう。"
+  },
+  {
+    "ruleNo": 2,
+    "chapterId": 1,
+    "title": "空所が名詞以外を修飾していたら副詞を選ぶ。",
+    "summary": "SVOCがそろっている場合、動詞・形容詞・副詞・文全体を修飾するのは副詞。",
+    "content": "SVOCという文の要素がそろっている場合、空所に入るのは修飾語です。名詞を修飾するのが形容詞、名詞以外（動詞、形容詞、副詞、文全体等）を修飾するのが副詞です。「S [空所] V」の空所には述語動詞を修飾する副詞が入ります。"
+  },
+  {
+    "ruleNo": 3,
+    "chapterId": 1,
+    "title": "主語を選ぶ品詞問題では、名詞の単複に注意。",
+    "summary": "選択肢に単数名詞と複数名詞が並んでいたら述語動詞の単複(is/are等)を確認。",
+    "content": "主語になる名詞を選ぶ品詞問題で、選択肢に単数形と複数形の名詞が並んでいたら、主述の一致に注意しましょう。述語動詞がisなら単数形、areなら複数形を選びます。"
+  },
+  {
+    "ruleNo": 4,
+    "chapterId": 1,
+    "title": "名詞を選ぶ品詞問題では、「人」「人以外」の選択肢に注意。",
+    "summary": "-ist, -er, -orなどの「人」名詞と-tion, -ment等の「人以外」名詞を文脈で判別。",
+    "content": "applicant / application, nutritionist / nutrition, subscriber / subscription のように「人」と「人以外」が並んでいる場合は、文脈（「話をする」「送る相手」など）でどちらが適切か必ず確認します。"
+  },
+  {
+    "ruleNo": 5,
+    "chapterId": 1,
+    "title": "品詞問題では、他動詞の目的語には名詞を選ぶ。",
+    "summary": "他動詞の直後の目的語(O)になれるのは名詞のみ。",
+    "content": "基本4品詞の中で目的語になるのは名詞だけです。動詞の直後が空所で目的語が必要な場合は名詞を即座に選びましょう。"
+  },
+  {
+    "ruleNo": 6,
+    "chapterId": 1,
+    "title": "名詞が正解になる品詞問題では、何となく動名詞を選ばない。",
+    "summary": "動名詞は不可算（a/anが付かない）、直前に形容詞がつかない点に注意。",
+    "content": "動名詞は動作を表すため数えられず冠詞a/anが付きません。また名詞を修飾するのは形容詞ですが動名詞を修飾するのは副詞です。フィーリングで動名詞を選ばないようにしましょう。"
+  },
+  {
+    "ruleNo": 7,
+    "chapterId": 1,
+    "title": "品詞問題では、前置詞の目的語には名詞を選ぶ。",
+    "summary": "「前置詞＋名詞」で副詞句・形容詞句を形成。文の骨格SVOCにはならず修飾語になる。",
+    "content": "前置詞の直後には目的語となる名詞が来ます。「前置詞＋名詞」のカタマリを見たら頭の中でカッコでくくると文構造が見えやすくなります。"
+  },
+  {
+    "ruleNo": 8,
+    "chapterId": 1,
+    "title": "接続詞andを見たら、何と何をつないでいるのかを確認する。",
+    "summary": "文法的に等価な要素（名詞と名詞、節と節など）をつなぐ。",
+    "content": "andはSとS、VとV、OとO、CとC、あるいは節と節をつなぎます。前後で共通の助動詞などが省略される倒置・省略パターンにも注意しましょう。"
+  },
+  {
+    "ruleNo": 9,
+    "chapterId": 1,
+    "title": "品詞問題では、補語には形容詞が最優先。",
+    "summary": "be動詞などの補語(C)は主語の状態を表す形容詞が基本（名詞はS=Cの時のみ）。",
+    "content": "補語になるのは形容詞か名詞ですが、品詞問題で名詞を選ぶと主語とイコールにならないことが多いため「補語には形容詞」が鉄則です。"
+  },
+  {
+    "ruleNo": 10,
+    "chapterId": 1,
+    "title": "品詞問題では、「副詞から-lyを取ったら形容詞」と頭に入れる。",
+    "summary": "形容詞に迷ったら選択肢中の-ly副詞を探し、-lyを除去した語を探す。",
+    "content": "confident / confidently のように、副詞から-lyを取れば形容詞になります。単語の意味を知らなくても語尾で瞬時に品詞を判別できます。"
+  },
+  {
+    "ruleNo": 11,
+    "chapterId": 1,
+    "title": "補語を選ぶ品詞問題では、主語とイコールになる答えを選ぶ。",
+    "summary": "補語に名詞が入る場合は「S＝C」が成立する名詞（人・企業・職種など）を選ぶ。",
+    "content": "S is the world's leading manufacturerのように、会社＝製造業者という等号が成り立つ名詞を選びます。"
+  },
+  {
+    "ruleNo": 12,
+    "chapterId": 1,
+    "title": "品詞問題で、空所が名詞を修飾していたら形容詞を選ぶ。",
+    "summary": "優先順位は「①形容詞 ②分詞 ③名詞（複合名詞）」。",
+    "content": "冠詞と名詞の間など、名詞を修飾する位置には形容詞を選びます。迷ったら副詞から-lyを取った単語を探しましょう。"
+  },
+  {
+    "ruleNo": 13,
+    "chapterId": 1,
+    "title": "名詞を修飾する分詞を選ぶ際は、「する・される」の関係を考える。",
+    "summary": "能動（する側）＝現在分詞(-ing)、受動（される側）＝過去分詞(-ed)。",
+    "content": "events were anticipated（期待されるイベント）のように、名詞と分詞の関係が受動なら過去分詞、an interesting bookのように能動なら現在分詞を選びます。"
+  },
+  {
+    "ruleNo": 14,
+    "chapterId": 1,
+    "title": "名詞を前から修飾する分詞は、意味がわからなければ解けない。",
+    "summary": "enduring relationships（永続的な関係）など定着した分詞形容詞は語彙として押さえる。",
+    "content": "前から名詞を修飾する分詞は形容詞化していることが多いため、悩まず直感で即決し時間を節約しましょう。"
+  },
+  {
+    "ruleNo": 15,
+    "chapterId": 1,
+    "title": "自動詞の後の空所には副詞を選ぶ。",
+    "summary": "work, arrive, proceed, rise, participateなどの自動詞の後には副詞。",
+    "content": "自動詞は目的語をとらないため、直後に置けるのは修飾語である副詞（work productively / work closelyなど）です。"
+  },
+  {
+    "ruleNo": 16,
+    "chapterId": 1,
+    "title": "述語動詞の間の空所には副詞を選ぶ。",
+    "summary": "助動詞と動詞原形の間、be動詞と過去分詞の間、haveと過去分詞の間は副詞の特等席。",
+    "content": "is generally regarded, has successfully bid, must effectively demonstrate など、動詞のまとまりの間には副詞が入ります。"
+  },
+  {
+    "ruleNo": 17,
+    "chapterId": 1,
+    "title": "be動詞と形容詞の間の空所には副詞を選ぶ。",
+    "summary": "are nearly identical, is slightly higher のように形容詞を前から修飾する副詞。",
+    "content": "be動詞と補語の形容詞の間、またはbecome/remainと形容詞の間には、形容詞の度合いを説明する副詞が入ります。"
+  },
+  {
+    "ruleNo": 18,
+    "chapterId": 1,
+    "title": "文の要素がそろった文末の空所には副詞を選ぶ。",
+    "summary": "SVOやSVが完結した文末には述語動詞を修飾する副詞が来る。",
+    "content": "文の要素がすべて揃っている場合、文末に置いて動作の様子を表すのは副詞（promote cereals responsibly等）です。"
+  },
+  {
+    "ruleNo": 19,
+    "chapterId": 1,
+    "title": "注意が必要な語尾が-iveの名詞を押さえる。",
+    "summary": "alternative(代替案), representative(担当者), initiative(取り組み)は名詞！",
+    "content": "-iveは形容詞の代表的語尾ですが、alternative, representative, initiativeは名詞としてもTOEICに頻出します。"
+  },
+  {
+    "ruleNo": 20,
+    "chapterId": 1,
+    "title": "空所が文末で選択肢に副詞がないときは「名詞＋名詞」を疑う。",
+    "summary": "task preference, maintenance work, water consumption など複合名詞パターン。",
+    "content": "前の名詞が後の名詞を形容詞的に修飾する「名詞＋名詞（複合名詞）」は頻出です。"
+  },
+  {
+    "ruleNo": 21,
+    "chapterId": 1,
+    "title": "asとasの間が空所の品詞問題は、asとas以降を取って考える。",
+    "summary": "be as [空所] as possible → be [空所] なので補語の形容詞が入る。",
+    "content": "asとas以降を取り除いて文の基本形に戻すと、形容詞が入るべきか副詞が入るべきかが一目瞭然になります。"
+  },
+  {
+    "ruleNo": 22,
+    "chapterId": 1,
+    "title": "品詞問題で、空所が準動詞を修飾していたら副詞を選ぶ。",
+    "summary": "不定詞(to V)、動名詞(Ving)、分詞(Ved/Ving)を修飾するのは副詞。",
+    "content": "準動詞はもともと動詞なので、修飾するのは形容詞ではなく副詞です（to accurately record, after carefully reviewing）。"
+  },
+  {
+    "ruleNo": 23,
+    "chapterId": 1,
+    "title": "空所が節や文全体を修飾していたら副詞を選ぶ。",
+    "summary": "shortly after SV, unfortunately, specifically など文修飾の副詞。",
+    "content": "副詞は動詞だけでなく、前置詞句、副詞節、あるいは文全体を修飾することができます。"
+  },
+  {
+    "ruleNo": 24,
+    "chapterId": 1,
+    "title": "形容詞は、冠詞を飛び越えて名詞を修飾できない。",
+    "summary": "「S is [副詞] a 名詞」vs「S is a [形容詞] 名詞」の語順ルール。",
+    "content": "冠詞(a/an/the)の外側から名詞を修飾することはできません。冠詞の前には文修飾の副詞が入ります。"
+  },
+  {
+    "ruleNo": 25,
+    "chapterId": 1,
+    "title": "可算名詞は、単数形なら冠詞等が必要。",
+    "summary": "a bid, this bid など限定詞が必要。単独で裸の単数可算名詞は置けない。",
+    "content": "単数形の可算名詞にはa/an/the/所有格が必要です。何も付いていなければ動詞や不可算名詞、または複数形です。"
+  },
+  {
+    "ruleNo": 26,
+    "chapterId": 1,
+    "title": "Part 5で狙われる倒置のパターンを押さえる。",
+    "summary": "Included/Attached is..., Should you have..., Not only VS but... の倒置構文。",
+    "content": "補語の分詞が文頭に出てVSの語順になる「Included with this letter are A and B」はTOEIC頻出の倒置です。"
+  },
+  {
+    "ruleNo": 27,
+    "chapterId": 1,
+    "title": "「冠詞 ＋ [空所] ＋ 形容詞 ＋ 名詞」には形容詞が入る場合もある。",
+    "summary": "a prosperous working relationship など名詞句全体を修飾する形容詞。",
+    "content": "直後の形容詞を修飾する副詞（really good）だけでなく、名詞句全体を修飾する形容詞（large black cat）のパターンに注意。"
+  },
+  {
+    "ruleNo": 28,
+    "chapterId": 1,
+    "title": "語尾が-lyの形容詞（lively, timely, costly, friendly）に注意。",
+    "summary": "-lyがついているが副詞ではなく形容詞。名詞を直接修飾する。",
+    "content": "lively discussion (活発な議論), in a timely manner (タイムリーな方法で), costly procedure (高価な手続き) 等は頻出。"
+  },
+  {
+    "ruleNo": 29,
+    "chapterId": 1,
+    "title": "find と make は SVOC のカタチに注意。",
+    "summary": "find O C (OがCだとわかる), make O C (OをCにする) で C には形容詞が入る。",
+    "content": "O＝Cの関係が成立し、Cの位置には形容詞が入ります（find her approach inspirational, make packaging more attractive）。"
+  },
+  {
+    "ruleNo": 30,
+    "chapterId": 1,
+    "title": "Part 5で注意したい to の見分け（不定詞 vs 前置詞）。",
+    "summary": "be subject to [名詞], be committed to [名詞] vs in order to [動詞原形]。",
+    "content": "toの直後が動詞原形なら不定詞、名詞や動名詞なら前置詞です。subject to shipping chargesのtoは前置詞です。"
+  },
+  {
+    "ruleNo": 32,
+    "chapterId": 2,
+    "title": "動詞問題の基本：能動態 vs 受動態と目的語の有無。",
+    "summary": "空所後に目的語(名詞)があれば能動態、前置詞等で目的語がなければ受動態。",
+    "content": "動詞 solicitの意味が分からなくても、直後に名詞目的語がなくfrom〜が続いているため、受動態 were solicited を選ぶことができます。"
+  },
+  {
+    "ruleNo": 46,
+    "chapterId": 2,
+    "title": "仮定法過去完了の公式：Had S 過去分詞, S would have 過去分詞。",
+    "summary": "ifが省略されHadが倒置。主節は「助動詞過去形 ＋ have ＋ 過去分詞」。",
+    "content": "Had the deal gone through = If the deal had gone through。主節はwould have becomeになります。"
+  },
+  {
+    "ruleNo": 47,
+    "chapterId": 3,
+    "title": "「前置詞 or 接続詞」問題は、文のカタチと意味のつながりで解く。",
+    "summary": "節(SV)を伴う＝接続詞、名詞句を伴う＝前置詞。形を絞ってから意味を考える。",
+    "content": "SVが2つあれば接続詞（but, because, although等）、名詞句だけなら前置詞（during, despite, because of等）を選びます。"
+  },
+  {
+    "ruleNo": 48,
+    "chapterId": 3,
+    "title": "while は接続詞、during は前置詞。",
+    "summary": "while ＋ 節(SV) / 分詞 vs during ＋ 名詞句。",
+    "content": "while I was in Japan / during off-peak hours。意味が似ていても伴う品詞が根本的に異なります。"
+  },
+  {
+    "ruleNo": 49,
+    "chapterId": 3,
+    "title": "althoughは接続詞、despite / in spite of / notwithstanding は前置詞。",
+    "summary": "逆接「〜にもかかわらず」の接続詞vs前置詞の識別は超頻出。",
+    "content": "Although it rained (節) vs Despite the rain (名詞句)。選択肢に混ざっている時は直後が節か名詞句かを即チェック。"
+  },
+  {
+    "ruleNo": 50,
+    "chapterId": 3,
+    "title": "接続詞 because は必ず節(SV)を伴い、because of は名詞句を伴う。",
+    "summary": "because SV vs because of 名詞。due to / owing to も前置詞。",
+    "content": "because it was no longer working (節) vs because of a reduction in competition (名詞句)。"
+  },
+  {
+    "ruleNo": 70,
+    "chapterId": 6,
+    "title": "関係代名詞の問題は「先行詞」と「空所後のカタチ」がポイント。",
+    "summary": "人/人以外 × 不完全文（主語欠け＝主格、目的語欠け＝目的格、名詞伴う＝所有格）。",
+    "content": "先行詞を確認し、後ろの節で何が欠けているか（S/O/所有格）をチェックして代名詞の種類を特定します。"
+  },
+  {
+    "ruleNo": 78,
+    "chapterId": 7,
+    "title": "覚えておきたい Part 5に出るペア表現（相関接続詞）。",
+    "summary": "either X or Y, both X and Y, neither X nor Y, not only X but also Y, whether X or Y。",
+    "content": "文中にorがあればeither/whether、andがあればboth、norがあればneither、but alsoがあればnot onlyを即座に連想しましょう。"
+  },
+  {
+    "ruleNo": 79,
+    "chapterId": 7,
+    "title": "頭に入れたい「数」を表す語句（可算・不可算・単複）。",
+    "summary": "all + 複数/不可算, every + 単数, few + 複数, much + 不可算, another + 単数。",
+    "content": "修飾する名詞が単数か複数か不可算かによって使える限定詞が決まります。facetsは複数形なのでallが正解。"
+  },
+  {
+    "ruleNo": 80,
+    "chapterId": 7,
+    "title": "意味で解けない問題は「語法」に視点を切り替える。",
+    "summary": "available (人が主語で都合がつく), be committed to [名詞], prove to be [形容詞]。",
+    "content": "単語の日本語訳だけでなく、どの前置詞と結びつくか（to不定詞vs前置詞to）、どの文型をとるか（SVC/SVOO）に着目します。"
+  }
+];
+    const CHAPTER_COLUMNS = [
+  {
+    "id": "col-1",
+    "chapterId": 1,
+    "title": "コラム：「TOEICの世界」はユートピア",
+    "content": "TOEICの世界には、独自の特徴があります。\n\n【TOEICの世界に存在しないモノ】\n感染症・重病・戦争・犯罪・人命にかかわる事故・事件・天災・貧困・差別・宗教・政党・五輪・酒・タバコ・ギャンブル・葬式・ブラック企業・雰囲気の悪い職場・サービス残業・懲戒解雇・降格・左遷・苦手な上司・非協力的な同僚・生意気な部下・権力闘争・えこひいき・仕事の愚痴・人間関係の悩み・転職の失敗・他人の悪口・暴言・いじめ・ハラスメント・喧嘩・不倫・離婚・金銭トラブル・悪意や妬み・嫌がらせ・炎上・恋愛・オカルト・居酒屋・二日酔い・サボリ・カンニング・パクリ・経歴詐称・モンスターペアレント・入院患者・爆笑・号泣する人\n\n【TOEICの世界にありがちなコト】\n飛行機の遅れ・コピー機の紙詰まり・自販機の故障・あり得ないダブルブッキング（親族の結婚式とスポーツ観戦等）・配送ミス・配送遅れ・在庫切れ・チャリティイベント・華麗な転身（音楽家からチーズ職人等）・クーポンや無料券の大盤振る舞い・配管の故障・医者の自己都合によるアポの変更依頼・福利厚生が手厚いホワイト企業・上司の理解・同僚のサポート・カンパニーピクニック・社員旅行・昇進・退職・歓迎パーティ・仕事のうっかりミス（相手の社名を間違えて契約書を作る等）・求人の必要条件を1つ満たしていない応募書類・1か所間違って印刷される名刺・渋滞による遅刻・仕事より優先される歯医者のアポ・ホテルの無料送迎サービス・景品が当たる抽選会\n\n「TOEICの世界」は、現実離れしたユートピアです。TOEICの勉強をしている間は、日常生活の嫌なことを忘れて、「TOEICの世界」という桃源郷の住人になり切りましょう。ストレスを解消しつつ、楽しく勉強できるので、一挙両得です。"
+  },
+  {
+    "id": "col-2",
+    "chapterId": 1,
+    "title": "品詞の見分け方の黄金テクニック",
+    "content": "【品詞の見分け方のコツ】\n● 副詞から-lyを取ったら形容詞：recently (最近：副詞) → recent (最近の：形容詞)\n● 単語から-edや-ingを取ったら動詞：learned / learning → learn\n\nこのルールを覚えておけば、仮にrecent (最近の)という単語を知らなくても、他の選択肢にrecently (最近)という副詞があれば、-lyを取ったrecentが形容詞だと判断できます。\n\nまた、-edや-ingは動詞の原形に付くので、取ったら動詞の原形です。たとえば、respond (返答する)の品詞がわからなくても、他の選択肢にrespondedやrespondingがあれば、-edや-ingを取ったrespondは動詞だとわかるのです。\n\n【品詞の役割まとめ】\n● 名詞：主語、他動詞の目的語、前置詞の目的語、補語になる。\n● 動詞：述語動詞になる。\n● 形容詞：補語になるか名詞を修飾する。\n● 副詞：常に修飾語で名詞以外を修飾する。"
+  }
+];
+  </script>
+
+  <!-- UI & LOGIC SCRIPT -->
+  <script>
+    const STORAGE_KEY = 'toeic_grammar_standalone_v2';
+    let soundEnabled = true;
+
+    function getTodayStr() {
+      const d = new Date();
+      return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    }
+
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('toeic_grammar_standalone_v1');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          return {
+            masteredIds: parsed.masteredIds || [],
+            bookmarkedIds: parsed.bookmarkedIds || [],
+            mistakeCounts: parsed.mistakeCounts || {},
+            solveTimes: parsed.solveTimes || {},
+            srsStates: parsed.srsStates || {},
+            unlockedAchievements: parsed.unlockedAchievements || {},
+            dailyGoal: parsed.dailyGoal || 10,
+            dailyHistory: parsed.dailyHistory || {}
+          };
+        }
+      } catch (e) {}
+      return { masteredIds: [], bookmarkedIds: [], mistakeCounts: {}, solveTimes: {}, srsStates: {}, unlockedAchievements: {}, dailyGoal: 10, dailyHistory: {} };
+    }
+
+    function saveProgress(data) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+    }
+
+    let progress = loadProgress();
+    let showQuitModal = false;
+    let showGoalModal = false;
+
+    // Web Audio Synthesizer
+    let audioCtx = null;
+    function getAudioCtx() {
+      if (!audioCtx) {
+        const AudioClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioClass) audioCtx = new AudioClass();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+      return audioCtx;
+    }
+
+    function playDing() {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioCtx(); if (!ctx) return;
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, now);
+        osc.frequency.exponentialRampToValueAtTime(1320, now + 0.12);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(now); osc.stop(now + 0.35);
+      } catch(e){}
+    }
+
+    function playBuzzer() {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioCtx(); if (!ctx) return;
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(150, now);
+        osc.frequency.setValueAtTime(130, now + 0.15);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(now); osc.stop(now + 0.35);
+      } catch(e){}
+    }
+
+    // TTS Speech
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const clean = text.replace(/(-{2,}|_{2,})/g, 'blank');
+      const u = new SpeechSynthesisUtterance(clean);
+      u.lang = 'en-US';
+      u.rate = 0.95;
+      window.speechSynthesis.speak(u);
+    }
+
+    // Spaced repetition interval days: [0, 1, 3, 7, 14, 30]
+    const SRS_INTERVALS = [0, 1, 3, 7, 14, 30];
+    function updateSRS(qId, isCorrect) {
+      const now = Date.now();
+      const DAY = 86400000;
+      let curr = progress.srsStates[qId] || { level: 0, consecutive: 0, reviews: 0 };
+      if (isCorrect) {
+        const nextLvl = Math.min(5, curr.level + 1);
+        progress.srsStates[qId] = {
+          level: nextLvl,
+          consecutive: curr.consecutive + 1,
+          nextReview: now + SRS_INTERVALS[nextLvl] * DAY,
+          reviews: curr.reviews + 1
+        };
+      } else {
+        progress.srsStates[qId] = {
+          level: 0,
+          consecutive: 0,
+          nextReview: now,
+          reviews: curr.reviews + 1
+        };
+      }
+    }
+
+    // App state
+    let currentTab = 'test';
+    let selectedChapter = 'all';
+    let selectedMode = '10';
+    let excludeMastered = true;
+
+    let isTesting = false;
+    let testQueue = [];
+    let currentQIndex = 0;
+    let currentAnswer = null;
+    let hasAnswered = false;
+    let sessionHistory = [];
+    let timerInterval = null;
+    let startTime = 0;
+    let secondsLeft = 20;
+
+    function switchTab(tab) {
+      currentTab = tab;
+      ['test', 'srs', 'achievements', 'rules', 'stats'].forEach(t => {
+        const btn = document.getElementById('tabBtn-' + t);
+        if (btn) {
+          if (t === tab) {
+            btn.className = "flex-1 py-2 px-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 shadow-md";
+          } else {
+            btn.className = "flex-1 py-2 px-2 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200";
+          }
+        }
+      });
+      render();
+    }
+
+    document.getElementById('soundToggleBtn').addEventListener('click', function() {
+      soundEnabled = !soundEnabled;
+      this.textContent = soundEnabled ? '🔔 音ON' : '🔕 音OFF';
+    });
+
+    function startTestSession(customList) {
+      let pool = customList ? [...customList] : CHAPTER_DATA.filter(q => {
+        if (selectedMode === 'srs') {
+          const s = progress.srsStates[q.id];
+          if (!s) return true;
+          return Date.now() >= (s.nextReview || 0);
+        }
+        if (selectedChapter !== 'all' && q.chapterId != selectedChapter) return false;
+        if (excludeMastered && progress.masteredIds.includes(q.id)) return false;
+        if (selectedMode === 'mistakes') return (progress.mistakeCounts[q.id] || 0) > 0;
+        if (selectedMode === 'bookmarked') return progress.bookmarkedIds.includes(q.id);
+        return true;
+      });
+
+      if (!pool.length) {
+        alert('該当する問題がありません。');
+        return;
+      }
+
+      if (!customList && (selectedMode === '10' || selectedMode === '30')) {
+        pool.sort(() => Math.random() - 0.5);
+        pool = pool.slice(0, selectedMode === '10' ? 10 : 30);
+      }
+
+      testQueue = pool;
+      currentQIndex = 0;
+      sessionHistory = [];
+      hasAnswered = false;
+      currentAnswer = null;
+      isTesting = true;
+      document.getElementById('topNav').style.display = 'none';
+      startTimer();
+      render();
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      secondsLeft = 20;
+      startTime = Date.now();
+      timerInterval = setInterval(() => {
+        const diff = Math.floor((Date.now() - startTime) / 1000);
+        secondsLeft = Math.max(0, 20 - diff);
+        const timerEl = document.getElementById('timerDisplay');
+        const barEl = document.getElementById('timerBar');
+        if (timerEl && !hasAnswered) {
+          timerEl.textContent = secondsLeft + 's';
+          if (secondsLeft <= 5) timerEl.className = 'font-mono font-bold px-2 py-0.5 rounded text-xs bg-red-500/20 text-red-400 border border-red-500/30';
+          else if (secondsLeft <= 10) timerEl.className = 'font-mono font-bold px-2 py-0.5 rounded text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30';
+        }
+        if (barEl && !hasAnswered) barEl.style.width = ((secondsLeft / 20) * 100) + '%';
+      }, 200);
+    }
+
+    function stopTimer() {
+      if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+    }
+
+    function submitChoice(letter) {
+      if (hasAnswered) return;
+      stopTimer();
+      hasAnswered = true;
+      currentAnswer = letter;
+      const q = testQueue[currentQIndex];
+      const elapsed = Math.max(1, Math.round(((Date.now() - startTime) / 100) / 10));
+      const isCorrect = letter === q.correctAnswer;
+
+      if (isCorrect) playDing(); else playBuzzer();
+
+      if (!isCorrect) {
+        progress.mistakeCounts[q.id] = (progress.mistakeCounts[q.id] || 0) + 1;
+      }
+      progress.solveTimes[q.id] = [...(progress.solveTimes[q.id] || []), elapsed];
+      
+      const today = getTodayStr();
+      progress.dailyHistory = progress.dailyHistory || {};
+      progress.dailyHistory[today] = (progress.dailyHistory[today] || 0) + 1;
+
+      updateSRS(q.id, isCorrect);
+      saveProgress(progress);
+
+      sessionHistory.push({ q, letter, isCorrect, elapsed });
+      render();
+    }
+
+    function openQuitModal() {
+      stopTimer();
+      showQuitModal = true;
+      render();
+    }
+
+    function resumeTest() {
+      showQuitModal = false;
+      if (!hasAnswered) {
+        startTimer();
+      }
+      render();
+    }
+
+    function finishEarly() {
+      showQuitModal = false;
+      stopTimer();
+      isTesting = false;
+      document.getElementById('topNav').style.display = 'flex';
+      renderResults();
+    }
+
+    function quitToHome() {
+      showQuitModal = false;
+      stopTimer();
+      isTesting = false;
+      document.getElementById('topNav').style.display = 'flex';
+      render();
+    }
+
+    function saveDailyGoal(val) {
+      progress.dailyGoal = Number(val) || 10;
+      saveProgress(progress);
+      showGoalModal = false;
+      render();
+    }
+
+    function nextQuestion() {
+      if (currentQIndex + 1 < testQueue.length) {
+        currentQIndex++;
+        hasAnswered = false;
+        currentAnswer = null;
+        startTimer();
+        render();
+      } else {
+        stopTimer();
+        isTesting = false;
+        document.getElementById('topNav').style.display = 'flex';
+        renderResults();
+      }
+    }
+
+    function undoQuestion() {
+      if (currentQIndex === 0) return;
+      stopTimer();
+      currentQIndex--;
+      sessionHistory.pop();
+      hasAnswered = false;
+      currentAnswer = null;
+      startTimer();
+      render();
+    }
+
+    function toggleBookmark(id) {
+      if (progress.bookmarkedIds.includes(id)) {
+        progress.bookmarkedIds = progress.bookmarkedIds.filter(x => x !== id);
+      } else {
+        progress.bookmarkedIds.push(id);
+      }
+      saveProgress(progress);
+      render();
+    }
+
+    function toggleMaster(id) {
+      if (progress.masteredIds.includes(id)) {
+        progress.masteredIds = progress.masteredIds.filter(x => x !== id);
+      } else {
+        progress.masteredIds.push(id);
+      }
+      saveProgress(progress);
+      render();
+    }
+
+    const container = document.getElementById('appContainer');
+
+    function render() {
+      if (isTesting) renderQuestionScreen();
+      else if (currentTab === 'test') renderSetupScreen();
+      else if (currentTab === 'srs') renderSRSScreen();
+      else if (currentTab === 'achievements') renderAchievementsScreen();
+      else if (currentTab === 'rules') renderRulesScreen();
+      else if (currentTab === 'stats') renderStatsScreen();
+
+      if (showQuitModal) renderQuitModal();
+      if (showGoalModal) renderGoalModal();
+    }
+
+    function renderQuitModal() {
+      const modal = document.createElement('div');
+      modal.className = "fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in";
+      modal.innerHTML = `
+        <div class="bg-slate-850 border border-slate-700 rounded-3xl p-6 max-w-sm w-full shadow-2xl space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 font-bold text-lg">✕</div>
+            <div>
+              <h3 class="text-base font-bold text-slate-100">演習を中断しますか？</h3>
+              <p class="text-xs text-slate-400">現在の解答記録は保持されます</p>
+            </div>
+          </div>
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-750 text-xs space-y-1.5 text-slate-300">
+            <div class="flex justify-between"><span>解答済み:</span><strong class="text-amber-400">${sessionHistory.length} / ${testQueue.length} 問</strong></div>
+            <div class="flex justify-between"><span>正解数:</span><strong class="text-emerald-400">${sessionHistory.filter(h => h.isCorrect).length} 問</strong></div>
+          </div>
+          <div class="space-y-2 pt-1">
+            ${sessionHistory.length > 0 ? '<button onclick="finishEarly()" class="w-full py-2.5 px-3 rounded-xl font-bold bg-amber-500 text-slate-950 text-xs cursor-pointer">ここまでの結果を確認して終了</button>' : ''}
+            <button onclick="quitToHome()" class="w-full py-2 px-3 rounded-xl font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs cursor-pointer">ホームへ戻る</button>
+            <button onclick="resumeTest()" class="w-full py-2 text-slate-400 hover:text-slate-200 text-xs cursor-pointer">↩ 演習を続ける</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(modal);
+    }
+
+    function renderGoalModal() {
+      const modal = document.createElement('div');
+      modal.className = "fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in";
+      modal.innerHTML = `
+        <div class="bg-slate-850 border border-slate-700 rounded-3xl p-6 max-w-sm w-full shadow-2xl space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-amber-400 font-bold text-lg">🎯</span>
+              <h3 class="text-base font-bold text-slate-100">1日の目標問題数</h3>
+            </div>
+            <button onclick="showGoalModal=false; render();" class="text-slate-400 hover:text-slate-200 text-lg">✕</button>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            ${[5, 10, 15, 20, 30, 50].map(v => '<button onclick="saveDailyGoal(' + v + ')" class="py-2 rounded-xl text-xs font-bold border transition-all ' + (progress.dailyGoal === v ? 'bg-amber-500 text-slate-950 border-amber-400' : 'bg-slate-800 text-slate-300 border-slate-700') + '">' + v + '問</button>').join('')}
+          </div>
+        </div>
+      `;
+      container.appendChild(modal);
+    }
+
+    function renderQuestionScreen() {
+      const q = testQueue[currentQIndex];
+      const isBM = progress.bookmarkedIds.includes(q.id);
+      const isMaster = progress.masteredIds.includes(q.id);
+      const mistakes = progress.mistakeCounts[q.id] || 0;
+      const srs = progress.srsStates[q.id];
+
+      let optionsHtml = '';
+      ['A', 'B', 'C', 'D'].forEach(letter => {
+        const text = q.options[letter];
+        let btnCls = "bg-slate-900/90 text-slate-200 border-slate-700/80 hover:bg-slate-800 active:scale-[0.99]";
+        let badge = '';
+
+        if (hasAnswered) {
+          if (letter === q.correctAnswer) {
+            btnCls = "bg-emerald-950/80 text-emerald-100 border-emerald-500 ring-2 ring-emerald-500/40";
+            badge = '<span class="text-emerald-400 font-bold text-xs">✓ 正解</span>';
+          } else if (letter === currentAnswer) {
+            btnCls = "bg-rose-950/80 text-rose-200 border-rose-500 ring-2 ring-rose-500/40";
+            badge = '<span class="text-rose-400 font-bold text-xs">✕ 選択</span>';
+          } else {
+            btnCls = "bg-slate-900/50 text-slate-500 border-slate-800 opacity-60";
+          }
+        }
+
+        optionsHtml += `
+          <button onclick="submitChoice('${letter}')" class="min-h-[52px] w-full text-left px-4 py-3 rounded-xl border flex items-center justify-between transition-all cursor-pointer ${btnCls}">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-sm bg-slate-800 text-amber-400 border border-slate-700">
+                ${letter}
+              </span>
+              <span class="text-base font-medium tracking-tight">${text}</span>
+            </div>
+            ${badge}
+          </button>
+        `;
+      });
+
+      let explanationHtml = '';
+      if (hasAnswered) {
+        explanationHtml = `
+          <div class="bg-slate-800/95 border border-slate-700 rounded-2xl p-5 shadow-2xl space-y-4 mt-4">
+            <div class="bg-gradient-to-r from-amber-500/15 via-amber-500/10 to-transparent border-l-4 border-amber-400 p-3.5 rounded-r-xl">
+              <div class="text-[11px] font-bold uppercase tracking-wider text-amber-400 mb-0.5">✨ 正解の根拠 ＆ 金のルール</div>
+              <div class="text-base font-bold text-amber-200">${q.keyRule}</div>
+              <p class="text-xs text-slate-300 mt-1 font-medium">🎯 ${q.keyPoint}</p>
+            </div>
+            <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-700/50">
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">日本語訳</span>
+              <p class="text-sm text-slate-200 leading-relaxed">${q.translation}</p>
+            </div>
+            <div class="space-y-1.5">
+              <span class="text-xs font-bold text-slate-300">📄 詳細解説</span>
+              <div class="text-sm text-slate-300 leading-relaxed whitespace-pre-line bg-slate-900/40 p-3.5 rounded-xl border border-slate-700/40">${q.explanation}</div>
+            </div>
+            ${q.vocabulary && q.vocabulary.length ? `
+              <div class="space-y-1">
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">語注</span>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                  ${q.vocabulary.map(v => `<span class="text-xs bg-slate-900 text-slate-300 px-2 py-0.5 rounded border border-slate-700 font-mono">${v}</span>`).join('')}
+                </div>
+              </div>
+            ` : ''}
+            <div class="pt-2">
+              <button onclick="nextQuestion()" class="w-full py-4 rounded-xl font-bold text-slate-950 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 shadow-xl shadow-amber-500/25 active:scale-[0.99] flex items-center justify-center gap-2 text-base cursor-pointer">
+                <span>${currentQIndex + 1 < testQueue.length ? '次の問題へ進む ➔' : 'テスト結果を見る 🏆'}</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-3 shadow-lg">
+            <div class="flex items-center justify-between text-xs mb-2">
+              <div class="flex items-center gap-2">
+                <span class="font-mono font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">
+                  Q${currentQIndex + 1} / ${testQueue.length}
+                </span>
+                <span class="text-slate-400">${q.chapterTitle}</span>
+                <span class="text-slate-500">|</span>
+                <span class="text-slate-300 font-medium">${q.numberLabel}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="speakText(\`${q.sentence.replace(/"/g, '')}\`)" title="英文読み上げ" class="p-1 rounded bg-slate-700 hover:bg-slate-600 text-amber-400 text-xs">
+                  🔊 音声
+                </button>
+                <div id="timerDisplay" class="font-mono font-bold px-2 py-0.5 rounded text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  ${hasAnswered ? (sessionHistory[sessionHistory.length - 1]?.elapsed || 0) + '秒' : secondsLeft + 's'}
+                </div>
+                <button onclick="undoQuestion()" ${currentQIndex === 0 ? 'disabled' : ''} class="text-xs text-slate-400 hover:text-slate-200 disabled:opacity-30 p-1">
+                  ↩ 戻る
+                </button>
+                <button onclick="openQuitModal()" class="text-xs text-rose-400 hover:text-rose-300 bg-rose-500/10 border border-rose-500/30 px-2 py-0.5 rounded font-semibold cursor-pointer">
+                  ✕ やめる
+                </button>
+              </div>
+            </div>
+            <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden">
+              <div id="timerBar" class="h-full bg-emerald-400 transition-all duration-200" style="width: ${(secondsLeft / 20) * 100}%;"></div>
+            </div>
+            <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-700/60 text-xs">
+              <div>
+                ${mistakes > 0 ? `<span class="text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-full border border-rose-500/20 font-semibold text-[11px]">🔥 ミス ${mistakes}回</span>` : ''}
+                ${isMaster ? `<span class="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 font-semibold text-[11px] ml-1">✓ マスター済</span>` : ''}
+                ${srs ? `<span class="text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded-full border border-sky-500/20 text-[10px] ml-1 font-mono">SRS Stage ${srs.level}</span>` : ''}
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button onclick="toggleBookmark('${q.id}')" class="px-2 py-1 rounded text-xs ${isBM ? 'text-amber-400 bg-amber-400/10 font-bold' : 'text-slate-400'}">
+                  ★ ${isBM ? '復習中' : 'ブックマーク'}
+                </button>
+                <button onclick="toggleMaster('${q.id}')" class="px-2 py-1 rounded text-xs ${isMaster ? 'text-emerald-400 bg-emerald-400/10 font-bold' : 'text-slate-400'}">
+                  ✓ ${isMaster ? '覚えた' : '覚えた！'}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-800 border border-slate-700/80 rounded-2xl p-5 shadow-xl">
+            <div class="text-[17px] sm:text-[18px] leading-relaxed font-serif text-slate-100 font-medium mb-6">
+              ${q.sentence.replace(/(----|-------)/g, '<span class="inline-block mx-1 px-3 py-0.5 rounded font-mono font-bold bg-slate-900 text-amber-400 border border-dashed border-amber-500/50">____</span>')}
+            </div>
+            <div class="grid grid-cols-1 gap-2.5">
+              ${optionsHtml}
+            </div>
+          </div>
+          ${explanationHtml}
+        </div>
+      `;
+    }
+
+    function renderSetupScreen() {
+      let chapBtns = `
+        <button onclick="selectedChapter='all'; render();" class="p-3 rounded-xl border text-left transition-all ${selectedChapter === 'all' ? 'bg-amber-500 text-slate-950 font-bold border-amber-400 shadow' : 'bg-slate-800 text-slate-300 border-slate-700'}">
+          <div class="text-xs font-mono mb-0.5">ALL</div>
+          <div class="text-sm font-semibold">すべての章</div>
+          <div class="text-[10px] opacity-75 mt-0.5">${CHAPTER_DATA.length}問</div>
+        </button>
+      `;
+
+      CHAPTER_METAS.forEach(c => {
+        const count = CHAPTER_DATA.filter(q => q.chapterId === c.id).length;
+        chapBtns += `
+          <button onclick="selectedChapter=${c.id}; render();" class="p-3 rounded-xl border text-left transition-all ${selectedChapter === c.id ? 'bg-amber-500 text-slate-950 font-bold border-amber-400 shadow' : 'bg-slate-800 text-slate-300 border-slate-700'}">
+            <div class="text-xs font-mono opacity-80 mb-0.5">CH.${c.id}</div>
+            <div class="text-sm font-semibold truncate">${c.shortName}</div>
+            <div class="text-[10px] opacity-75 mt-0.5">${count}問</div>
+          </button>
+        `;
+      });
+
+      const weakCount = Object.keys(progress.mistakeCounts).filter(k => progress.mistakeCounts[k] > 0).length;
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <div class="bg-gradient-to-br from-slate-800 via-slate-850 to-slate-900 border border-amber-500/30 rounded-3xl p-5 sm:p-6 shadow-xl">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-300 border border-amber-500/30 mb-2">
+              ✨ TOEIC文法 出る問 対策特化 (総${CHAPTER_DATA.length}問収録)
+            </span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-100">金の文法マスター</h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">1問20秒のスピード感覚と金のルールを反復習得。iPhone Safari推奨・オフライン完結設計。</p>
+            <div class="grid grid-cols-3 gap-2.5 mt-4 pt-4 border-t border-slate-700/60 text-center">
+              <div class="bg-slate-900/60 rounded-xl p-2 border border-slate-700/50">
+                <span class="text-[10px] text-slate-400 block">収録問題</span>
+                <span class="text-base font-bold font-mono text-amber-400">${CHAPTER_DATA.length}問</span>
+              </div>
+              <div class="bg-slate-900/60 rounded-xl p-2 border border-slate-700/50">
+                <span class="text-[10px] text-slate-400 block">覚えた除外</span>
+                <span class="text-base font-bold font-mono text-emerald-400">${progress.masteredIds.length}問</span>
+              </div>
+              <div class="bg-slate-900/60 rounded-xl p-2 border border-slate-700/50">
+                <span class="text-[10px] text-slate-400 block">要復習マーク</span>
+                <span class="text-base font-bold font-mono text-sky-400">${progress.bookmarkedIds.length}問</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Goal Component -->
+          <div class="bg-slate-800 border border-slate-700/80 rounded-2xl p-4 shadow-lg space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs font-bold text-slate-200">🎯 今日の学習目標</span>
+                <span class="text-[11px] text-slate-400 ml-2 font-mono">${getTodayStr()}</span>
+              </div>
+              <button onclick="showGoalModal=true; render();" class="text-xs bg-slate-700 hover:bg-slate-650 text-slate-300 px-2 py-1 rounded-lg border border-slate-600 cursor-pointer">
+                目標変更 (${progress.dailyGoal || 10}問)
+              </button>
+            </div>
+            <div class="flex items-end justify-between">
+              <span class="text-xl font-bold font-mono text-amber-400">
+                ${progress.dailyHistory?.[getTodayStr()] || 0} <span class="text-xs text-slate-400">/ ${progress.dailyGoal || 10} 問 完了</span>
+              </span>
+              <span class="text-xs font-mono font-bold text-amber-300">
+                ${Math.min(100, Math.round(((progress.dailyHistory?.[getTodayStr()] || 0) / (progress.dailyGoal || 10)) * 100))}%
+              </span>
+            </div>
+            <div class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-slate-800">
+              <div class="h-full bg-gradient-to-r from-amber-500 to-amber-300 transition-all duration-300" style="width: ${Math.min(100, Math.round(((progress.dailyHistory?.[getTodayStr()] || 0) / (progress.dailyGoal || 10)) * 100))}%;"></div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <label class="text-xs font-bold text-slate-300 uppercase tracking-wider block">📖 学習する章を選択</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">${chapBtns}</div>
+          </div>
+
+          <div class="space-y-3">
+            <label class="text-xs font-bold text-slate-300 uppercase tracking-wider block">⚡ 出題モード</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              <button onclick="selectedMode='10'; render();" class="p-3 rounded-xl border text-left ${selectedMode === '10' ? 'bg-amber-500/20 text-amber-300 border-amber-400 ring-1' : 'bg-slate-800 text-slate-300 border-slate-700'}">
+                <div class="text-sm font-bold">⚡ ランダム10問</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">スキマ時間演習</div>
+              </button>
+              <button onclick="selectedMode='30'; render();" class="p-3 rounded-xl border text-left ${selectedMode === '30' ? 'bg-amber-500/20 text-amber-300 border-amber-400 ring-1' : 'bg-slate-800 text-slate-300 border-slate-700'}">
+                <div class="text-sm font-bold">🎯 ランダム30問</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">本番Part 5ハーフ模試</div>
+              </button>
+              <button onclick="selectedMode='srs'; render();" class="p-3 rounded-xl border text-left ${selectedMode === 'srs' ? 'bg-indigo-500/20 text-indigo-300 border-indigo-400 ring-1' : 'bg-slate-800 text-slate-300 border-slate-700'}">
+                <div class="text-sm font-bold text-indigo-400">⏳ 間隔反復(SRS)</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">忘却曲線に基づく復習</div>
+              </button>
+              <button onclick="selectedMode='all'; render();" class="p-3 rounded-xl border text-left ${selectedMode === 'all' ? 'bg-amber-500/20 text-amber-300 border-amber-400 ring-1' : 'bg-slate-800 text-slate-300 border-slate-700'}">
+                <div class="text-sm font-bold">📚 全問演習</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">章内すべて順番</div>
+              </button>
+              <button onclick="selectedMode='mistakes'; render();" class="p-3 rounded-xl border text-left ${selectedMode === 'mistakes' ? 'bg-rose-500/20 text-rose-300 border-rose-400 ring-1' : 'bg-slate-800 text-slate-300 border-slate-700'}">
+                <div class="text-sm font-bold text-rose-400">🔥 苦手・ミス問題</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">${weakCount}問対象</div>
+              </button>
+              <button onclick="selectedMode='bookmarked'; render();" class="p-3 rounded-xl border text-left ${selectedMode === 'bookmarked' ? 'bg-sky-500/20 text-sky-300 border-sky-400 ring-1' : 'bg-slate-800 text-slate-300 border-slate-700'}">
+                <div class="text-sm font-bold text-sky-400">★ 要復習マーク</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">${progress.bookmarkedIds.length}問対象</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="startTestSession()" class="w-full min-h-[58px] py-4 rounded-2xl font-black text-slate-950 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 shadow-xl shadow-amber-500/25 active:scale-[0.98] text-lg cursor-pointer">
+              ⚡ テストを開始する
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderSRSScreen() {
+      const now = Date.now();
+      const srsKeys = Object.keys(progress.srsStates);
+      const dueCount = srsKeys.filter(k => now >= (progress.srsStates[k].nextReview || 0)).length;
+
+      let counts = [0, 0, 0, 0, 0, 0];
+      srsKeys.forEach(k => {
+        const lvl = progress.srsStates[k].level || 0;
+        counts[lvl] = (counts[lvl] || 0) + 1;
+      });
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <div class="bg-gradient-to-br from-indigo-950/60 to-slate-800 border border-indigo-500/30 rounded-3xl p-5 shadow-xl">
+            <h2 class="text-lg font-bold text-indigo-300 flex items-center gap-2">
+              ⏳ 忘却曲線・間隔反復（Spaced Repetition）
+            </h2>
+            <p class="text-xs text-slate-300 mt-1">
+              エビングハウスの忘却曲線に基づき、間違えた問題は当日復習、正解するごとに1日後・3日後・7日後・14日後・30日後（長期記憶）へと間隔を広げて自動出題します。
+            </p>
+            <div class="mt-4 p-3 bg-slate-950/80 rounded-2xl border border-indigo-500/20 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-slate-400 block">今日復習すべき問題</span>
+                <span class="text-2xl font-black text-amber-400 font-mono">${dueCount}問</span>
+              </div>
+              <button onclick="selectedMode='srs'; startTestSession();" class="py-2.5 px-4 rounded-xl font-bold bg-indigo-500 hover:bg-indigo-400 text-white text-xs shadow-md">
+                期日の復習を今すぐ開始
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-xs font-bold text-slate-300">定着ステージ別分布</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-rose-400 block">Stage 0 (本日復習)</span>
+                <span class="text-lg font-bold font-mono">${counts[0]}問</span>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-amber-400 block">Stage 1 (1日後)</span>
+                <span class="text-lg font-bold font-mono">${counts[1]}問</span>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-yellow-400 block">Stage 2 (3日後)</span>
+                <span class="text-lg font-bold font-mono">${counts[2]}問</span>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-sky-400 block">Stage 3 (7日後)</span>
+                <span class="text-lg font-bold font-mono">${counts[3]}問</span>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-indigo-400 block">Stage 4 (14日後)</span>
+                <span class="text-lg font-bold font-mono">${counts[4]}問</span>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-emerald-400 block">Stage 5 (30日・定着)</span>
+                <span class="text-lg font-bold font-mono">${counts[5]}問</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAchievementsScreen() {
+      const achs = [
+        { id: 'ch1_complete', title: '品詞の覇者', desc: '第1章の全問題を1回以上解答', icon: '👑' },
+        { id: 'ch2_complete', title: '動詞のマスター', desc: '第2章の全問題を1回以上解答', icon: '⚡' },
+        { id: 'ch3_complete', title: '前置詞・接続詞の鑑', desc: '第3章の全問題を1回以上解答', icon: '🔗' },
+        { id: 'perfect_10', title: 'パーフェクトスナイパー', desc: '10問テストで正解率100%達成', icon: '🎯' },
+        { id: 'speed_demon_10s', title: '秒速の解答者', desc: '平均解答スピード10秒以下を記録', icon: '⏱️' },
+        { id: 'part5_rush_30', title: '本番模試30問完走', desc: 'ランダム30問テストを最後まで完走', icon: '🚀' },
+        { id: 'srs_first_review', title: '忘却曲線との戦い', desc: '間隔反復で復習期日の問題をクリア', icon: '⏳' },
+        { id: 'difficult_mastered', title: '難問クラッシャー', desc: '2回以上ミスした苦手問題をマスター', icon: '🛡️' }
+      ];
+
+      let listHtml = achs.map(a => {
+        const isUnlocked = progress.unlockedAchievements && progress.unlockedAchievements[a.id];
+        return `
+          <div class="p-3.5 rounded-2xl border flex items-center justify-between ${isUnlocked ? 'bg-amber-500/10 border-amber-500/30' : 'bg-slate-800/60 border-slate-800 opacity-60'}">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">${a.icon}</span>
+              <div>
+                <h4 class="text-sm font-bold ${isUnlocked ? 'text-amber-300' : 'text-slate-400'}">${a.title}</h4>
+                <p class="text-xs text-slate-400 mt-0.5">${a.desc}</p>
+              </div>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded ${isUnlocked ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-900 text-slate-500'}">
+              ${isUnlocked ? '解除済 🏆' : '未解除'}
+            </span>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <div class="bg-slate-800 border border-slate-700 rounded-3xl p-5 shadow-xl">
+            <h2 class="text-base font-bold text-slate-100 flex items-center gap-2">
+              🏆 実績 ＆ トロフィー
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">学習の進捗やスピード、パーフェクト達成で解除される称号一覧です。</p>
+          </div>
+          <div class="space-y-2.5">${listHtml}</div>
+        </div>
+      `;
+    }
+
+    function renderResults() {
+      const correct = sessionHistory.filter(h => h.isCorrect).length;
+      const total = sessionHistory.length;
+      const pct = Math.round((correct / (total || 1)) * 100);
+      const avg = total > 0 ? (sessionHistory.reduce((a, b) => a + b.elapsed, 0) / total).toFixed(1) : '0.0';
+      const missed = sessionHistory.filter(h => !h.isCorrect).map(h => h.q);
+
+      let historyHtml = sessionHistory.map((h, i) => `
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-3.5 flex items-start justify-between gap-3 text-sm">
+          <div>
+            <div class="flex items-center gap-2 text-xs text-slate-400 mb-0.5">
+              <span class="font-mono font-bold text-slate-300">Q${i + 1}</span>
+              <span>${h.q.numberLabel}</span>
+              <span class="font-mono text-slate-500">(${h.elapsed}秒)</span>
+            </div>
+            <p class="text-slate-200 text-xs font-serif line-clamp-1">${h.q.sentence}</p>
+            <p class="text-xs text-amber-400 font-semibold mt-1">${h.q.keyRule}</p>
+          </div>
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded ${h.isCorrect ? 'bg-emerald-500/20 text-emerald-300' : 'bg-rose-500/20 text-rose-300'}">
+            ${h.letter} (${h.isCorrect ? '○' : '✕ 正解:' + h.q.correctAnswer})
+          </span>
+        </div>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="space-y-5">
+          <div class="bg-slate-800 border border-amber-500/30 rounded-3xl p-6 text-center shadow-2xl">
+            <h2 class="text-xl font-black text-slate-100">テスト完了！お疲れ様でした</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-lg mx-auto mt-4">
+              <div class="bg-slate-950/60 border border-slate-700 rounded-2xl p-3">
+                <span class="text-[11px] text-slate-400 block">正解率</span>
+                <div class="text-2xl font-black text-amber-400 font-mono">${pct}%</div>
+                <span class="text-[10px] text-slate-400">${correct} / ${total} 問正解</span>
+              </div>
+              <div class="bg-slate-950/60 border border-slate-700 rounded-2xl p-3">
+                <span class="text-[11px] text-slate-400 block">平均所要時間</span>
+                <div class="text-2xl font-black text-emerald-400 font-mono">${avg}s</div>
+                <span class="text-[10px] text-slate-400">目標: 20秒以内</span>
+              </div>
+              <div class="col-span-2 sm:col-span-1 bg-slate-950/60 border border-slate-700 rounded-2xl p-3">
+                <span class="text-[11px] text-slate-400 block">スピード評価</span>
+                <div class="text-sm font-bold mt-1 text-slate-200">
+                  ${parseFloat(avg) <= 15 ? '<span class="text-emerald-400">⚡ 快速合格ペース</span>' : parseFloat(avg) <= 20 ? '<span class="text-amber-400">🎯 標準合格ペース</span>' : '<span class="text-rose-400">⚠️ 要スピード改善</span>'}
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto mt-5">
+              ${missed.length > 0 ? `
+                <button onclick="startTestSession(window._lastMissed)" class="flex-1 py-3 px-4 rounded-xl font-bold bg-rose-600 hover:bg-rose-500 text-white text-sm">
+                  🔥 間違えた問題だけ再テスト (${missed.length}問)
+                </button>
+              ` : ''}
+              <button onclick="startTestSession()" class="flex-1 py-3 px-4 rounded-xl font-bold bg-amber-500 text-slate-950 text-sm">
+                もう一度テストする
+              </button>
+              <button onclick="switchTab('test')" class="py-3 px-4 rounded-xl font-bold bg-slate-700 text-slate-300 text-sm">
+                戻る
+              </button>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-sm font-bold text-slate-300">今回の解答一覧</h3>
+            ${historyHtml}
+          </div>
+        </div>
+      `;
+      window._lastMissed = missed;
+    }
+
+    function renderRulesScreen() {
+      let rulesHtml = GOLDEN_RULES.map(r => `
+        <div class="bg-slate-800 border border-slate-700/80 rounded-xl p-4 shadow-sm">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="font-mono text-xs font-bold bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded border border-amber-500/30">
+              ルール ${r.ruleNo}
+            </span>
+            <span class="text-[11px] text-slate-400">第${r.chapterId}章</span>
+          </div>
+          <h4 class="text-sm font-bold text-slate-100">${r.title}</h4>
+          <p class="text-xs text-slate-300 mt-1 leading-relaxed bg-slate-900/60 p-2.5 rounded-lg border border-slate-700/40">${r.content}</p>
+        </div>
+      `).join('');
+
+      let colsHtml = CHAPTER_COLUMNS.map(c => `
+        <div class="bg-slate-800 border border-amber-500/30 rounded-2xl p-4 shadow-md">
+          <h4 class="font-bold text-slate-100 text-sm mb-2 text-amber-300">✨ ${c.title}</h4>
+          <div class="text-xs text-slate-300 leading-relaxed whitespace-pre-line">${c.content}</div>
+        </div>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="space-y-5">
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold text-amber-400 uppercase tracking-wider">特別コラム</h3>
+            ${colsHtml}
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider">金の文法ルール一覧 (${GOLDEN_RULES.length})</h3>
+            <div class="space-y-2.5">${rulesHtml}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderStatsScreen() {
+      const total = CHAPTER_DATA.length;
+      const mastered = progress.masteredIds.length;
+      const bookmarked = progress.bookmarkedIds.length;
+
+      container.innerHTML = `
+        <div class="space-y-5">
+          <div class="bg-slate-800 border border-slate-700 rounded-3xl p-5 shadow-xl">
+            <h3 class="text-sm font-bold text-slate-100 mb-3">📊 学習データ概要</h3>
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-slate-400 block">総問題数</span>
+                <span class="text-lg font-bold font-mono text-slate-200">${total}問</span>
+              </div>
+              <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-slate-400 block">覚えた</span>
+                <span class="text-lg font-bold font-mono text-emerald-400">${mastered}問</span>
+              </div>
+              <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-slate-400 block">要復習</span>
+                <span class="text-lg font-bold font-mono text-sky-400">${bookmarked}問</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-800 border border-slate-700 rounded-3xl p-5 shadow-xl space-y-3">
+            <h3 class="text-sm font-bold text-slate-100">💾 バックアップコード (JSON)</h3>
+            <p class="text-xs text-slate-400">機種変更やブラウザ変更時にコピーして引き継げます。</p>
+            <div class="flex gap-2">
+              <button onclick="copyBackup()" class="py-2 px-3 rounded-xl text-xs font-bold bg-amber-500 text-slate-950">
+                バックアップをコピー
+              </button>
+              <button onclick="restoreBackup()" class="py-2 px-3 rounded-xl text-xs font-bold bg-slate-700 text-slate-200">
+                テキストから復元
+              </button>
+            </div>
+            <textarea id="backupArea" rows="4" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs font-mono text-slate-300"></textarea>
+          </div>
+        </div>
+      `;
+      document.getElementById('backupArea').value = JSON.stringify(progress, null, 2);
+    }
+
+    function copyBackup() {
+      const area = document.getElementById('backupArea');
+      area.select();
+      document.execCommand('copy');
+      alert('バックアップコードをコピーしました！');
+    }
+
+    function restoreBackup() {
+      try {
+        const area = document.getElementById('backupArea');
+        const parsed = JSON.parse(area.value);
+        if (parsed) {
+          progress = parsed;
+          saveProgress(progress);
+          alert('復元が完了しました！');
+          render();
+        }
+      } catch (e) {
+        alert('無効なJSONフォーマットです。');
+      }
+    }
+
+    render();
+  </script>
+</body>
+</html>
