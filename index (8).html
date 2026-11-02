@@ -1,0 +1,3094 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TOEIC 金フレ 1134 完全マスター Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+  <script>
+/**
+ * TOEIC 金のフレーズ 全1,134項目 + 必須イディオム200項目 完全データベース (全1334項目)
+ * [level, word, meaning]
+ */
+const MASTER_DATA = [
+  ["600","anyway","とにかく"],
+  ["600","following","～に続いて 次の、以下の"],
+  ["600","refer","参照する、言及する、(人を)紹介する"],
+  ["600","available","入手できる、利用できる、手が空いている"],
+  ["600","department","部門、売り場"],
+  ["600","conference","会議"],
+  ["600","according to","～によると、～に従って"],
+  ["600","likely","おそらく ～しそうだ"],
+  ["600","offer","申し出る、提供する 申し出、オファー"],
+  ["600","equipment","機器、装備"],
+  ["600","provide","提供する"],
+  ["600","local","地元の 地元の人"],
+  ["600","purchase","購入する 購入品"],
+  ["600","opening","空き、開店"],
+  ["600","construction","建設"],
+  ["600","tour","見学する、旅行する 見学、旅行"],
+  ["600","research","研究、調査 研究する、調査する"],
+  ["600","attend","出席する、参加する"],
+  ["600","delivery","配達(物)"],
+  ["600","recently","最近"],
+  ["600","indicate","示す"],
+  ["600","employee","社員、従業員"],
+  ["600","additional","追加の"],
+  ["600","survey","アンケート調査 アンケート調査を行う"],
+  ["600","review","検討する、論評する 検討、論評"],
+  ["600","production","生産、作品"],
+  ["600","located","位置して"],
+  ["600","detail","詳細 詳しく述べる"],
+  ["600","announce","発表する"],
+  ["600","repair","修理 修理する"],
+  ["600","increase","増加 増える、増やす"],
+  ["600","include","含む"],
+  ["600","currently","現在"],
+  ["600","advertising","広告(業)、宣伝(活動)"],
+  ["600","charge","請求する 料金、責任"],
+  ["600","expect","予期する、予定する"],
+  ["600","firm","会社"],
+  ["600","client","客、クライアント"],
+  ["600","financial","お金の、財務の、金融の"],
+  ["600","annual","年に1度の、毎年恒例の、年間の"],
+  ["600","payment","支払い"],
+  ["600","budget","予算 予算に計上する"],
+  ["600","application","応募書類、応募、申請"],
+  ["600","contract","契約(書)"],
+  ["600","management","経営(陣)、管理"],
+  ["600","performance","業績、仕事ぶり、性能、公演"],
+  ["600","pleased","喜んで、満足して"],
+  ["600","confirm","確認する"],
+  ["600","award","賞 授与する"],
+  ["600","clothing","衣類"],
+  ["600","display","展示 展示する"],
+  ["600","candidate","候補者"],
+  ["600","state","述べる"],
+  ["600","exhibit","展示物、展示会 展示する"],
+  ["600","session","時間、集まり"],
+  ["600","note","注意する、述べる メモ"],
+  ["600","process","処理する プロセス、過程、処理"],
+  ["600","instruction","説明書、説明、指示"],
+  ["600","membership","会員(であること)、会員資格、会員数"],
+  ["600","agency","代理店、機関"],
+  ["600","based","拠点のある、基づく"],
+  ["600","facility","施設"],
+  ["600","advance","先行した、事前の 進歩、前進"],
+  ["600","committee","委員会"],
+  ["600","successful","成功した、うまく行く"],
+  ["600","excellent","素晴らしい"],
+  ["600","industry","産業、業界"],
+  ["600","fee","料金"],
+  ["600","accept","受け入れる"],
+  ["600","upcoming","今度の"],
+  ["600","latest","最新の"],
+  ["600","submit","提出する"],
+  ["600","transportation","輸送手段"],
+  ["600","résumé","履歴書"],
+  ["600","executive","重役 重役(用)の、高級な"],
+  ["600","introduce","導入する、紹介する"],
+  ["600","previous","前の、以前の"],
+  ["600","proposal","提案、提案書"],
+  ["600","supply","必需品 供給する"],
+  ["600","enclose","同封する、囲む"],
+  ["600","policy","規定、方針"],
+  ["600","register","登録する レジ"],
+  ["600","arrange","手配する、並べる"],
+  ["600","bill","請求書 請求書を送る"],
+  ["600","hire","雇う"],
+  ["600","approve","承認する、賛成する"],
+  ["600","conduct","実行する、実施する"],
+  ["600","opportunity","機会、チャンス"],
+  ["600","deadline","締め切り、期限"],
+  ["600","corporate","企業の、法人の"],
+  ["600","warranty","保証、保証書"],
+  ["600","necessary","必要な"],
+  ["600","reserve","予約する、確保する 蓄え"],
+  ["600","resident","住民、住人"],
+  ["600","create","創造する、作り出す"],
+  ["600","inform","知らせる、影響を与える"],
+  ["600","allow","許す、可能にする"],
+  ["600","mention","述べる、言及する 言及"],
+  ["600","appreciate","感謝する"],
+  ["600","replacement","交換、交換品、後任"],
+  ["600","update","最新情報 更新する"],
+  ["600","branch","支店"],
+  ["600","paid","有給の、支払い済みの"],
+  ["600","unfortunately","残念なことに、残念ながら"],
+  ["600","original","元の、最初の オリジナル、原本"],
+  ["600","rent","家賃 賃貸借する"],
+  ["600","memo","社内文書"],
+  ["600","luggage","旅行かばん、手荷物"],
+  ["600","editor","編集者"],
+  ["600","exhibition","展示会、展示物、展示"],
+  ["600","leading","首位の、一流の"],
+  ["600","organization","団体、会社、組織(化)"],
+  ["600","release","発売する、公表する 発売"],
+  ["600","limited","限られた"],
+  ["600","procedure","手続き、手順"],
+  ["600","experienced","経験豊富な"],
+  ["600","personnel","社員、人事部"],
+  ["600","author","著者、作者 (本を)書く"],
+  ["600","benefit","特典、福利厚生 ～のためになる"],
+  ["600","focus","(意識等を)〜に集中させる、重点を置く 焦点、集中"],
+  ["600","participate","参加する"],
+  ["600","cause","原因、大義 引き起こす"],
+  ["600","degree","学位、程度、(温度や角度の単位の)度"],
+  ["600","directly","直接"],
+  ["600","host","司会者 主催する"],
+  ["600","expert","専門家 専門的な"],
+  ["600","impress","感心させる、好印象を与える"],
+  ["600","mainly","主に"],
+  ["600","suggestion","提案"],
+  ["600","supplier","納入業者、供給業者"],
+  ["600","document","書類 (文書や映像等で)記録する"],
+  ["600","remind","再確認する、念押しする"],
+  ["600","require","求める、要求する"],
+  ["600","representative","担当者、代表者"],
+  ["600","packaging","梱包、パッケージ"],
+  ["600","description","説明、記述、描写"],
+  ["600","property","不動産、資産"],
+  ["600","extension","内線、延長"],
+  ["600","inquire","尋ねる、問い合わせる"],
+  ["600","merchandise","商品"],
+  ["600","highly","非常に"],
+  ["600","result","生じる、終わる 結果"],
+  ["600","assistance","支援、援助"],
+  ["600","encourage","奨励する、促す"],
+  ["600","individual","個人 個人の、個別の"],
+  ["600","laboratory","研究所、実験室"],
+  ["600","consider","考える、検討する"],
+  ["600","headquarters","本社"],
+  ["600","ship","出荷する 船"],
+  ["600","commercial","商業(用)の、商業的な CM"],
+  ["600","device","機器、装置"],
+  ["600","intended","意図された、向けられた"],
+  ["600","brochure","パンフレット"],
+  ["600","mail","郵便物、郵便配達 郵送する"],
+  ["600","prefer","～を(...よりも)好む"],
+  ["600","response","返答、返事"],
+  ["600","region","地域"],
+  ["600","donation","寄付"],
+  ["600","quarter","四半期"],
+  ["600","agreement","契約(書)、同意(書)、合意"],
+  ["600","journal","専門誌"],
+  ["600","distribute","配布する、流通させる"],
+  ["600","potential","見込みがある、潜在的な 可能性"],
+  ["600","reschedule","スケジュール変更する"],
+  ["600","renew","更新する"],
+  ["600","warehouse","倉庫"],
+  ["600","refund","返金 返金する"],
+  ["600","advise","勧める、忠告する、助言する"],
+  ["600","immediately","すぐに、即座に"],
+  ["600","council","議会"],
+  ["600","broadcast","放送する 放送"],
+  ["600","responsible","相当している、責任がある"],
+  ["600","avoid","避ける"],
+  ["600","effective","効果的な"],
+  ["600","invitation","招待(状)"],
+  ["600","reduce","(値段を)下げる、減らす"],
+  ["600","vehicle","乗り物、車両"],
+  ["600","efficient","効率的な"],
+  ["600","manufacturer","メーカー、製造業者"],
+  ["600","comfortable","快適な、楽な、自信がある"],
+  ["600","correct","正確な、正しい 修正する"],
+  ["600","downtown","中心街の 中心街で 中心街"],
+  ["600","method","方法"],
+  ["600","entire","全体の"],
+  ["600","range","範囲"],
+  ["600","setting","環境"],
+  ["600","apologize","おわびする"],
+  ["600","frequent","頻繁な"],
+  ["600","promotion","昇進、販売促進"],
+  ["600","regarding","〜に関する"],
+  ["600","temporary","一時的な、臨時の"],
+  ["600","traditional","伝統的な、従来の"],
+  ["600","admission","入場、入場料、入場許可"],
+  ["600","fit","合う、入る"],
+  ["600","reference","照会先、照会、参照"],
+  ["600","status","状況、地位"],
+  ["600","fuel","燃料"],
+  ["600","nearly","ほとんど、もう少しで"],
+  ["600","cafeteria","社員食堂"],
+  ["600","determine","決定する、判断する、決心する"],
+  ["600","expense","費用、経費"],
+  ["600","overseas","海外の 海外で"],
+  ["600","satisfied","満足した"],
+  ["600","appear","現れる、掲載される、～のように見える"],
+  ["600","develop","(計画等を)作り出す、開発する、(スキルを)高める"],
+  ["600","improve","改善する、改良する"],
+  ["600","reasonable","(値段が)手ごろな、妥当な"],
+  ["600","unable","(～することが)できない"],
+  ["600","delay","遅らせる 遅れ"],
+  ["600","legal","法律に関する、合法の"],
+  ["600","regulation","規制、規則"],
+  ["600","expand","拡大する、進出する"],
+  ["600","launch","開始、発売 開始する、発売する"],
+  ["600","recommendation","推薦"],
+  ["600","direct","向ける、管理する 直接の"],
+  ["600","profit","利益 利益を与える"],
+  ["600","seek","探し求める"],
+  ["600","entry","エントリー(作品)、入場"],
+  ["600","claim","申し立て、主張、所有権 主張する、所有権を主張する"],
+  ["600","crew","グループ、班、乗員"],
+  ["600","demand","需要 要求する"],
+  ["600","figure","数字、人物"],
+  ["600","raise","上げる、(お金を)集める、高める 昇給"],
+  ["600","attach","添付する"],
+  ["600","attract","引き付ける、呼び込む"],
+  ["600","insurance","保険"],
+  ["600","departure","出発、逸脱"],
+  ["600","mayor","町長、市長"],
+  ["600","balance","残金、残額、バランス"],
+  ["600","estimate","見積もり 見積もる"],
+  ["600","district","地区"],
+  ["600","former","前の、かつての 前者"],
+  ["600","modern","現代的な、近代的な"],
+  ["600","tip","アドバイス、コツ"],
+  ["600","establish","設立する、創立する"],
+  ["600","option","選択肢、オプション"],
+  ["600","retire","退職する"],
+  ["600","search","捜索、検索 探す、検索する"],
+  ["600","specific","具体的な、特定の"],
+  ["600","agricultural","農業の"],
+  ["600","historical","歴史(上)の"],
+  ["600","helpful","役立つ、助けになる"],
+  ["600","complaint","苦情、クレーム"],
+  ["600","related","関連した"],
+  ["600","simply","単純に、単に"],
+  ["600","unique","他にはない、独自の、特有の"],
+  ["600","concerning","～に関する"],
+  ["600","reputation","評判"],
+  ["600","ability","能力"],
+  ["600","arrival","到着"],
+  ["600","familiar","よく知っている、おなじみの"],
+  ["600","ideal","理想的な"],
+  ["600","maintain","維持する、主張する"],
+  ["600","landscaping","造園"],
+  ["600","organize","(イベントなどを)計画する、取りまとめる、組織化する"],
+  ["600","significant","かなりの、大幅な、重要な"],
+  ["600","occasion","特別な行事 (何かが起こる)時、好機"],
+  ["600","standard","基準 標準の"],
+  ["600","background","経歴、背景"],
+  ["600","guided","ガイド付きの"],
+  ["600","advanced","進んだ、上級の、高度な"],
+  ["600","alternative","代わりの 代案"],
+  ["600","confident","確信している、自信がある"],
+  ["600","decade","10年間、10年"],
+  ["600","initial","初めの、当初の"],
+  ["600","separate","分かれた、別々の 分ける"],
+  ["600","celebration","お祝い、祝典"],
+  ["600","concern","心配、懸念、関心事"],
+  ["600","environment","環境"],
+  ["600","operate","操作する、運営する"],
+  ["600","various","さまざまな"],
+  ["600","brief","短い"],
+  ["600","full-time","常勤の"],
+  ["600","overall","全体の 全体として"],
+  ["600","achieve","達成する"],
+  ["600","basis","ベース、基準、根拠"],
+  ["600","complex","複合施設、集合住宅 複雑な"],
+  ["600","delighted","とても喜んでいる"],
+  ["600","obtain","得る、取得する"],
+  ["600","honor","称える、(契約等を)守る 名誉"],
+  ["600","properly","ちゃんと、適切に"],
+  ["600","suitable","ふさわしい、適切な"],
+  ["600","electronic","電子の、電子的な"],
+  ["600","finalize","取りまとめる、仕上げる、最終決定する"],
+  ["600","generous","寛大な、気前のよい"],
+  ["600","preparation","準備、用意"],
+  ["600","duty","任務、職務、関税"],
+  ["600","earn","得る、もたらす"],
+  ["600","willing","〜することを嫌がらない、～する気がある"],
+  ["600","worth","価値がある"],
+  ["600","fund","資金を提供する 資金、基金"],
+  ["600","overnight","一晩の、翌日配送の 一晩"],
+  ["600","particularly","特に"],
+  ["600","aspect","面、局面"],
+  ["600","hesitate","ためらう"],
+  ["600","involved","関わった"],
+  ["600","regularly","定期的に"],
+  ["600","scholarship","奨学金"],
+  ["600","shortly","じきに、まもなく"],
+  ["600","automobile","自動車の 自動車"],
+  ["600","deposit","頭金、敷金、保証金 預け入れる"],
+  ["600","contain","含む、所有する"],
+  ["600","content","内容、中身 満足している"],
+  ["600","proof","証拠、証明"],
+  ["600","affect","影響する"],
+  ["600","recognize","(業績等を)認める、(人を)称える、識別する"],
+  ["600","represent","代表を務める、相当する、表す"],
+  ["600","transfer","転勤させる(する)、移動させる(する) 転勤、移動"],
+  ["600","anniversary","～周年、記念日"],
+  ["600","automatically","自動的に"],
+  ["600","capacity","(生産)能力、収容能力、役割"],
+  ["600","destination","目的地、行き先"],
+  ["600","grant","補助金、助成金 与える、許可する"],
+  ["600","publish","出版する"],
+  ["600","accompany","添付する、同行する"],
+  ["600","economic","経済の、経済上の"],
+  ["600","extremely","きわめて、非常に"],
+  ["600","institution","機関、団体、しきたり"],
+  ["600","accurate","正確な"],
+  ["600","compete","競う"],
+  ["600","emphasize","強調する"],
+  ["600","aware","気付いて"],
+  ["600","crowded","混雑した"],
+  ["600","praise","ほめる 称賛"],
+  ["600","valuable","貴重な"],
+  ["600","explore","調査する、探索する"],
+  ["600","found","設立する、創立する"],
+  ["600","function","機能 機能する"],
+  ["600","impact","影響"],
+  ["600","amazing","驚くべき"],
+  ["600","assure","保証する、請け合う"],
+  ["600","cooperation","協力"],
+  ["600","popularity","人気"],
+  ["600","permit","許可証 許可する"],
+  ["600","solve","解決する"],
+  ["600","vote","投票する 投票"],
+  ["600","crop","作物、収穫量"],
+  ["600","neighborhood","近所、地域"],
+  ["600","permanent","常設の、常雇用の、永久の"],
+  ["600","regret","残念に思う"],
+  ["600","slightly","わずかに、少し"],
+  ["600","complicated","複雑な"],
+  ["600","factor","要因、要素"],
+  ["600","favorable","好意的な、有利な"],
+  ["600","guarantee","保証する 保証"],
+  ["600","mechanical","機械の"],
+  ["600","priority","優先順位、優先事項"],
+  ["600","relatively","比較的"],
+  ["600","resource","資源"],
+  ["600","shuttle","定期往復便"],
+  ["600","divide","分ける"],
+  ["600","native","出身の 出身の人"],
+  ["600","afford","～する余裕がある"],
+  ["600","income","収入"],
+  ["600","occur","起こる、発生する、行われる"],
+  ["600","saving","値引き、貯蓄、節約"],
+  ["600","findings","(研究・調査の)結果、わかったこと"],
+  ["600","locate","見つける"],
+  ["600","postpone","延期する"],
+  ["600","preserve","保護する、保存する 保護区"],
+  ["600","prove","わかる、判明する、証明する"],
+  ["600","exact","正確な"],
+  ["600","gain","得る 増加、利益"],
+  ["600","labor","労働、労働者"],
+  ["600","regard","みなす、評価する 点"],
+  ["600","closely","密に、注意深く"],
+  ["600","deserve","値する"],
+  ["600","identify","特定する"],
+  ["600","loyal","忠実な"],
+  ["600","promising","有望な"],
+  ["600","stress","強調する ストレス、強調"],
+  ["600","analyze","分析する"],
+  ["600","commission","委託する、委任する 委員会、歩合"],
+  ["600","committed","熱心に取り組む、献身的な"],
+  ["600","comparison","比較"],
+  ["600","component","部品"],
+  ["600","enable","可能にする"],
+  ["600","enjoyable","楽しい"],
+  ["600","existing","従来の、既存の"],
+  ["600","flyer","チラシ、(飛行機の)乗客"],
+  ["600","proceed","進む"],
+  ["600","prevent","防ぐ、阻む"],
+  ["600","alike","同様に よく似た"],
+  ["600","appoint","指名する、任命する"],
+  ["600","connection","接続、つながり、関連、乗り継ぎ"],
+  ["600","eager","～したがる、熱望する"],
+  ["600","ease","容易さ、たやすさ やわらげる、容易にする"],
+  ["600","fairly","かなり"],
+  ["600","absolutely","完全に、間違いなく"],
+  ["600","atmosphere","雰囲気"],
+  ["600","calculate","計算する"],
+  ["600","contrast","対照、はっきりした違い 対照的である"],
+  ["600","monitor","監視する (コンピュータの)モニター"],
+  ["600","occasionally","時々"],
+  ["600","practical","実務の、実際の、実用的な"],
+  ["600","serious","重大な、真剣な、重要な"],
+  ["600","strength","強さ、強度、(液体等の)濃さ"],
+  ["600","equally","同じように、均等に"],
+  ["600","import","輸入、輸入品 輸入する"],
+  ["600","informal","非公式の、カジュアルな"],
+  ["730","lately","最近、この頃"],
+  ["730","profession","専門的職業"],
+  ["730","supervisor","上司、責任者"],
+  ["730","ensure","保証する、請け合う"],
+  ["730","submission","提出物、提出"],
+  ["730","notify","知らせる"],
+  ["730","definitely","間違いなく、絶対に"],
+  ["730","eligible","資格がある"],
+  ["730","paperwork","書類、書類作業"],
+  ["730","complimentary","無料の"],
+  ["730","revise","修正する、見直す"],
+  ["730","track","追跡する 線路、走路"],
+  ["730","administrative","管理の"],
+  ["730","retail","小売り"],
+  ["730","inventory","在庫(表)、棚卸"],
+  ["730","extensive","詳細な、幅広い、大規模な"],
+  ["730","promotional","販売促進用の、販促の"],
+  ["730","catering","仕出し、出前、ケータリング"],
+  ["730","wildlife","野生動物"],
+  ["730","assign","割り当てる、任命する"],
+  ["730","imply","ほのめかす、暗示する"],
+  ["730","banquet","夕食会"],
+  ["730","valid","有効な"],
+  ["730","affordable","手ごろな"],
+  ["730","renovate","改装する"],
+  ["730","guidelines","指針、ガイドライン"],
+  ["730","certificate","認定証、修了証"],
+  ["730","innovative","革新的な"],
+  ["730","agenda","議題、協議事項"],
+  ["730","assembly","組立、集会"],
+  ["730","install","設置する、導入する、インストールする"],
+  ["730","orientation","新入社員向け説明会"],
+  ["730","renowned","名高い、著名な"],
+  ["730","appropriate","適切な、適した"],
+  ["730","ingredient","(料理の)材料"],
+  ["730","storage","保管、貯蔵"],
+  ["730","beverage","飲料"],
+  ["730","prior","前の"],
+  ["730","merger","合併、統合"],
+  ["730","inn","宿、ホテル"],
+  ["730","equip","備え付ける、装備する"],
+  ["730","summary","要約"],
+  ["730","lease","賃貸借(契約) 賃貸借する"],
+  ["730","defective","欠陥のある、不良の"],
+  ["730","quarterly","年に4回の、四半期ごとの"],
+  ["730","extended","長期の、長時間の"],
+  ["730","architect","建築家"],
+  ["730","grocery","食品雑貨の 食品雑貨"],
+  ["730","sculpture","彫刻"],
+  ["730","itinerary","旅程表"],
+  ["730","directory","名簿"],
+  ["730","expire","期限が切れる"],
+  ["730","vendor","業者、露天商"],
+  ["730","colleague","同僚"],
+  ["730","patron","愛用者、利用者"],
+  ["730","relocate","移転させる、引っ越す"],
+  ["730","tourism","観光事業"],
+  ["730","remodel","改築する、リフォームする"],
+  ["730","consumer","消費者"],
+  ["730","inspect","検査する"],
+  ["730","numerous","数多くの"],
+  ["730","payroll","給与、給与管理、賃金台帳"],
+  ["730","qualified","資格のある、適任の"],
+  ["730","appliance","電化製品"],
+  ["730","competitive","他に負けない、競争の激しい"],
+  ["730","specialize","専門とする"],
+  ["730","questionnaire","アンケート用紙"],
+  ["730","approximately","おおよそ、約"],
+  ["730","contribute","貢献する、寄付する"],
+  ["730","productivity","生産性"],
+  ["730","promptly","すばやく、きっかりに、即座に"],
+  ["730","strategy","戦略"],
+  ["730","dedicated","献身的な、専用の、特化した"],
+  ["730","exceptional","並外れた、非常に素晴らしい"],
+  ["730","luncheon","昼食会"],
+  ["730","exceed","超える"],
+  ["730","multiple","複数の"],
+  ["730","specify","明確に述べる、明記する"],
+  ["730","venue","会場"],
+  ["730","household","家庭用の 家庭"],
+  ["730","evaluate","評価する"],
+  ["730","negotiate","交渉する"],
+  ["730","booking","予約"],
+  ["730","circulation","発行部数、流通、(図書館の)貸出"],
+  ["730","completion","完了、終了"],
+  ["730","relevant","関連した"],
+  ["730","thorough","徹底的な"],
+  ["730","via","～を経由して"],
+  ["730","workplace","職場"],
+  ["730","accommodations","宿泊施設"],
+  ["730","flexible","柔軟な、フレキシブルな"],
+  ["730","predict","予測する"],
+  ["730","preference","好み、希望"],
+  ["730","substantial","かなりの、頑丈な"],
+  ["730","accessible","到達できる、利用できる"],
+  ["730","coverage","報道、(保険の)補償"],
+  ["730","generate","生み出す"],
+  ["730","refreshment","軽い飲食物"],
+  ["730","reliable","信頼できる、頼りになる"],
+  ["730","revenue","収入"],
+  ["730","fund-raising","資金調達のための、慈善の"],
+  ["730","accomplished","熟達した、スキルの高い"],
+  ["730","acquire","買収する、得る、獲得する"],
+  ["730","accordingly","それに応じて、結果として"],
+  ["730","critic","評論家、批評家"],
+  ["730","highlight","強調する、スポットを当てる 見どころ"],
+  ["730","profile","人物紹介する プロフィール"],
+  ["730","motivate","やる気にさせる"],
+  ["730","subscription","購読、加入、会費"],
+  ["730","encounter","(問題や困難に)直面する、遭う、出くわす"],
+  ["730","luxury","高級な 高級、ぜいたく"],
+  ["730","prohibit","禁止する"],
+  ["730","resolve","解決する"],
+  ["730","restore","復旧させる、取り戻す、修復する"],
+  ["730","surrounding","周辺の"],
+  ["730","alert","(重要なことを)知らせる 警戒した 警報"],
+  ["730","anticipated","待ち望まれた"],
+  ["730","consistently","常に、変わらず"],
+  ["730","dairy","乳製品、酪農場、酪農業"],
+  ["730","phase","段階"],
+  ["730","manuscript","原稿"],
+  ["730","overtime","残業 時間外に"],
+  ["730","premises","敷地"],
+  ["730","utility","公共料金、公共サービス"],
+  ["730","laundry","洗濯(物)"],
+  ["730","enthusiastic","熱心な、関心が高い、乗り気である"],
+  ["730","outline","概要を説明する 概要"],
+  ["730","packet","小包、袋"],
+  ["730","retain","保管する"],
+  ["730","belongings","所持品、所有物"],
+  ["730","conservation","節約、環境保護"],
+  ["730","routine","所定の、日常的に行われる"],
+  ["730","urban","都会の、都市の、都会での"],
+  ["730","workforce","全従業員"],
+  ["730","biography","人物紹介、伝記"],
+  ["730","ownership","所有(権)、所有者であること"],
+  ["730","pastry","焼き菓子"],
+  ["730","tenant","賃借人、入居者"],
+  ["730","workload","仕事量"],
+  ["730","sufficient","十分な"],
+  ["730","characteristic","特徴 特徴的な"],
+  ["730","combined","共同の、連合の"],
+  ["730","conclude","終わる、終える、結論を出す"],
+  ["730","associate","関連付ける 同僚、アシスタント"],
+  ["730","conflict","衝突、対立"],
+  ["730","investment","投資"],
+  ["730","physician","医師"],
+  ["730","token","印"],
+  ["730","partial","部分的な、一部の"],
+  ["730","resume","再開する"],
+  ["730","dealership","販売特約店"],
+  ["730","garment","衣料品"],
+  ["730","implement","実行する、実施する"],
+  ["730","paycheck","給与、給与小切手"],
+  ["730","recruit","採用する、募集する 新人"],
+  ["730","substitute","～を代わりに用いる 代わりを務める人、代用品"],
+  ["730","typically","通常、典型的に"],
+  ["730","authorize","公認する、権限を与える"],
+  ["730","comparable","同等の、匹敵する、類似の"],
+  ["730","faculty","(大学の)教員、学部"],
+  ["730","initiative","新しい計画、主導権"],
+  ["730","postage","郵便料金"],
+  ["730","afterwards","その後で"],
+  ["730","aim","目指す、狙う 目標、狙い"],
+  ["730","generally","おおむね、通常、一般的に"],
+  ["730","occupied","(部屋・座席・ベッド等が)使われている"],
+  ["730","solid","確かな、信頼できる"],
+  ["730","attempt","試み 試みる"],
+  ["730","authority","権限、権力、権威、当局"],
+  ["730","domestic","国内の"],
+  ["730","permission","許可"],
+  ["730","presence","存在感、出席"],
+  ["730","rapidly","急速に"],
+  ["730","relief","安心感、(苦痛・悩み等の)緩和"],
+  ["730","reward","報いる、ほうびを与える 報酬、ほうび"],
+  ["730","translate","翻訳する"],
+  ["730","circumstance","状況"],
+  ["730","contrary","正反対の 正反対"],
+  ["730","eventually","最終的には、結局"],
+  ["730","expose","さらす、触れさせる、暴露する"],
+  ["730","panel","グループ、パネル"],
+  ["730","portion","部分、一人分の食事"],
+  ["730","primary","主な"],
+  ["730","remark","(スピーチでの)言葉、コメント、意見"],
+  ["730","timely","タイミングの良い、タイムリーな"],
+  ["730","commonly","一般に、通常、普通に"],
+  ["730","consult","(医者、弁護士等の専門家に)相談する"],
+  ["730","convert","改造する、変える"],
+  ["730","obligation","義務"],
+  ["730","resign","辞職する、辞任する"],
+  ["730","securely","しっかりと、安全に"],
+  ["730","strive","懸命に努力する"],
+  ["730","timeline","予定表"],
+  ["730","urge","強く促す"],
+  ["730","acknowledge","(受け取ったことを)知らせる、認める"],
+  ["730","diverse","多種多様な、たくさんの種類の"],
+  ["730","transaction","取引"],
+  ["730","lack","不足 ～が不足している"],
+  ["730","essential","最も重要な、必要不可欠な、本質的な"],
+  ["730","majority","大多数、大部分"],
+  ["730","observe","気付く、順守する、観察する"],
+  ["730","possess","持つ、所有する"],
+  ["730","sharply","急激に、はっきりと"],
+  ["730","adjustment","調整、調節"],
+  ["730","aisle","通路"],
+  ["730","capture","(映像や写真に)記録する、とらえる"],
+  ["730","consist","～から成る"],
+  ["730","desirable","望ましい"],
+  ["730","heavily","大量に、非常に頻繁に"],
+  ["730","investigate","調査する"],
+  ["730","measurement","寸法、測定"],
+  ["730","urgent","緊急の"],
+  ["730","checkout","レジ、チェックアウト"],
+  ["730","dispose","処分する"],
+  ["730","modify","修正する"],
+  ["730","outlet","店舗、コンセント"],
+  ["730","prescription","処方せん"],
+  ["730","situated","位置している"],
+  ["730","surprisingly","驚いたことに"],
+  ["730","transform","(姿、形、性質等を)一変させる"],
+  ["730","undergo","(検査、修理等を)経験する、受ける"],
+  ["730","blueprint","設計図、青写真"],
+  ["730","boost","押し上げる、引き上げる 押し上げること"],
+  ["730","considerably","かなり"],
+  ["730","eliminate","取り除く、排除する"],
+  ["730","exclusively","限定で、独占的に"],
+  ["730","leak","漏れる、漏らす 漏れ"],
+  ["730","preliminary","仮の、暫定の、本番前の"],
+  ["730","sophisticated","洗練された、高性能の"],
+  ["730","statistics","統計、統計学"],
+  ["730","vacant","空の、空いた、欠員の"],
+  ["730","evidence","証拠、証明"],
+  ["730","excursion","お出かけ、小旅行"],
+  ["730","influence","影響を与える 影響"],
+  ["730","ordinary","普通の、通常の"],
+  ["730","reject","却下する、拒否する"],
+  ["730","tailor","(ニーズや目的に合うように)合わせる、調整する"],
+  ["730","assume","引き受ける、思い込む、仮定する"],
+  ["730","engagement","約束"],
+  ["730","fame","名声"],
+  ["730","modest","少しの、高価ではない、謙虚な"],
+  ["730","patent","特許"],
+  ["730","pursue","追及する、追い求める"],
+  ["730","remote","人里離れた、可能性が低い"],
+  ["730","reveal","明らかにする"],
+  ["730","allowance","手当、小遣い、許容量"],
+  ["730","crucial","非常に重要な"],
+  ["730","distinguished","際立って優れた、傑出した"],
+  ["730","disturb","邪魔する、悩ませる"],
+  ["730","fluent","流ちょうな、堪能な"],
+  ["730","fulfill","満たす、果たす"],
+  ["730","objective","目的、目標"],
+  ["730","restrict","制限する"],
+  ["730","steadily","着実に"],
+  ["730","adequate","(要求を満たすのに)十分な、適切な"],
+  ["730","assessment","評価、見積もり"],
+  ["730","attribute","起因すると考える、おかげであるとする"],
+  ["730","beforehand","あらかじめ、事前に"],
+  ["730","challenging","(困難だが)やりがいのある"],
+  ["730","endeavor","努力、試み 努力する"],
+  ["730","inspiring","やる気が出るような、活気づける"],
+  ["730","remarkable","驚くべき、注目すべき"],
+  ["730","measure","対策、手段 測定する、評価する"],
+  ["730","struggle","奮闘する"],
+  ["730","wage","賃金"],
+  ["730","adapt","適応する、適応させる、改作する"],
+  ["730","ambitious","意欲的な、野心的な"],
+  ["730","capable","能力がある"],
+  ["730","consequence","(～が招いた)結果"],
+  ["730","impose","課す、負わせる、強制する"],
+  ["730","latter","後者"],
+  ["730","output","生産高、生産量"],
+  ["730","proudly","誇らしげに、堂々と"],
+  ["730","stable","安定した"],
+  ["730","transition","移行、転身"],
+  ["730","consent","同意"],
+  ["730","dependable","信頼できる"],
+  ["730","diligent","勤勉な、まじめな"],
+  ["730","illustrate","(例や図表を使って)説明する"],
+  ["730","independently","単独で、独立して"],
+  ["730","mission","使命、ミッション"],
+  ["730","moderate","ほどほどの、適度な"],
+  ["730","outlook","見通し、モノの見方"],
+  ["730","precisely","正確に"],
+  ["730","concentrated","集中的な、濃縮された"],
+  ["730","ample","十分な、あり余るほどの"],
+  ["730","asset","財産、役立つ人やモノ"],
+  ["730","controversial","議論を引き起こす、議論の的になる"],
+  ["730","disappointing","期待外れの、がっかりさせるような"],
+  ["730","instrumental","重要な役割を果たす"],
+  ["730","interruption","中断"],
+  ["730","perspective","観点、見方、考え方"],
+  ["730","scope","範囲、余地"],
+  ["730","speculation","推測、推量"],
+  ["730","supplement","補う 付録、付記、栄養補助食品"],
+  ["730","understaffed","人手不足の"],
+  ["730","rarely","めったに～しない、まれに"],
+  ["730","caution","注意、警告 注意する、警告する"],
+  ["730","legislation","法律、法制化"],
+  ["730","logical","妥当な、論理的な、筋の通った"],
+  ["860","lumber","材木、製材"],
+  ["860","reverse","反対の"],
+  ["860","voluntary","自主的な、任意の"],
+  ["860","contractor","請負業者、契約業者"],
+  ["860","on-site","社内の、現場の その場で"],
+  ["860","comprehensive","総合的な、包括的な"],
+  ["860","confidential","機密の、秘密の"],
+  ["860","expertise","専門知識"],
+  ["860","premier","最高の、第一位の"],
+  ["860","souvenir","土産物"],
+  ["860","rafting","(いかだやゴムボートでの)川下り"],
+  ["860","compartment","一区画"],
+  ["860","fabric","生地、織物"],
+  ["860","spacious","広々とした、ゆったりした"],
+  ["860","upgrade","改良、アップグレード 改良する"],
+  ["860","showcase","披露する お披露目の場、ショーケース"],
+  ["860","commuter","通勤者"],
+  ["860","enhance","向上させる、強化する"],
+  ["860","freight","貨物、輸送、輸送料 輸送する"],
+  ["860","nominate","(候補として)推薦する、ノミネートする"],
+  ["860","discontinued","(製造・販売が)終了した"],
+  ["860","mentoring","メンター制度"],
+  ["860","personalized","個人に合わせた、名前入りの"],
+  ["860","pharmacy","薬局"],
+  ["860","excerpt","抜粋、引用"],
+  ["860","publicize","宣伝する"],
+  ["860","tuition","授業料"],
+  ["860","compliance","(法律・規則等の)順守"],
+  ["860","clarify","はっきりさせる、明確にする"],
+  ["860","municipal","市の、市営の"],
+  ["860","respectively","それぞれ"],
+  ["860","durable","耐久性がある、丈夫な"],
+  ["860","landmark","名所、目印、重要な出来事"],
+  ["860","portfolio","作品集、有価証券一覧"],
+  ["860","recipient","受取人、受賞者"],
+  ["860","prototype","試作品、原型"],
+  ["860","transit","輸送"],
+  ["860","verify","確認する、検証する、認証する"],
+  ["860","managerial","管理職の、経営上の"],
+  ["860","culinary","料理の"],
+  ["860","attire","服装"],
+  ["860","reimburse","払い戻す"],
+  ["860","courteous","礼儀正しい"],
+  ["860","furnished","家具付きの"],
+  ["860","knowledgeable","知識が豊富な"],
+  ["860","craftspeople","職人"],
+  ["860","delete","削除する"],
+  ["860","emerging","新たに現れた、新興の"],
+  ["860","enroll","登録する、入会する、入学する"],
+  ["860","proficiency","熟達、スキルの高さ、高い能力"],
+  ["860","scenic","眺めがいい、景色の"],
+  ["860","state-of-the-art","最新式の、最先端の"],
+  ["860","cuisine","料理"],
+  ["860","acclaimed","絶賛されている"],
+  ["860","certified","有資格の、公認の"],
+  ["860","medication","薬"],
+  ["860","overview","概略、概況"],
+  ["860","resistant","耐えられる、抵抗力のある"],
+  ["860","superb","素晴らしい"],
+  ["860","array","大量、多数"],
+  ["860","informative","有益な"],
+  ["860","nationwide","全国的な 全国的に"],
+  ["860","outdated","時代遅れの"],
+  ["860","shareholder","株主"],
+  ["860","voucher","引換券"],
+  ["860","adjacent","隣接した"],
+  ["860","correspondence","(手紙やメールでの)やり取り"],
+  ["860","detergent","洗剤"],
+  ["860","duration","継続期間"],
+  ["860","functional","機能を果たせる、機能的な"],
+  ["860","hands-on","実地の、実用的な"],
+  ["860","intensive","集中的な"],
+  ["860","last-minute","土壇場の、間際になっての"],
+  ["860","thrilled","とてもわくわくして、とても興奮して"],
+  ["860","spectacular","壮観な、目を見張るほどの"],
+  ["860","entrepreneur","起業家"],
+  ["860","introductory","入門の、最初の、お試しの"],
+  ["860","minimize","最小限に抑える、最小化する"],
+  ["860","prestigious","権威のある、誉れ高い"],
+  ["860","screening","上映、検査"],
+  ["860","amenity","生活を便利に(楽しく)するもの"],
+  ["860","lengthy","長期にわたる、冗長な"],
+  ["860","compensate","補償する"],
+  ["860","misplace","紛失する、置き忘れる"],
+  ["860","notable","注目すべき、有名な"],
+  ["860","subsidiary","子会社"],
+  ["860","authentic","本物の"],
+  ["860","designated","指定された、指名された"],
+  ["860","disruption","混乱、妨げ"],
+  ["860","fragile","壊れやすい、はかない"],
+  ["860","ongoing","進行中の、続いている"],
+  ["860","periodical","定期刊行物"],
+  ["860","plumber","配管工"],
+  ["860","incur","(損失や罰金等を)受ける"],
+  ["860","oversee","監督する"],
+  ["860","retrieve","(PCから情報を)取り出す、取り戻す"],
+  ["860","reunion","同窓会、再会"],
+  ["860","rigorous","厳格な、厳密な"],
+  ["860","specification","仕様(書)"],
+  ["860","tentative","仮の"],
+  ["860","tutorial","指導書、個別指導"],
+  ["860","apprentice","見習い、実習生"],
+  ["860","bid","入札 入札する"],
+  ["860","discard","捨てる"],
+  ["860","outing","外出、お出かけ"],
+  ["860","overwhelmingly","圧倒的に"],
+  ["860","proceeds","収益"],
+  ["860","refrain","差し控える"],
+  ["860","inclement","荒れ模様の"],
+  ["860","novice","初心者"],
+  ["860","activate","使えるようにする、始動させる"],
+  ["860","anecdote","逸話"],
+  ["860","collaboration","協力、協同"],
+  ["860","commemorate","(記念日や人を)祝う、記念する"],
+  ["860","duplicate","複製の 複製 複製を取る"],
+  ["860","intermission","休憩時間"],
+  ["860","fertilizer","肥料"],
+  ["860","proofread","校正する"],
+  ["860","solicit","求める、懇願する"],
+  ["860","unveil","披露する、公表する"],
+  ["860","applicable","適用される、あてはまる"],
+  ["860","commend","ほめる"],
+  ["860","complement","合う、補完する"],
+  ["860","incentive","動機付け、やる気を起こさせるもの"],
+  ["860","incorporate","取り入れる、組み込む"],
+  ["860","lapse","失効する、うっかりミスをする 過失"],
+  ["860","picturesque","絵のように美しい"],
+  ["860","prospective","見込みのある、将来の"],
+  ["860","simplify","簡素化する、単純にする"],
+  ["860","surpass","超える"],
+  ["860","surplus","余分な 余り"],
+  ["860","withstand","耐える"],
+  ["860","advocate","提唱者、支持者 提唱する"],
+  ["860","aspiring","～志望の、～になろうとする"],
+  ["860","assorted","詰め合わせの"],
+  ["860","credentials","資格、経歴、資質"],
+  ["860","interoffice","社内の、オフィス間の"],
+  ["860","malfunction","故障 故障する"],
+  ["860","mutually","互いに、相互に"],
+  ["860","periodically","定期的に"],
+  ["860","copyright","著作権"],
+  ["860","nutritious","栄養のある"],
+  ["860","obstruct","(通路や視界を)ふさぐ、さえぎる"],
+  ["860","abundant","豊富な、十分な"],
+  ["860","agreeable","快適な、フレンドリーな、合意可能な"],
+  ["860","compromise","妥協、妥協点 妥協する"],
+  ["860","continuous","途切れない、絶え間のない"],
+  ["860","dominant","支配的な、圧倒的な"],
+  ["860","exhausted","疲れ切った"],
+  ["860","fierce","熾烈(しれつ)な"],
+  ["860","prosperous","繁栄している、裕福な"],
+  ["860","quote","提示価格、引用 価格を提示する"],
+  ["860","reluctant","気乗りしない、渋っている"],
+  ["860","remedy","改善策、治療薬 改善する"],
+  ["860","solely","唯一、一人で、単独で"],
+  ["860","vital","不可欠な、非常に重要な"],
+  ["860","revitalize","再活性化する、復興する"],
+  ["860","commence","始まる"],
+  ["860","countless","数えきれないほどの、無数の"],
+  ["860","devise","考案する、立案する"],
+  ["860","execute","実行する"],
+  ["860","foster","促進する、養う"],
+  ["860","initiate","始める"],
+  ["860","insight","洞察、洞察力"],
+  ["860","misleading","誤解を招く恐れのある"],
+  ["860","precaution","予防策、予防措置"],
+  ["860","transparent","透明の"],
+  ["860","coincide","同時に起こる"],
+  ["860","concise","簡潔な"],
+  ["860","delegation","代表団、(権限等の)委譲"],
+  ["860","diagnosis","診断"],
+  ["860","enforce","施行する、実行する、強制する"],
+  ["860","hypothesis","仮説"],
+  ["860","predecessor","前任者、前機種"],
+  ["860","prominently","目立って、傑出して"],
+  ["860","adoption","採用"],
+  ["860","accelerate","加速させる、拍車をかける"],
+  ["860","adhere","(規則や法律等に)忠実に従う、接着する"],
+  ["860","allocate","割り当てる"],
+  ["860","appraisal","査定、評価"],
+  ["860","compile","取りまとめる、編集する"],
+  ["860","conform","(規則や周囲の状況等に)合わせる、一致する"],
+  ["860","constraint","制約"],
+  ["860","distraction","気を散らすもの、妨げになるもの"],
+  ["860","facilitate","容易にする、促進する"],
+  ["860","integral","不可欠の"],
+  ["860","interact","交流する"],
+  ["860","persistence","粘り強さ"],
+  ["860","quota","ノルマ、割り当て"],
+  ["860","congested","渋滞した"],
+  ["860","deduct","控除する"],
+  ["860","embrace","積極的に受け入れる、快諾する"],
+  ["860","synthetic","合成の"],
+  ["860","terminate","終わらせる"],
+  ["860","detect","見つける、検知する"],
+  ["860","patiently","根気よく、我慢強く"],
+  ["860","ratio","比率"],
+  ["860","dietary","食事の"],
+  ["860","intentionally","意図的に"],
+  ["860","persuasive","説得力のある"],
+  ["990","subsequent","その次の、その後の"],
+  ["990","thoughtfully","深く考えて、思慮深く、配慮して"],
+  ["990","abridged","要約された、短縮された"],
+  ["990","carpool","相乗りする 相乗り"],
+  ["990","compatible","相性が良い、互換性がある、共存できる"],
+  ["990","endorse","推薦する、支持する、裏書きする"],
+  ["990","explicit","明白な、明確な"],
+  ["990","keenly","痛烈に、鋭く"],
+  ["990","plaque","盾"],
+  ["990","dilute","薄める"],
+  ["990","exempt","免除された 免除する"],
+  ["990","centerpiece","中心に置かれる装飾品、中心になるもの"],
+  ["990","oversight","見落とし、手落ち、監視"],
+  ["990","privileged","光栄な"],
+  ["990","recur","再発する"],
+  ["990","skeptical","懐疑的な、疑い深い"],
+  ["990","sustainable","環境に優しい"],
+  ["990","artifact","工芸品、手工品"],
+  ["990","keynote","基調となる 基調"],
+  ["990","breathtaking","息をのむほどの、驚くべき"],
+  ["990","cubicle","個別の作業スペース"],
+  ["990","outage","機能停止期間、供給停止期間"],
+  ["990","perishable","傷みやすい、腐りやすい"],
+  ["990","avid","熱心な、熱烈な"],
+  ["990","detour","回り道 遠回りをする"],
+  ["990","expedite","早める、促進させる"],
+  ["990","vicinity","近所、近辺"],
+  ["990","affiliated","提携した、関連のある"],
+  ["990","definitive","決定版の、最終的な"],
+  ["990","demolish","(建物を)解体する、取り壊す"],
+  ["990","feasible","実現可能な"],
+  ["990","inaugural","最初の、初開催の"],
+  ["990","installment","分割払いの1回分"],
+  ["990","redeemable","(現金や商品と)交換可能な"],
+  ["990","streamline","合理化する、簡略化する"],
+  ["990","insulation","防音、断熱、防音材"],
+  ["990","intact","傷がない"],
+  ["990","occupancy","(ホテル等の)占有、占有人数"],
+  ["990","turnover","離職率"],
+  ["990","unanimous","満場一致の"],
+  ["990","deteriorate","悪化する"],
+  ["990","sturdy","頑丈な、丈夫な"],
+  ["990","adverse","よくない、不利な"],
+  ["990","bearer","(小切手等の)持参人"],
+  ["990","unprecedented","前例のない"],
+  ["990","botanical","植物の、植物学の"],
+  ["990","commensurate","釣り合った、比例した、見合った"],
+  ["990","consecutive","連続した"],
+  ["990","deliberation","熟考"],
+  ["990","discreetly","分別を持って、思慮深く"],
+  ["990","entail","必要とする、～を伴う"],
+  ["990","fluctuation","変動"],
+  ["990","foremost","最高の、トップの"],
+  ["990","imperative","急を要する、非常に重要な"],
+  ["990","mandatory","義務の、強制の"],
+  ["990","meticulously","細心の注意を払って、几帳面に"],
+  ["990","outreach","福祉活動、支援活動"],
+  ["990","tenure","在職期間"],
+  ["990","versatile","多才な"],
+  ["990","alleviate","和らげる、軽減する"],
+  ["990","exemplary","模範的な"],
+  ["990","gala","祝祭、祭り"],
+  ["990","mural","壁画"],
+  ["990","proprietor","オーナー、所有者"],
+  ["990","stagnant","停滞した"],
+  ["990","stringent","非常に厳しい"],
+  ["990","testimonial","推薦文、推薦の声"],
+  ["990","turnout","参加者数、来場者数"],
+  ["990","waive","(権利や条件を)放棄する、適用しない"],
+  ["990","faucet","蛇口"],
+  ["990","amendment","改正、修正"],
+  ["990","anonymous","匿名の"],
+  ["990","fraud","詐欺"],
+  ["990","liable","法的責任がある"],
+  ["990","considerate","思いやりのある、配慮して"],
+  ["990","consolidate","統合する"],
+  ["990","vigorous","活気のある、精力的な"],
+  ["990","retreat","研修旅行"],
+  ["990","custodian","管理人、守衛"],
+  ["990","forge","築く、構築する"],
+  ["990","impending","間近に迫った、差し迫った"],
+  ["990","itemize","項目別にする"],
+  ["990","liaison","連絡係、連絡"],
+  ["990","objectionable","不快な、気に障る"],
+  ["990","repave","再舗装する"],
+  ["990","shortcoming","欠点、短所"],
+  ["990","viable","実行可能な"],
+  ["990","memorabilia","記念品、思い出の品"],
+  ["990","deplete","使い果たす、激減させる"],
+  ["990","jeopardy","危機、危険"],
+  ["990","nominal","ほんのわずかの"],
+  ["990","deviate","それる"],
+  ["990","forfeit","没収される、剥奪される 罰金"],
+  ["990","bolster","強化する、補強する、鼓舞する"],
+  ["990","optimal","ベストの、最適な"],
+  ["990","purveyor","供給業者、販売業者"],
+  ["990","raffle","福引"],
+  ["990","ventilation","換気、風通し"],
+  ["990","unwavering","ゆるがない、断固とした"],
+  ["990","exponentially","加速度的に、指数関数的に"],
+  ["extra_dept","board of directors","役員(会)"],
+  ["extra_dept","accounting department","経理部"],
+  ["extra_dept","marketing department","マーケティング部"],
+  ["extra_dept","human resources department","人事部"],
+  ["extra_dept","personnel department","人事部"],
+  ["extra_dept","administrative department","管理部"],
+  ["extra_dept","legal department","法務部"],
+  ["extra_dept","sales department","営業部"],
+  ["extra_dept","technology department","技術部"],
+  ["extra_dept","security department","保安部"],
+  ["extra_dept","purchasing department","購買部"],
+  ["extra_dept","payroll department","給与部"],
+  ["extra_dept","public relations department","広報部"],
+  ["extra_dept","advertising department","宣伝部"],
+  ["extra_dept","general affairs department","総務部"],
+  ["extra_job","plumber","配管工"],
+  ["extra_job","mechanic","機械工"],
+  ["extra_job","carpenter","大工"],
+  ["extra_job","welder","溶接工"],
+  ["extra_job","electrician","電気屋"],
+  ["extra_job","civil engineer","土木技師"],
+  ["extra_job","dentist","歯科医"],
+  ["extra_job","surgeon","外科医"],
+  ["extra_job","pharmacist","薬剤師"],
+  ["extra_job","veterinarian","獣医 (略 vet)"],
+  ["extra_job","bakery","パン屋"],
+  ["extra_job","florist","花屋"],
+  ["extra_job","cleaner's","クリーニング店"],
+  ["extra_job","locksmith","鍵屋"],
+  ["extra_job","moving company","引っ越し業者"],
+  ["extra_job","hardware store","ホームセンター"],
+  ["extra_job","printer","印刷業者"],
+  ["extra_job","courier","宅配業者"],
+  ["extra_job","real estate agency","不動産屋"],
+  ["extra_job","accountant","会計士"],
+  ["extra_job","auditor","会計監査官"],
+  ["extra_job","anthropologist","人類学者"],
+  ["extra_job","biologist","生物学者"],
+  ["extra_job","botanist","植物学者"],
+  ["extra_job","scientist","科学者"],
+  ["extra_job","chemist","化学者"],
+  ["extra_job","historian","歴史学者"],
+  ["extra_job","lawyer / attorney","弁護士"],
+  ["extra_job","professor","教授"],
+  ["extra_job","paralegal","弁護士補助員"],
+  ["extra_job","journalist","ジャーナリスト"],
+  ["extra_job","announcer","アナウンサー"],
+  ["extra_job","host","司会者"],
+  ["extra_job","correspondent","特派員"],
+  ["extra_job","editor","編集者"],
+  ["extra_job","proofreader","校正者"],
+  ["extra_job","novelist","小説家"],
+  ["extra_job","librarian","図書館員"],
+  ["extra_job","flight attendant","フライトアテンダント"],
+  ["extra_job","travel agent","旅行業者"],
+  ["extra_job","tour guide","ツアーガイド"],
+  ["extra_job","concierge","コンシェルジュ"],
+  ["extra_job","housekeeping","客室係"],
+  ["extra_job","conductor","車掌・指揮者"],
+  ["extra_job","operator","オペレーター"],
+  ["extra_job","architect","建築家"],
+  ["extra_job","photographer","写真家"],
+  ["extra_job","choreographer","振付師"],
+  ["extra_job","actor","俳優"],
+  ["extra_job","actress","女優"],
+  ["extra_job","curator","学芸員"],
+  ["extra_job","receptionist","受付"],
+  ["extra_job","secretary","秘書"],
+  ["extra_job","spokesperson","広報担当者"],
+  ["extra_job","ambassador","大使"],
+  ["extra_job","security guard","警備員"],
+  ["extra_job","cashier","レジ係"],
+  ["extra_major","accounting","会計学"],
+  ["extra_major","architecture","建築学"],
+  ["extra_major","astronomy","天文学"],
+  ["extra_major","biology","生物学"],
+  ["extra_major","chemistry","化学"],
+  ["extra_major","ecology","生態学"],
+  ["extra_major","economics","経済学"],
+  ["extra_major","education","教育学"],
+  ["extra_major","engineering","工学"],
+  ["extra_major","fine arts","芸術"],
+  ["extra_major","history","歴史学"],
+  ["extra_major","journalism","ジャーナリズム"],
+  ["extra_major","law","法学"],
+  ["extra_major","linguistics","言語学"],
+  ["extra_major","literature","文学"],
+  ["extra_major","mathematics","数学"],
+  ["extra_major","medicine","医学"],
+  ["extra_major","philosophy","哲学"],
+  ["extra_major","physics","物理学"],
+  ["extra_major","psychology","心理学"],
+  ["extra_major","robotics","ロボット工学"],
+  ["extra_major","sociology","社会学"],
+  ["extra_prep","due to","～が理由で"],
+  ["extra_prep","owing to","～が理由で"],
+  ["extra_prep","despite","～にもかかわらず"],
+  ["extra_prep","in spite of","～にもかかわらず"],
+  ["extra_prep","notwithstanding","～にもかかわらず"],
+  ["extra_prep","given","～を考慮に入れると"],
+  ["extra_prep","in light of","～を考慮に入れると"],
+  ["extra_prep","in the event of","～の場合"],
+  ["extra_prep","in addition to","～に加えて"],
+  ["extra_prep","except for","～を除いて"],
+  ["extra_prep","regardless of","～とは無関係に"],
+  ["extra_prep","instead of","～の代わりに"],
+  ["extra_conj","whereas","一方で"],
+  ["extra_conj","whether","～であろうと、～かどうか"],
+  ["extra_conj","as soon as","～するとすぐに"],
+  ["extra_conj","once","いったん～したら"],
+  ["extra_conj","unless","～しない限り"],
+  ["extra_conj","now that","今はもう～なので"],
+  ["extra_conj","so that","～するように"],
+  ["extra_conj","in order that","～するように"],
+  ["extra_conj","although","～にもかかわらず"],
+  ["extra_conj","though","～にもかかわらず"],
+  ["extra_conj","even though","～にもかかわらず"],
+  ["extra_conj","even if","たとえ～でも"],
+  ["extra_conj","provided that","～するという条件でのみ"],
+  ["extra_conj","as long as","～する限り"],
+  ["extra_conj","in case","～するといけないので"],
+  ["extra_conj","given that","～を考慮すると"],
+  ["extra_conj","in the event that","～した場合"],
+  ["extra_conj","insofar as","～する限りにおいて"],
+  ["extra_conj","inasmuch as","～する限りにおいて、～するので"],
+  ["extra_adv","therefore","したがって"],
+  ["extra_adv","however","しかしながら"],
+  ["extra_adv","nevertheless","それにもかかわらず"],
+  ["extra_adv","moreover","その上"],
+  ["extra_adv","furthermore","さらに"],
+  ["extra_adv","consequently","結果として"],
+  ["extra_adv","thereby","そうすることで"],
+  ["extra_adv","thus","このようにして"],
+  ["extra_adv","meanwhile","その間"],
+  ["idiom_sched","push back","（日程を）遅らせる、後ろ倒しにする (= postpone / delay)"],
+  ["idiom_sched","put off","〜を延期する、先延ばしにする (= postpone)"],
+  ["idiom_sched","put back","〜を元に戻す、（予定を）遅らせる"],
+  ["idiom_sched","move up","（日程を）早める、前倒しにする (= advance)"],
+  ["idiom_sched","bring forward","（日程を）早める、前倒しにする；（議題を）提出する"],
+  ["idiom_sched","call off","〜を中止する、キャンセルする (= cancel)"],
+  ["idiom_sched","have yet to do","まだ〜していない (= have not done yet)"],
+  ["idiom_sched","be about to do","まさに〜しようとしている、〜するところだ"],
+  ["idiom_sched","ahead of schedule","予定より早く"],
+  ["idiom_sched","behind schedule","予定より遅れて"],
+  ["idiom_sched","on schedule","予定通りに"],
+  ["idiom_sched","on time","時間通りに、定刻に (= punctual)"],
+  ["idiom_sched","in time (for)","（〜に）間に合って"],
+  ["idiom_sched","in advance","前もって、事前に (= beforehand / prior to)"],
+  ["idiom_sched","prior to","〜より前に、〜に先立って (= before)"],
+  ["idiom_sched","as of","〜の時点で、〜付で（以降ずっと）"],
+  ["idiom_sched","until further notice","追って通知があるまで"],
+  ["idiom_sched","without notice","予告なしに、無断で"],
+  ["idiom_sched","at the last minute","土壇場で、直前になって"],
+  ["idiom_sched","around the clock","24時間ぶっ通しで、昼夜休まず"],
+  ["idiom_sched","for the time being","当面の間、差しあたり (= for now)"],
+  ["idiom_sched","in the long run","長い目で見れば、結局は (= eventually)"],
+  ["idiom_sched","sooner or later","遅かれ早かれ、いずれは"],
+  ["idiom_sched","from time to time","時々、折に触れて (= occasionally / now and then)"],
+  ["idiom_sched","take place","（予定された行事などが）行われる、開催される (= be held)"],
+  ["idiom_pv1","carry out","〜を実行する、実施する (= conduct / implement)"],
+  ["idiom_pv1","look into","〜を調査する、詳しく調べる (= investigate / examine)"],
+  ["idiom_pv1","go over","〜を精査する、よく確認する、復習する (= review)"],
+  ["idiom_pv1","go through","〜を詳しく調べる；（審査等を）通過する；（困難を）経験する"],
+  ["idiom_pv1","look over","〜にざっと目を通す、点検する (= inspect)"],
+  ["idiom_pv1","come up with","（アイデア・解決策を）思いつく、考案する (= devise)"],
+  ["idiom_pv1","bring up","（話題・議題を）持ち出す；〜を育てる"],
+  ["idiom_pv1","come up","（問題・急用が）生じる；（話題が）出る"],
+  ["idiom_pv1","point out","〜を指摘する (= indicate)"],
+  ["idiom_pv1","figure out","〜を理解する、解き明かす、算出する (= solve)"],
+  ["idiom_pv1","find out","（調べて）〜を知る、突き止める (= discover)"],
+  ["idiom_pv1","work out","（計画・解決策を）練り上げる；うまくいく；運動する"],
+  ["idiom_pv1","sort out","（問題・混乱を）整理して解決する"],
+  ["idiom_pv1","iron out","（細かい問題・意見の相違を）解消する、調整する"],
+  ["idiom_pv1","rule out","（可能性などを）除外する (= exclude)"],
+  ["idiom_pv1","fill out","（用紙・フォームに）全て記入する (= complete)"],
+  ["idiom_pv1","fill in","（空欄に）書き込む；〜の代理を務める (fill in for)"],
+  ["idiom_pv1","draw up","（契約書・計画書・リストを）作成する (= prepare)"],
+  ["idiom_pv1","put together","〜をまとめる、組み立てる (= assemble / compile)"],
+  ["idiom_pv1","hand in","〜を提出する (= submit / turn in)"],
+  ["idiom_pv1","turn in","〜を提出する (= submit / hand in)"],
+  ["idiom_pv1","hand out","〜を配る、配布する (= distribute)"],
+  ["idiom_pv1","give out","〜を配布する；（機械・体力が）尽きる"],
+  ["idiom_pv1","send out","〜を発送する、一斉送信する (= dispatch)"],
+  ["idiom_pv1","put out","〜を発行・発表する；（火を）消す"],
+  ["idiom_pv1","set up","〜を設置する、設立する、（会議等を）手配する (= establish / arrange)"],
+  ["idiom_pv1","wrap up","（会議・仕事を）終える、締めくくる (= finish / conclude)"],
+  ["idiom_pv1","sum up","〜を要約する (= summarize)"],
+  ["idiom_pv1","follow up (on)","〜について追って対応する、追跡調査する"],
+  ["idiom_pv1","get back to","（人に）後で折り返し連絡・返事をする"],
+  ["idiom_pv1","call back","電話をかけ直す (= return a call)"],
+  ["idiom_pv1","hold on","（電話を切らずに）そのまま待つ"],
+  ["idiom_pv1","hang up","電話を切る；服をハンガーに掛ける"],
+  ["idiom_pv1","get through (to)","（電話が）〜につながる；（仕事・試験を）やり遂げる"],
+  ["idiom_pv1","put through","（電話を）〜に取り次ぐ、つなぐ"],
+  ["idiom_pv1","reach out to","〜に連絡を取る、支援を申し出る (= contact)"],
+  ["idiom_pv1","drop by","〜にちょっと立ち寄る (= stop by)"],
+  ["idiom_pv1","stop by","〜に立ち寄る (= drop by)"],
+  ["idiom_pv1","come over","（話し手の家・職場へ）やって来る"],
+  ["idiom_pv1","show up","現れる、姿を見せる (= appear / turn up)"],
+  ["idiom_pv1","turn up","現れる；見つかる；（音量・温度を）上げる"],
+  ["idiom_pv1","pick up","（人・物を）車で迎えに行く、受け取る；持ち上げる；売上が回復する"],
+  ["idiom_pv1","drop off","（人・荷物を）車で降ろす、届ける；（売上等が）減少する"],
+  ["idiom_pv1","put away","〜を片付ける、元の場所にしまう"],
+  ["idiom_pv1","set aside","（お金・時間・商品を）確保する、取っておく (= reserve / put aside)"],
+  ["idiom_pv2","turn down","（提案・応募・招待を）断る、却下する (= reject / decline)；音量を下げる"],
+  ["idiom_pv2","pass up","（せっかくの機会・好機を）見送る、逃す"],
+  ["idiom_pv2","take over","（業務・役職・会社を）引き継ぐ、買収する (= assume)"],
+  ["idiom_pv2","hand over","（権限・書類・業務を）引き渡す、譲り渡す"],
+  ["idiom_pv2","take on","（仕事・責任を）引き受ける；（人を）雇う"],
+  ["idiom_pv2","step down","（役職から）退く、辞任する (= resign)"],
+  ["idiom_pv2","lay off","（業績悪化等で従業員を）一時解雇する、リストラする"],
+  ["idiom_pv2","stand in (for)","（〜の）代理を務める (= substitute for)"],
+  ["idiom_pv2","fill in for","〜の代理を務める、代役をする"],
+  ["idiom_pv2","cut down on","（経費・消費量などを）削減する、減らす (= reduce)"],
+  ["idiom_pv2","scale back","（計画・予算を）縮小する (= scale down)"],
+  ["idiom_pv2","drive down","（価格・コストを）引き下げる、押し下げる"],
+  ["idiom_pv2","mark down","（商品の価格を）値引きする (= discount)"],
+  ["idiom_pv2","run out of","（在庫・インク・時間・資金を）使い果たす、切らす"],
+  ["idiom_pv2","sell out","売り切れる（受動態 be sold out で「完売している」）"],
+  ["idiom_pv2","phase out","〜を段階的に廃止する"],
+  ["idiom_pv2","roll out","（新製品・新サービスを）本格展開する、発売する (= launch)"],
+  ["idiom_pv2","bring about","（変化・結果を）もたらす、引き起こす (= cause / generate)"],
+  ["idiom_pv2","carry on","（中断後も仕事・会話を）続ける (= continue)"],
+  ["idiom_pv2","keep up with","（変化・需要・進度に）遅れずについていく"],
+  ["idiom_pv2","catch up (with / on)","〜に追いつく；（溜まった仕事・遅れを）取り戻す"],
+  ["idiom_pv2","fall behind","（予定・競争に）遅れをとる"],
+  ["idiom_pv2","make up for","（遅れ・損失・欠点を）埋め合わせる、補償する (= compensate for)"],
+  ["idiom_pv2","put up with","（騒音・不便などを）我慢する、耐える (= tolerate / endure)"],
+  ["idiom_pv2","do without","〜なしで済ませる"],
+  ["idiom_pv2","get rid of","〜を取り除く、処分する、なくす (= eliminate / dispose of)"],
+  ["idiom_pv2","throw away","〜を捨てる、（機会を）無駄にする (= discard)"],
+  ["idiom_pv2","break down","（機械・車両が）故障する；〜を細かく分類・分析する"],
+  ["idiom_pv2","shut down","（工場・システムを）停止する、閉鎖する"],
+  ["idiom_pv2","turn out","結局〜だと判明する、結果的に〜になる (= prove)"],
+  ["idiom_pv2","end up (doing)","結局（最後は）〜することになる"],
+  ["idiom_pv2","fall through","（計画・交渉・契約が）頓挫する、白紙になる"],
+  ["idiom_pv2","pull out (of)","（交渉・市場・契約から）撤退する、手を引く (= withdraw from)"],
+  ["idiom_pv2","go ahead (with)","（計画・工事などを）進める、決行する (= proceed with)"],
+  ["idiom_pv2","back up","（データを）バックアップする；（主張を）裏付ける；車が渋滞する"],
+  ["idiom_pv2","hold up","（交通・作業を）遅らせる、妨げる；〜を持ち上げる"],
+  ["idiom_pv2","run into","〜に偶然出くわす (= bump into)；（問題・困難に）直面する"],
+  ["idiom_pv2","come across","〜を偶然見つける、〜にふと出くわす"],
+  ["idiom_pv2","live up to","（期待・高い基準に）応える、沿う"],
+  ["idiom_pv2","look up to","〜を尊敬する (= respect)"],
+  ["idiom_vprep","comply with","（規則・法律・要求に）従う、順守する (= observe / obey)"],
+  ["idiom_vprep","adhere to","（方針・規則・計画を）厳守する、忠実に守る"],
+  ["idiom_vprep","abide by","（規則・決定に）従う、守る"],
+  ["idiom_vprep","conform to","（基準・規定・仕様に）適合する、一致する"],
+  ["idiom_vprep","refrain from","〜するのを控える、慎む (= avoid)"],
+  ["idiom_vprep","account for","（割合を）占める；〜の理由を説明する"],
+  ["idiom_vprep","deal with","（問題・苦情・顧客に）対処する；〜を扱う (= handle / address)"],
+  ["idiom_vprep","cope with","（困難な状況・ストレスに）うまく対処する"],
+  ["idiom_vprep","participate in","〜に参加する (= take part in / attend)"],
+  ["idiom_vprep","take part in","〜に参加する (= participate in)"],
+  ["idiom_vprep","sign up for","（講座・イベント・サービスに）申し込む、登録する (= register for)"],
+  ["idiom_vprep","enroll in","（講座・学校・会員制度に）登録する、入会する"],
+  ["idiom_vprep","opt out of","〜から脱退する、配信停止・不参加を選ぶ"],
+  ["idiom_vprep","specialize in","〜を専門とする、〜に特化している"],
+  ["idiom_vprep","excel in (at)","〜に秀でている、〜が得意である"],
+  ["idiom_vprep","consist of","〜で構成されている、〜から成る（※受動態にしない！）"],
+  ["idiom_vprep","result in","（結果として）〜を引き起こす、〜に終わる (= lead to)"],
+  ["idiom_vprep","result from","〜が原因で生じる、〜に起因する"],
+  ["idiom_vprep","lead to","〜につながる、〜を引き起こす (= result in)"],
+  ["idiom_vprep","contribute to","〜に貢献する、寄与する；〜の一因となる（※toは前置詞！）"],
+  ["idiom_vprep","look forward to","〜を楽しみに待つ（※toは前置詞なので後ろは名詞/動名詞-ing！）"],
+  ["idiom_vprep","object to","〜に反対する（※toは前置詞なので後ろは名詞/動名詞-ing！）"],
+  ["idiom_vprep","adapt to","（新環境・変化に）適応する、順応する (= adjust to)"],
+  ["idiom_vprep","rely on","〜に頼る、依存する (= depend on / count on)"],
+  ["idiom_vprep","dispose of","〜を処分する、廃棄する (= get rid of)"],
+  ["idiom_vprep","compensate for","〜を補償する、埋め合わせる (= make up for)"],
+  ["idiom_vprep","apologize for","（事柄について）謝罪する（人には apologize to 人 for 事）"],
+  ["idiom_vprep","Substitute A for B","Bの代わりにAを使う（※forの後ろが「元のものB」！）"],
+  ["idiom_vprep","replace A with B","AをBに交換する、取り替える（※withの後ろが「新しいものB」！）"],
+  ["idiom_vprep","attribute A to B","A（結果）をB（原因）のおかげ・せいだとする"],
+  ["idiom_adjprep","be eligible for (to do)","〜の資格がある、対象である (= be qualified for)"],
+  ["idiom_adjprep","be subject to","〜の対象となる、〜を受けやすい（be subject to change＝変更される場合がある）"],
+  ["idiom_adjprep","be responsible for","〜に責任がある、〜を担当している (= be in charge of)"],
+  ["idiom_adjprep","be in charge of","〜を担当している、〜の責任者である"],
+  ["idiom_adjprep","be committed to","〜に専念している、全力で取り組んでいる（※toは前置詞で後ろは名詞/-ingも多い）"],
+  ["idiom_adjprep","be dedicated to","〜に献身している、〜専用である (= be devoted to)"],
+  ["idiom_adjprep","be compatible with","〜と互換性がある、〜と両立する"],
+  ["idiom_adjprep","be consistent with","〜と一致している、〜と矛盾しない"],
+  ["idiom_adjprep","be contingent on","〜を条件としている、〜次第である (= depend on)"],
+  ["idiom_adjprep","be familiar with","（人が物事を）よく知っている、精通している"],
+  ["idiom_adjprep","be aware of","〜に気づいている、〜を認識している"],
+  ["idiom_adjprep","be capable of (doing)","〜する能力がある (= be able to do)"],
+  ["idiom_adjprep","be short of","〜が不足している (= lack / be running low on)"],
+  ["idiom_adjprep","be out of stock","在庫切れである（⇔ in stock 在庫がある）"],
+  ["idiom_adjprep","be out of order","（機械・エレベーター等が）故障している"],
+  ["idiom_adjprep","be supposed to do","〜することになっている、〜するはずだ"],
+  ["idiom_adjprep","be likely to do","〜する可能性が高い、〜しそうだ"],
+  ["idiom_adjprep","be willing to do","いとわず〜する、喜んで〜する気がある"],
+  ["idiom_adjprep","be reluctant to do","〜するのを渋る、気が進まない (= be unwilling to do)"],
+  ["idiom_adjprep","be eager to do","しきりに〜したがっている、熱望している"],
+  ["idiom_adjprep","be bound to do / for","必ず〜するに違いない；〜行きである（bound for Tokyo）"],
+  ["idiom_adjprep","be required to do","〜するよう義務付けられている、求められる"],
+  ["idiom_adjprep","be encouraged to do","〜するよう奨励される、勧められる"],
+  ["idiom_adjprep","be scheduled to do (for)","〜する予定である（名詞なら be scheduled for 日時）"],
+  ["idiom_adjprep","be equipped with","〜を備え付けている、〜が完備されている"],
+  ["idiom_adjprep","be packed with","（人・物で）いっぱいである、混雑している (= be crowded with)"],
+  ["idiom_adjprep","be satisfied with","〜に満足している (= be pleased with / be content with)"],
+  ["idiom_adjprep","be concerned about / with","about＝〜を心配している ／ with＝〜に関係している"],
+  ["idiom_adjprep","be affiliated with","〜と提携している、〜の傘下・系列である"],
+  ["idiom_adjprep","be held liable for","〜に対して法的責任を負わされる"],
+  ["idiom_prep","on behalf of","〜を代表して、〜に代わって"],
+  ["idiom_prep","in accordance with","（規則・契約・希望）に従って、準拠して (= according to)"],
+  ["idiom_prep","in compliance with","（法律・規則）を順守して (= complying with)"],
+  ["idiom_prep","with regard to","〜に関して、〜については (= regarding / concerning / as for)"],
+  ["idiom_prep","in terms of","〜の点では、〜の観点から"],
+  ["idiom_prep","in light of","〜を考慮して、〜に照らして (= given / considering)"],
+  ["idiom_prep","in response to","〜に応えて、〜への返答として"],
+  ["idiom_prep","in favor of","〜に賛成して、〜を支持して"],
+  ["idiom_prep","by means of","〜（という手段・方法）によって"],
+  ["idiom_prep","on account of","〜が理由で、〜のために (= due to / because of / owing to)"],
+  ["idiom_prep","as a result of","〜の結果として"],
+  ["idiom_prep","thanks to","〜のおかげで"],
+  ["idiom_prep","regardless of","〜にかかわらず、〜に関係なく"],
+  ["idiom_prep","in spite of","〜にもかかわらず (= despite ※despiteにはofをつけない！）"],
+  ["idiom_prep","in the event of","万一〜の場合には (= in case of)"],
+  ["idiom_prep","in addition to","〜に加えて (= besides / along with)"],
+  ["idiom_prep","aside from","〜は別として、〜に加えて (= apart from / except for)"],
+  ["idiom_prep","instead of","〜の代わりに (= rather than)"],
+  ["idiom_prep","at the expense of","〜を犠牲にして、〜の負担で"],
+  ["idiom_prep","for the sake of","〜のために、〜の目的で"],
+  ["idiom_prep","take advantage of","（機会・割引・制度を）最大限に利用する、活用する (= make use of)"],
+  ["idiom_prep","keep track of","（進捗・収支・在庫・動向を）常に把握しておく、記録する"],
+  ["idiom_prep","take ~ into account","〜を考慮に入れる (= take ~ into consideration)"],
+  ["idiom_prep","bear (keep) in mind","〜を心に留めておく、覚えておく"],
+  ["idiom_prep","make sure (that)","必ず〜する、〜を確かめる (= ensure)"],
+  ["idiom_prep","come into effect","（法律・新規定が）発効する、施行される (= take effect)"],
+  ["idiom_prep","in person","（電話やネットではなく）直接会って、本人が直接"],
+  ["idiom_prep","free of charge","無料で (= complimentary / at no cost / for free)"],
+  ["idiom_prep","on a regular basis","定期的に (= regularly)"],
+  ["idiom_prep","on a first-come, first-served basis","先着順で"]
+];
+
+
+/**
+ * TOEIC 金フレ 1134 完全マスター Pro - アプリケーションロジック
+ */
+
+// LocalStorage State
+const STORAGE_KEY = 'toeic_kinfre_pro_master_storage_v4';
+const STREAK_KEY = 'toeic_kinfre_streak_v4';
+const CUSTOM_STORAGE_KEY = 'toeic_kinfre_custom_words_v1';
+let userStats = {};
+let customWords = [];
+
+function loadUserStats() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    userStats = raw ? JSON.parse(raw) : {};
+  } catch {
+    userStats = {};
+  }
+}
+loadUserStats();
+
+function saveUserStats() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(userStats));
+  } catch {}
+}
+
+function loadCustomWords() {
+  try {
+    const raw = localStorage.getItem(CUSTOM_STORAGE_KEY);
+    customWords = raw ? JSON.parse(raw) : [];
+  } catch {
+    customWords = [];
+  }
+}
+loadCustomWords();
+
+function saveCustomWords() {
+  try {
+    localStorage.setItem(CUSTOM_STORAGE_KEY, JSON.stringify(customWords));
+  } catch {}
+}
+
+function getAllWords() {
+  return [...MASTER_DATA, ...customWords];
+}
+
+function getWordData(word) {
+  if (!userStats[word]) {
+    userStats[word] = { learned: false, mistakes: 0, bookmarked: false };
+  }
+  return userStats[word];
+}
+
+// Streak Tracking
+function getStreakData() {
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    const raw = localStorage.getItem(STREAK_KEY);
+    if (!raw) {
+      return { streak: 1, lastDate: today, todayCount: 0 };
+    }
+    const data = JSON.parse(raw);
+    if (data.lastDate !== today) {
+      const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+      const isConsecutive = data.lastDate === yesterday;
+      const updated = {
+        streak: isConsecutive ? data.streak + 1 : 1,
+        lastDate: today,
+        todayCount: 0
+      };
+      localStorage.setItem(STREAK_KEY, JSON.stringify(updated));
+      return updated;
+    }
+    return data;
+  } catch {
+    return { streak: 1, lastDate: new Date().toISOString().slice(0, 10), todayCount: 0 };
+  }
+}
+
+function recordLearnedToday() {
+  try {
+    const data = getStreakData();
+    data.todayCount = (data.todayCount || 0) + 1;
+    localStorage.setItem(STREAK_KEY, JSON.stringify(data));
+    updateStreakUI();
+  } catch {}
+}
+
+function updateStreakUI() {
+  const data = getStreakData();
+  const el = document.getElementById('streakDaysText');
+  if (el) el.innerText = `${data.streak}日連続`;
+}
+
+// App Core State
+let currentLevel = '600';
+let currentPart = '0';
+let currentTab = 'card';
+let currentQueueFilter = 'unlearned'; // 'unlearned' | 'mistakes' | 'bookmarked' | 'all'
+let currentQueue = [];
+let currentCardIndex = 0;
+let isFlipped = false;
+let isEnFront = true;
+let isAutoPlaying = false;
+let autoPlayTimer = null;
+let soundEnabled = true;
+
+// Web Audio API Sound Synthesizer
+let audioCtx = null;
+function getAudioContext() {
+  try {
+    if (!audioCtx) {
+      const AudioClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioClass) audioCtx = new AudioClass();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  } catch {
+    return null;
+  }
+}
+
+function playSuccessChime() {
+  if (!soundEnabled) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+  try {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.25);
+  } catch {}
+}
+
+function playErrorTone() {
+  if (!soundEnabled) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+  try {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(220, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(160, ctx.currentTime + 0.18);
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.2);
+  } catch {}
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  const btn = document.getElementById('soundToggleBtn');
+  btn.innerText = soundEnabled ? '🔊' : '🔇';
+  showToast(soundEnabled ? '効果音: ON' : '効果音: OFF');
+}
+
+// Category Label Helper
+function getCategoryShortLabel(code) {
+  if (!code) return '';
+  if (code === '600') return '600点';
+  if (code === '730') return '730点';
+  if (code === '860') return '860点';
+  if (code === '990') return '990点';
+  if (code.startsWith('extra_')) {
+    const sub = code.replace('extra_', '');
+    const map = { dept: '部署', job: '職業', major: '専攻', prep: '前置詞', conj: '接続詞', adv: '接続副詞' };
+    return map[sub] || '付録';
+  }
+  if (code.startsWith('idiom_')) {
+    const sub = code.replace('idiom_', '');
+    const map = { sched: '日程・時間', pv1: '句動詞A', pv2: '句動詞B', vprep: '動詞+前置詞', adjprep: 'be+形容詞', prep: '群前置詞' };
+    return map[sub] || '熟語';
+  }
+  if (code === 'idiom') return '熟語';
+  if (code.startsWith('custom')) {
+    const sub = code.replace('custom_', '');
+    const map = { idiom: '自作熟語', part7: 'Part7頻出', business: 'ビジネス', important: '要注意', other: '自作単語', custom: '自作単語' };
+    return map[sub] || '自作単語';
+  }
+  return code;
+}
+
+// Speech Synthesis
+function speakWord(rawWord) {
+  if (!('speechSynthesis' in window)) {
+    showToast('音声再生に非対応の環境です');
+    return;
+  }
+  try {
+    const cleanWord = rawWord.split('/')[0].replace(/[\(\)]/g, '').trim();
+    window.speechSynthesis.cancel();
+    const ut = new SpeechSynthesisUtterance(cleanWord);
+    ut.lang = 'en-US';
+    ut.rate = 0.95;
+    window.speechSynthesis.speak(ut);
+  } catch {}
+}
+
+function playCurrentAudio() {
+  if (currentQueue.length > 0 && currentQueue[currentCardIndex]) {
+    speakWord(currentQueue[currentCardIndex][1]);
+  }
+}
+
+// Section Parts
+function getPartsForLevel(lvl) {
+  if (lvl === '600') {
+    return [
+      { id: '0', label: 'Part 1 (1〜50語)' },
+      { id: '1', label: 'Part 2 (51〜100語)' },
+      { id: '2', label: 'Part 3 (101〜150語)' },
+      { id: '3', label: 'Part 4 (151〜200語)' },
+      { id: '4', label: 'Part 5 (201〜250語)' },
+      { id: '5', label: 'Part 6 (251〜300語)' },
+      { id: '6', label: 'Part 7 (301〜350語)' },
+      { id: '7', label: 'Part 8 (351〜400語)' },
+      { id: 'all', label: '⭐ 600点全400語まとめ' }
+    ];
+  } else if (lvl === '730') {
+    return [
+      { id: '0', label: 'Part 1 (1〜50語)' },
+      { id: '1', label: 'Part 2 (51〜100語)' },
+      { id: '2', label: 'Part 3 (101〜150語)' },
+      { id: '3', label: 'Part 4 (151〜200語)' },
+      { id: '4', label: 'Part 5 (201〜250語)' },
+      { id: '5', label: 'Part 6 (251〜300語)' },
+      { id: 'all', label: '⭐ 730点全300語まとめ' }
+    ];
+  } else if (lvl === '860') {
+    return [
+      { id: '0', label: 'Part 1 (1〜50語)' },
+      { id: '1', label: 'Part 2 (51〜100語)' },
+      { id: '2', label: 'Part 3 (101〜150語)' },
+      { id: '3', label: 'Part 4 (151〜200語)' },
+      { id: 'all', label: '⭐ 860点全200語まとめ' }
+    ];
+  } else if (lvl === '990') {
+    return [
+      { id: '0', label: 'Part 1 (1〜50語)' },
+      { id: '1', label: 'Part 2 (51〜100語)' },
+      { id: 'all', label: '⭐ 990点全100語まとめ' }
+    ];
+  } else if (lvl === 'extra') {
+    return [
+      { id: 'dept', label: '🏢 主な部署名 (15項目)' },
+      { id: 'job', label: '👷 主な職業 (57項目)' },
+      { id: 'major', label: '🎓 主な専攻・学問名 (22項目)' },
+      { id: 'prep', label: '🔗 押さえておきたい前置詞 (12項目)' },
+      { id: 'conj', label: '🔀 押さえておきたい接続詞 (19項目)' },
+      { id: 'adv', label: '⏩ 押さえておきたい接続副詞 (9項目)' },
+      { id: 'all', label: '⭐ 重要付録 全134項目まとめ' }
+    ];
+  } else if (lvl === 'idiom') {
+    return [
+      { id: 'sched', label: '📅 日程・時間・遅延・変更 (25項目)' },
+      { id: 'pv1', label: '⚡ 最頻出 句動詞 Part 1 (45項目)' },
+      { id: 'pv2', label: '⚡ 最頻出 句動詞 Part 2 (40項目)' },
+      { id: 'vprep', label: '🔗 動詞＋前置詞の定型表現 (30項目)' },
+      { id: 'adjprep', label: '💎 be＋形容詞＋前置詞の必須構文 (30項目)' },
+      { id: 'prep', label: '🚀 接続詞的に使える重要群前置詞 (30項目)' },
+      { id: 'all', label: '⭐ 必須イディオム 全200項目まとめ' }
+    ];
+  } else if (lvl === 'custom') {
+    return [
+      { id: 'all_custom', label: `✏️ 登録済みマイトレーニング (${customWords.length}語)` }
+    ];
+  } else if (lvl === 'weakness') {
+    return [{ id: 'all_mistakes', label: '⚠️ ミスした全単語の総特訓' }];
+  } else if (lvl === 'bookmarks') {
+    return [{ id: 'all_bookmarks', label: '⭐ ブックマーク登録単語' }];
+  }
+  return [];
+}
+
+function getBaseSectionList() {
+  const all = getAllWords();
+  if (currentLevel === 'weakness') {
+    return all.filter(item => getWordData(item[1]).mistakes > 0);
+  }
+  if (currentLevel === 'bookmarks') {
+    return all.filter(item => getWordData(item[1]).bookmarked);
+  }
+  if (currentLevel === 'custom') {
+    return [...customWords];
+  }
+  if (currentLevel === 'idiom') {
+    if (currentPart === 'all') {
+      return MASTER_DATA.filter(item => item[0].startsWith('idiom_'));
+    }
+    return MASTER_DATA.filter(item => item[0] === 'idiom_' + currentPart);
+  }
+  if (currentLevel !== 'extra') {
+    const fullLevelList = MASTER_DATA.filter(item => item[0] === currentLevel);
+    if (currentPart === 'all') return fullLevelList;
+    const pIndex = parseInt(currentPart, 10);
+    return fullLevelList.slice(pIndex * 50, (pIndex + 1) * 50);
+  } else {
+    if (currentPart === 'all') {
+      return MASTER_DATA.filter(item => item[0].startsWith('extra_'));
+    }
+    return MASTER_DATA.filter(item => item[0] === 'extra_' + currentPart);
+  }
+}
+
+function refreshQueue() {
+  const baseList = getBaseSectionList();
+  const totalCount = baseList.length;
+
+  const unlearnedList = baseList.filter(item => !getWordData(item[1]).learned);
+  const mistakesList = baseList.filter(item => getWordData(item[1]).mistakes > 0);
+  const bookmarkList = baseList.filter(item => getWordData(item[1]).bookmarked);
+
+  document.getElementById('unlearnedQueueCount').innerText = unlearnedList.length;
+  document.getElementById('mistakeQueueCount').innerText = mistakesList.length;
+  document.getElementById('bookmarkQueueCount').innerText = bookmarkList.length;
+  document.getElementById('totalQueueCount').innerText = totalCount;
+
+  if (currentQueueFilter === 'unlearned') {
+    currentQueue = [...unlearnedList];
+  } else if (currentQueueFilter === 'mistakes') {
+    currentQueue = [...mistakesList];
+  } else if (currentQueueFilter === 'bookmarked') {
+    currentQueue = [...bookmarkList];
+  } else {
+    currentQueue = [...baseList];
+  }
+
+  const learnedCount = totalCount - unlearnedList.length;
+  const pct = totalCount > 0 ? Math.round((learnedCount / totalCount) * 100) : 0;
+  document.getElementById('sectionProgressText').innerText = `進捗: ${learnedCount} / ${totalCount} (${pct}%)`;
+  document.getElementById('sectionProgressBar').style.width = `${pct}%`;
+
+  // Global total progress
+  const allWords = getAllWords();
+  const totalAll = allWords.length;
+  const learnedAll = allWords.filter(item => getWordData(item[1]).learned).length;
+  const globalPct = totalAll > 0 ? Math.round((learnedAll / totalAll) * 100) : 0;
+  document.getElementById('globalProgressPct').innerText = `${globalPct}%`;
+
+  if (currentCardIndex >= currentQueue.length) {
+    currentCardIndex = Math.max(0, currentQueue.length - 1);
+  }
+
+  renderCurrentCard();
+  renderCurrentSpell();
+  if (currentTab === 'list') renderWordList();
+  if (currentTab === 'analytics') renderAnalytics();
+}
+
+function setQueueFilter(filterType) {
+  const baseList = getBaseSectionList();
+  if (filterType === 'mistakes') {
+    const mistakesCount = baseList.filter(item => getWordData(item[1]).mistakes > 0).length;
+    if (mistakesCount === 0) {
+      showToast('現在、苦手（ミスした単語）はありません！素晴らしい！🎉');
+      return;
+    }
+  } else if (filterType === 'bookmarked') {
+    const bookmarkedCount = baseList.filter(item => getWordData(item[1]).bookmarked).length;
+    if (bookmarkedCount === 0) {
+      showToast('ブックマーク（⭐）された単語はまだありません');
+      return;
+    }
+  }
+
+  currentQueueFilter = filterType;
+  ['unlearned', 'mistakes', 'bookmarked', 'all'].forEach(f => {
+    const btn = document.getElementById(`btnFilter${f.charAt(0).toUpperCase() + f.slice(1)}`);
+    if (f === filterType) {
+      btn.className = 'px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-black shadow-xs transition-all cursor-pointer';
+    } else {
+      btn.className = 'px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer';
+    }
+  });
+  refreshQueue();
+}
+
+// Card Undo Stack
+let cardActionHistory = [];
+
+function handleUndoLastAction() {
+  if (cardActionHistory.length === 0) {
+    showToast('元に戻す操作履歴がありません');
+    return;
+  }
+  const last = cardActionHistory.pop();
+  const wData = getWordData(last.word);
+  wData.learned = last.prevLearned;
+  wData.mistakes = last.prevMistakes;
+  saveUserStats();
+  refreshQueue();
+
+  const idx = currentQueue.findIndex(it => it[1] === last.word);
+  if (idx !== -1) {
+    currentCardIndex = idx;
+  }
+  renderCurrentCard();
+  updateUndoButtonState();
+  showToast(`「${last.word}」の判定を取り消しました ↩️`);
+}
+
+function updateUndoButtonState() {
+  const btn = document.getElementById('btnUndoCard');
+  if (btn) {
+    if (cardActionHistory.length > 0) {
+      btn.disabled = false;
+      btn.className = 'flex items-center gap-1.5 py-1.5 px-3 rounded-xl bg-slate-800 border border-amber-500/40 text-xs font-bold text-amber-400 hover:bg-slate-700 cursor-pointer shadow-sm transition-all';
+    } else {
+      btn.disabled = true;
+      btn.className = 'flex items-center gap-1.5 py-1.5 px-3 rounded-xl bg-slate-800/40 border border-slate-800 text-xs font-bold text-slate-600 opacity-40 cursor-not-allowed transition-all';
+    }
+  }
+}
+
+// 1. FLASHCARD LOGIC
+function renderCurrentCard() {
+  const cardInner = document.getElementById('cardInner');
+  const overlay = document.getElementById('cardCompletedOverlay');
+  isFlipped = false;
+  cardInner.classList.remove('card-flipped');
+
+  if (currentQueue.length === 0) {
+    overlay.classList.remove('hidden');
+    document.getElementById('cardCounterText').innerText = '完了 0 / 0';
+    const iconEl = document.getElementById('overlayIcon');
+    const titleEl = document.getElementById('overlayTitle');
+    const msgEl = document.getElementById('overlayMessage');
+    const optButtons = document.getElementById('overlayOptions');
+
+    if (currentQueueFilter === 'mistakes') {
+      if (iconEl) iconEl.innerText = '✨';
+      if (titleEl) titleEl.innerText = '苦手な単語はありません！🎉';
+      if (msgEl) msgEl.innerText = 'ミスした単語がゼロです！素晴らしい正答率です。未習得の単語学習を続けましょう。';
+      if (optButtons) {
+        optButtons.innerHTML = `
+          <button onclick="setQueueFilter('unlearned')" class="flex-1 py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm transition-all cursor-pointer">
+            未習得単語を学習する ➔
+          </button>
+        `;
+      }
+    } else if (currentQueueFilter === 'bookmarked') {
+      if (iconEl) iconEl.innerText = '⭐';
+      if (titleEl) titleEl.innerText = 'ブックマークはありません';
+      if (msgEl) msgEl.innerText = '単語カードの右上にある星マーク（⭐）を押すと、重点的に復習したい単語をお気に入り登録できます。';
+      if (optButtons) {
+        optButtons.innerHTML = `
+          <button onclick="setQueueFilter('unlearned')" class="flex-1 py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm transition-all cursor-pointer">
+            未習得単語を学習する ➔
+          </button>
+        `;
+      }
+    } else {
+      if (iconEl) iconEl.innerText = '🎉';
+      if (titleEl) titleEl.innerText = 'セクション習得完了！';
+      if (msgEl) msgEl.innerText = 'このセクションの全単語をマスターしました！ミス記録はすべて保存されているので、いつでも安心して復習できます。';
+      if (optButtons) {
+        optButtons.innerHTML = `
+          <button onclick="resetSectionStatus()" class="flex-1 py-3 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 transition-all flex flex-col items-center justify-center cursor-pointer" title="ミス回数は残したまま、単語をもう一度学習対象に戻します">
+            <div class="flex items-center gap-1">
+              <span>🔄 もう一度復習する</span>
+            </div>
+            <span class="text-[10px] text-amber-300/80 mt-0.5">（※ミス記録は保持）</span>
+          </button>
+          <button onclick="setQueueFilter('all')" class="flex-1 py-3 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 transition-all flex items-center justify-center gap-1 cursor-pointer">
+            <span>全単語で確認</span>
+          </button>
+          <button onclick="advanceToNextSection()" class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-1 cursor-pointer">
+            <span>次のPartへ進む ➔</span>
+          </button>
+        `;
+      }
+      if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
+    }
+    return;
+  }
+  overlay.classList.add('hidden');
+
+  const item = currentQueue[currentCardIndex];
+  if (!item) return;
+  const wData = getWordData(item[1]);
+
+  document.getElementById('cardIndexBadge').innerText = `#${currentCardIndex + 1}`;
+  document.getElementById('cardCounterText').innerText = `単語 ${currentCardIndex + 1} / ${currentQueue.length}`;
+
+  const frontWord = isEnFront ? item[1] : item[2];
+  const backWord = isEnFront ? item[2] : item[1];
+
+  document.getElementById('cardWordText').innerText = frontWord;
+  document.getElementById('cardWordSubText').innerText = isEnFront ? item[1] : '';
+  document.getElementById('cardMeaningText').innerText = backWord;
+
+  document.getElementById('cardFrontHintText').innerText = isEnFront ? '👆 タップで日本語訳を表示' : '👆 タップで英単語を表示';
+  document.getElementById('cardBackHeaderLabel').innerText = isEnFront ? '✨ 日本語訳・語義' : '✨ 英単語';
+
+  const catLabel = getCategoryShortLabel(item[0]);
+  document.getElementById('cardCategoryBadge').innerText = catLabel;
+  document.getElementById('cardCategoryBadgeBack').innerText = catLabel;
+
+  // Mistakes
+  const mistakeBadge = document.getElementById('cardMistakeBadge');
+  if (wData.mistakes > 0) {
+    document.getElementById('cardMistakeCount').innerText = wData.mistakes;
+    mistakeBadge.classList.remove('hidden');
+  } else {
+    mistakeBadge.classList.add('hidden');
+  }
+
+  // Bookmark star
+  const starBtn = document.getElementById('cardBookmarkBtn');
+  starBtn.innerText = wData.bookmarked ? '⭐' : '☆';
+  starBtn.className = wData.bookmarked ? 'p-1 rounded-lg text-amber-400 font-bold' : 'p-1 rounded-lg text-slate-400 hover:text-amber-400';
+}
+
+function toggleCardFlip() {
+  const cardInner = document.getElementById('cardInner');
+  isFlipped = !isFlipped;
+  if (isFlipped) cardInner.classList.add('card-flipped');
+  else cardInner.classList.remove('card-flipped');
+}
+
+function toggleCardFrontMode() {
+  isEnFront = !isEnFront;
+  document.getElementById('cardFrontModeBtn').innerText = isEnFront ? '英 ➔ 日' : '日 ➔ 英';
+  renderCurrentCard();
+}
+
+function toggleAutoPlay() {
+  isAutoPlaying = !isAutoPlaying;
+  const btn = document.getElementById('btnAutoPlay');
+  if (isAutoPlaying) {
+    btn.className = 'flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-md font-bold bg-amber-500 text-slate-950 animate-pulse cursor-pointer';
+    btn.innerText = '⏸ 自動再生中';
+    autoPlayTimer = setInterval(() => {
+      const cardInner = document.getElementById('cardInner');
+      if (!isFlipped) {
+        toggleCardFlip();
+        playCurrentAudio();
+      } else {
+        navigateCard(1);
+      }
+    }, 2800);
+  } else {
+    btn.className = 'flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-md font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 cursor-pointer';
+    btn.innerText = '▶ 自動再生';
+    if (autoPlayTimer) clearInterval(autoPlayTimer);
+  }
+}
+
+function navigateCard(delta) {
+  if (currentQueue.length === 0) return;
+  currentCardIndex = (currentCardIndex + delta + currentQueue.length) % currentQueue.length;
+  renderCurrentCard();
+}
+
+function shuffleCurrentQueue() {
+  if (currentQueue.length <= 1) return;
+  for (let i = currentQueue.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [currentQueue[i], currentQueue[j]] = [currentQueue[j], currentQueue[i]];
+  }
+  currentCardIndex = 0;
+  renderCurrentCard();
+  showToast('シャッフルしました 🔀');
+}
+
+function toggleCurrentBookmark() {
+  if (currentQueue.length === 0) return;
+  const item = currentQueue[currentCardIndex];
+  const wData = getWordData(item[1]);
+  wData.bookmarked = !wData.bookmarked;
+  saveUserStats();
+  renderCurrentCard();
+  showToast(wData.bookmarked ? `「${item[1]}」をブックマークしました ⭐` : `「${item[1]}」のブックマークを解除しました`);
+}
+
+function handleMarkCard(learned) {
+  if (currentQueue.length === 0) return;
+  const item = currentQueue[currentCardIndex];
+  if (!item) return;
+  const wData = getWordData(item[1]);
+
+  cardActionHistory.push({
+    word: item[1],
+    prevLearned: wData.learned,
+    prevMistakes: wData.mistakes || 0
+  });
+  updateUndoButtonState();
+
+  if (learned) {
+    wData.learned = true;
+    saveUserStats();
+    playSuccessChime();
+    recordLearnedToday();
+    showToast(`「${item[1]}」を習得済みにしました ✅`);
+
+    if (currentQueueFilter === 'unlearned') {
+      currentQueue.splice(currentCardIndex, 1);
+      if (currentCardIndex >= currentQueue.length) {
+        currentCardIndex = Math.max(0, currentQueue.length - 1);
+      }
+      refreshQueue();
+      return;
+    }
+  } else {
+    wData.mistakes = (wData.mistakes || 0) + 1;
+    saveUserStats();
+    playErrorTone();
+    showToast(`ミス回数を加算しました (累計: ${wData.mistakes}回) ⚠️`);
+  }
+
+  navigateCard(1);
+  refreshQueue();
+}
+
+// 2. 4-CHOICE QUIZ LOGIC
+let quizQuestions = [];
+let quizIndex = 0;
+let quizScore = 0;
+let quizActiveQuestion = null;
+let quizMistakes = [];
+let quizMode = 'en_to_ja'; // 'en_to_ja' | 'ja_to_en' | 'listening'
+let quizTimerLimit = 0; // 0 = unlimited
+let quizTimerInterval = null;
+let quizTimeLeft = 0;
+
+function setQuizMode(mode) {
+  quizMode = mode;
+  ['en_to_ja', 'ja_to_en', 'listening'].forEach(m => {
+    const btn = document.getElementById('qmode_' + m);
+    if (m === mode) {
+      btn.className = 'py-2 px-2 rounded-xl text-xs font-bold border border-amber-400 bg-amber-500 text-slate-950 shadow-sm text-center cursor-pointer';
+    } else {
+      btn.className = 'py-2 px-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700 text-center cursor-pointer';
+    }
+  });
+}
+
+function setQuizTimer(sec) {
+  quizTimerLimit = sec;
+  [0, 10, 8, 5].forEach(s => {
+    const btn = document.getElementById('qtime_' + s);
+    if (s === sec) {
+      btn.className = 'py-1.5 rounded-lg text-xs font-black border border-amber-400 bg-amber-500 text-slate-950 text-center cursor-pointer';
+    } else {
+      btn.className = 'py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-800 text-slate-400 hover:text-white text-center cursor-pointer';
+    }
+  });
+}
+
+function resetQuizScreen() {
+  if (quizTimerInterval) clearInterval(quizTimerInterval);
+  document.getElementById('quizIntro').classList.remove('hidden');
+  document.getElementById('quizActive').classList.add('hidden');
+  document.getElementById('quizResult').classList.add('hidden');
+}
+
+function startQuiz(countLimit = 30, customPool = null) {
+  const pool = customPool ? [...customPool] : [...getBaseSectionList()];
+  if (pool.length === 0) {
+    showToast('出題対象の単語がありません');
+    return;
+  }
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  quizQuestions = countLimit > 0 && countLimit < pool.length ? pool.slice(0, countLimit) : pool;
+  quizIndex = 0;
+  quizScore = 0;
+  quizMistakes = [];
+
+  document.getElementById('quizIntro').classList.add('hidden');
+  document.getElementById('quizResult').classList.add('hidden');
+  document.getElementById('quizActive').classList.remove('hidden');
+
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  if (quizTimerInterval) clearInterval(quizTimerInterval);
+  quizActiveQuestion = quizQuestions[quizIndex];
+  const total = quizQuestions.length;
+
+  document.getElementById('quizProgressNum').innerText = `第 ${quizIndex + 1} / ${total} 問`;
+  document.getElementById('quizCurrentScore').innerText = `スコア: ${quizScore}`;
+  document.getElementById('quizProgressBar').style.width = `${(quizIndex / total) * 100}%`;
+
+  const wordDisplay = document.getElementById('quizWordDisplay');
+  const listeningBox = document.getElementById('quizListeningBox');
+  const instructionBadge = document.getElementById('quizInstructionBadge');
+
+  if (quizMode === 'listening') {
+    instructionBadge.innerText = '音声を聞いて意味を選んでください';
+    wordDisplay.classList.add('hidden');
+    listeningBox.classList.remove('hidden');
+    speakWord(quizActiveQuestion[1]);
+  } else if (quizMode === 'ja_to_en') {
+    instructionBadge.innerText = '日本語に合う正しい英単語を選んでください';
+    wordDisplay.classList.remove('hidden');
+    listeningBox.classList.add('hidden');
+    wordDisplay.innerText = quizActiveQuestion[2];
+  } else {
+    instructionBadge.innerText = '英単語に合う正しい日本語訳を選んでください';
+    wordDisplay.classList.remove('hidden');
+    listeningBox.classList.add('hidden');
+    wordDisplay.innerText = quizActiveQuestion[1];
+    speakWord(quizActiveQuestion[1]);
+  }
+
+  // Timer logic
+  const timerBadge = document.getElementById('quizTimerBadge');
+  if (quizTimerLimit > 0) {
+    quizTimeLeft = quizTimerLimit;
+    timerBadge.classList.remove('hidden');
+    timerBadge.innerText = `⏱ ${quizTimeLeft}s`;
+    quizTimerInterval = setInterval(() => {
+      quizTimeLeft--;
+      timerBadge.innerText = `⏱ ${quizTimeLeft}s`;
+      if (quizTimeLeft <= 0) {
+        clearInterval(quizTimerInterval);
+        handleQuizTimeout();
+      }
+    }, 1000);
+  } else {
+    timerBadge.classList.add('hidden');
+  }
+
+  // Generate 4 options
+  const isTargetEnglish = quizMode === 'ja_to_en';
+  const correctAnswer = isTargetEnglish ? quizActiveQuestion[1] : quizActiveQuestion[2];
+  const options = [correctAnswer];
+  const pool = getAllWords().filter(item => (isTargetEnglish ? item[1] : item[2]) !== correctAnswer);
+
+  while (options.length < 4 && pool.length > 0) {
+    const randItem = pool[Math.floor(Math.random() * pool.length)];
+    const optVal = isTargetEnglish ? randItem[1] : randItem[2];
+    if (!options.includes(optVal)) options.push(optVal);
+  }
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [options[i], options[j]] = [options[j], options[i]];
+  }
+
+  const container = document.getElementById('quizOptionsContainer');
+  container.innerHTML = '';
+  options.forEach((optText, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'w-full text-left py-3.5 px-4 rounded-2xl border-2 border-slate-700 bg-slate-800 text-slate-200 hover:border-amber-400 font-bold text-sm sm:text-base transition-all flex items-center justify-between group active:scale-[0.99] cursor-pointer';
+    btn.innerHTML = `
+      <div class="flex items-center gap-3 min-w-0">
+        <span class="w-6 h-6 rounded-lg bg-slate-900 text-slate-400 flex items-center justify-center text-xs font-mono shrink-0">${i + 1}</span>
+        <span class="truncate">${optText}</span>
+      </div>
+      <span class="text-xs text-slate-400">➔</span>
+    `;
+    btn.onclick = () => selectQuizAnswer(optText, correctAnswer, btn);
+    container.appendChild(btn);
+  });
+}
+
+function handleQuizTimeout() {
+  const container = document.getElementById('quizOptionsContainer');
+  const allButtons = container.querySelectorAll('button');
+  allButtons.forEach(b => (b.disabled = true));
+
+  const isTargetEnglish = quizMode === 'ja_to_en';
+  const correctAnswer = isTargetEnglish ? quizActiveQuestion[1] : quizActiveQuestion[2];
+  const wData = getWordData(quizActiveQuestion[1]);
+  wData.mistakes = (wData.mistakes || 0) + 1;
+  quizMistakes.push(quizActiveQuestion);
+  playErrorTone();
+
+  allButtons.forEach(b => {
+    if (b.innerText.includes(correctAnswer)) {
+      b.className = 'w-full text-left py-3.5 px-4 rounded-2xl border-2 border-emerald-500 bg-emerald-950/70 text-emerald-200 font-black';
+    }
+  });
+  saveUserStats();
+  setTimeout(() => advanceQuiz(), 950);
+}
+
+function selectQuizAnswer(selected, correct, selectedBtn) {
+  if (quizTimerInterval) clearInterval(quizTimerInterval);
+  const allButtons = document.querySelectorAll('#quizOptionsContainer button');
+  allButtons.forEach(b => (b.disabled = true));
+
+  const wData = getWordData(quizActiveQuestion[1]);
+
+  if (selected === correct) {
+    selectedBtn.className = 'w-full text-left py-3.5 px-4 rounded-2xl border-2 border-emerald-500 bg-emerald-950/70 text-emerald-200 font-black shadow-lg shadow-emerald-500/20';
+    quizScore++;
+    wData.learned = true;
+    playSuccessChime();
+    recordLearnedToday();
+  } else {
+    selectedBtn.className = 'w-full text-left py-3.5 px-4 rounded-2xl border-2 border-rose-500 bg-rose-950/70 text-rose-200 font-bold';
+    wData.mistakes = (wData.mistakes || 0) + 1;
+    quizMistakes.push(quizActiveQuestion);
+    playErrorTone();
+
+    allButtons.forEach(b => {
+      if (b.innerText.includes(correct)) {
+        b.className = 'w-full text-left py-3.5 px-4 rounded-2xl border-2 border-emerald-500 bg-emerald-950/70 text-emerald-200 font-black';
+      }
+    });
+  }
+  saveUserStats();
+  setTimeout(() => advanceQuiz(), 950);
+}
+
+function advanceQuiz() {
+  quizIndex++;
+  if (quizIndex < quizQuestions.length) {
+    renderQuizQuestion();
+  } else {
+    showQuizSummary();
+  }
+}
+
+function playQuizWordAudio() {
+  if (quizActiveQuestion) speakWord(quizActiveQuestion[1]);
+}
+
+function abandonQuiz() {
+  resetQuizScreen();
+  showToast('テストを中断しました');
+}
+
+function showQuizSummary() {
+  if (quizTimerInterval) clearInterval(quizTimerInterval);
+  document.getElementById('quizActive').classList.add('hidden');
+  document.getElementById('quizResult').classList.remove('hidden');
+
+  const total = quizQuestions.length;
+  const rate = total > 0 ? Math.round((quizScore / total) * 100) : 0;
+  document.getElementById('quizResultScore').innerHTML = `${quizScore} <span class="text-xl text-slate-500">/ ${total}</span>`;
+  document.getElementById('quizAccuracy').innerText = `正答率: ${rate}%`;
+
+  let feedback = '反復を継続してスコアアップを目指しましょう！';
+  if (rate === 100) feedback = 'パーフェクト達成！金フレ完全制覇レベルです！🎉';
+  else if (rate >= 80) feedback = '素晴らしい実力です！間違えた単語だけ再テストで補強しましょう。';
+  else if (rate <= 50) feedback = 'まずはカード暗記で基本単語のキューを消化してみましょう！';
+  document.getElementById('quizComment').innerText = feedback;
+
+  const btnRetry = document.getElementById('btnRetryMistakes');
+  document.getElementById('quizMistakeCountSpan').innerText = quizMistakes.length;
+  const mistakeDetail = document.getElementById('quizMistakesDetail');
+  const mistakeList = document.getElementById('quizMistakeList');
+  mistakeList.innerHTML = '';
+
+  if (quizMistakes.length > 0) {
+    btnRetry.classList.remove('hidden');
+    mistakeDetail.classList.remove('hidden');
+
+    quizMistakes.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'flex items-center justify-between p-2.5 rounded-xl bg-rose-950/40 border border-rose-900/60';
+      row.innerHTML = `
+        <div class="min-w-0 pr-2">
+          <span class="font-extrabold text-white mr-2">${item[1]}</span>
+          <span class="text-slate-400 text-[11px]">${item[2]}</span>
+        </div>
+        <button onclick="speakWord('${item[1]}')" class="p-1 rounded-lg text-slate-400 hover:text-amber-400 hover:bg-slate-800">🔊</button>
+      `;
+      mistakeList.appendChild(row);
+    });
+  } else {
+    btnRetry.classList.add('hidden');
+    mistakeDetail.classList.add('hidden');
+    if (typeof confetti === 'function') confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+  }
+
+  refreshQueue();
+}
+
+function retryQuizMistakes() {
+  if (quizMistakes.length === 0) return;
+  startQuiz(0, [...quizMistakes]);
+  showToast('間違えた問題の特訓を開始します！⚠️');
+}
+
+// 3. SPELLING DRILL LOGIC
+let spellStreak = 0;
+function renderCurrentSpell() {
+  const fb = document.getElementById('spellFeedback');
+  fb.innerText = '';
+  const input = document.getElementById('spellInput');
+  input.value = '';
+
+  if (currentQueue.length === 0) {
+    document.getElementById('spellCounterText').innerText = '完了 0 / 0';
+    document.getElementById('spellMeaningDisplay').innerText = 'すべての単語を習得しました！';
+    input.disabled = true;
+    return;
+  }
+  input.disabled = false;
+  const item = currentQueue[currentCardIndex];
+  document.getElementById('spellCounterText').innerText = `単語 ${currentCardIndex + 1} / ${currentQueue.length}`;
+  document.getElementById('spellMeaningDisplay').innerText = item[2];
+  document.getElementById('spellStreakCount').innerText = spellStreak;
+}
+
+function navigateSpell(delta) {
+  if (currentQueue.length === 0) return;
+  currentCardIndex = (currentCardIndex + delta + currentQueue.length) % currentQueue.length;
+  renderCurrentSpell();
+}
+
+function giveSpellHint() {
+  if (currentQueue.length === 0) return;
+  const word = currentQueue[currentCardIndex][1];
+  const cleanWord = word.split('/')[0].replace(/[\(\)]/g, '').trim().toLowerCase();
+  const input = document.getElementById('spellInput');
+  const curVal = input.value.toLowerCase();
+  if (curVal.length < cleanWord.length) {
+    input.value = cleanWord.slice(0, curVal.length + 1);
+  }
+  input.focus();
+}
+
+function checkSpelling() {
+  if (currentQueue.length === 0) return;
+  const item = currentQueue[currentCardIndex];
+  const input = document.getElementById('spellInput');
+  const entered = input.value.trim().toLowerCase();
+  const targetVariants = item[1].toLowerCase().split('/').map(s => s.trim().replace(/[\(\)]/g, ''));
+  const fb = document.getElementById('spellFeedback');
+  const wData = getWordData(item[1]);
+
+  const isCorrect = targetVariants.some(v => v === entered);
+
+  if (isCorrect) {
+    fb.innerHTML = `<span class="text-emerald-400 font-black">⭕ 正解！ Excellent! [${item[1]}]</span>`;
+    spellStreak++;
+    wData.learned = true;
+    saveUserStats();
+    playSuccessChime();
+    speakWord(item[1]);
+    recordLearnedToday();
+    setTimeout(() => {
+      navigateSpell(1);
+      refreshQueue();
+    }, 1000);
+  } else {
+    fb.innerHTML = `<span class="text-rose-400 font-bold">❌ 正解: ${item[1]}</span>`;
+    spellStreak = 0;
+    wData.mistakes = (wData.mistakes || 0) + 1;
+    saveUserStats();
+    playErrorTone();
+  }
+  document.getElementById('spellStreakCount').innerText = spellStreak;
+}
+
+// 4. SPEED ATTACK LOGIC (45s)
+let speedPlaying = false;
+let speedTimeLeft = 45;
+let speedTimer = null;
+let speedScore = 0;
+let speedCombos = 0;
+let speedMaxCombo = 0;
+let currentSpeedItem = null;
+
+function startSpeedGame() {
+  const pool = getBaseSectionList();
+  if (pool.length === 0) {
+    showToast('出題対象の単語がありません');
+    return;
+  }
+  speedScore = 0;
+  speedCombos = 0;
+  speedMaxCombo = 0;
+  speedTimeLeft = 45;
+  speedPlaying = true;
+
+  document.getElementById('speedIntro').classList.add('hidden');
+  document.getElementById('speedResult').classList.add('hidden');
+  document.getElementById('speedActive').classList.remove('hidden');
+
+  document.getElementById('speedScoreText').innerText = '0';
+  document.getElementById('speedTimerText').innerText = '⏱ 45s';
+  document.getElementById('speedComboBadge').classList.add('hidden');
+
+  nextSpeedItem();
+
+  if (speedTimer) clearInterval(speedTimer);
+  speedTimer = setInterval(() => {
+    speedTimeLeft--;
+    document.getElementById('speedTimerText').innerText = `⏱ ${speedTimeLeft}s`;
+    if (speedTimeLeft <= 0) {
+      clearInterval(speedTimer);
+      finishSpeedGame();
+    }
+  }, 1000);
+}
+
+function nextSpeedItem() {
+  const pool = getBaseSectionList();
+  if (pool.length === 0) return;
+  const wordItem = pool[Math.floor(Math.random() * pool.length)];
+  const isMatch = Math.random() > 0.5;
+
+  let displayedMeaning = wordItem[2];
+  if (!isMatch) {
+    const others = getAllWords().filter(w => w[2] !== wordItem[2]);
+    if (others.length > 0) {
+      displayedMeaning = others[Math.floor(Math.random() * others.length)][2];
+    }
+  }
+
+  currentSpeedItem = { wordItem, displayedMeaning, isMatch };
+  document.getElementById('speedWordText').innerText = wordItem[1];
+  document.getElementById('speedMeaningText').innerText = displayedMeaning;
+}
+
+function handleSpeedAnswer(userGuessedMatch) {
+  if (!speedPlaying || !currentSpeedItem) return;
+
+  const correct = userGuessedMatch === currentSpeedItem.isMatch;
+  const wData = getWordData(currentSpeedItem.wordItem[1]);
+
+  if (correct) {
+    speedScore++;
+    speedCombos++;
+    if (speedCombos > speedMaxCombo) speedMaxCombo = speedCombos;
+    wData.learned = true;
+    playSuccessChime();
+    recordLearnedToday();
+
+    if (speedCombos > 1) {
+      const badge = document.getElementById('speedComboBadge');
+      badge.classList.remove('hidden');
+      document.getElementById('speedComboCount').innerText = speedCombos;
+    }
+  } else {
+    speedCombos = 0;
+    wData.mistakes = (wData.mistakes || 0) + 1;
+    document.getElementById('speedComboBadge').classList.add('hidden');
+    playErrorTone();
+  }
+  saveUserStats();
+  document.getElementById('speedScoreText').innerText = speedScore;
+  nextSpeedItem();
+}
+
+function finishSpeedGame() {
+  speedPlaying = false;
+  document.getElementById('speedActive').classList.add('hidden');
+  document.getElementById('speedResult').classList.remove('hidden');
+
+  document.getElementById('speedFinalScore').innerText = speedScore;
+  document.getElementById('speedMaxCombo').innerText = speedMaxCombo;
+
+  if (typeof confetti === 'function') confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+  refreshQueue();
+}
+
+// 5. VOCABULARY LIST LOGIC
+let listLevelFilter = 'all';
+let listStatusFilter = 'all';
+
+function setListLevelFilter(lvl) {
+  listLevelFilter = lvl;
+  ['all', '600', '730', '860', '990', 'extra', 'idiom', 'custom'].forEach(l => {
+    const btn = document.getElementById('btnListLvl_' + l);
+    btn.className = l === lvl
+      ? 'px-2.5 py-1 rounded-lg font-bold bg-amber-500 text-slate-950 font-black cursor-pointer'
+      : 'px-2.5 py-1 rounded-lg font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 cursor-pointer';
+  });
+  renderWordList();
+}
+
+function setListStatusFilter(stat) {
+  listStatusFilter = stat;
+  ['all', 'unlearned', 'learned', 'mistakes', 'bookmarked'].forEach(s => {
+    const btn = document.getElementById('btnListStat_' + s);
+    btn.className = s === stat
+      ? 'px-2 py-1 rounded-lg font-bold text-[11px] bg-slate-200 text-slate-950 font-black cursor-pointer'
+      : 'px-2 py-1 rounded-lg font-bold text-[11px] bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 cursor-pointer';
+  });
+  renderWordList();
+}
+
+function renderWordList() {
+  const query = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+  const container = document.getElementById('wordListItemsContainer');
+  container.innerHTML = '';
+
+  const allWords = getAllWords();
+  const list = allWords.filter((item, index) => {
+    if (listLevelFilter !== 'all') {
+      if (listLevelFilter === 'extra') {
+        if (!item[0].startsWith('extra_')) return false;
+      } else if (listLevelFilter === 'idiom') {
+        if (!item[0].startsWith('idiom_') && item[0] !== 'idiom') return false;
+      } else if (listLevelFilter === 'custom') {
+        if (!item[0].startsWith('custom')) return false;
+      } else if (item[0] !== listLevelFilter) {
+        return false;
+      }
+    }
+
+    const wData = getWordData(item[1]);
+    if (listStatusFilter === 'unlearned' && wData.learned) return false;
+    if (listStatusFilter === 'learned' && !wData.learned) return false;
+    if (listStatusFilter === 'mistakes' && (!wData.mistakes || wData.mistakes === 0)) return false;
+    if (listStatusFilter === 'bookmarked' && !wData.bookmarked) return false;
+
+    if (query) {
+      const matchW = item[1].toLowerCase().includes(query);
+      const matchM = item[2].includes(query);
+      if (!matchW && !matchM) return false;
+    }
+    return true;
+  });
+
+  document.getElementById('listResultCount').innerText = `表示件数: ${list.length} / ${allWords.length} 件`;
+  document.getElementById('searchClearBtn').classList.toggle('hidden', !query);
+
+  if (list.length === 0) {
+    container.innerHTML = '<div class="text-center py-10 text-slate-500 text-sm">該当する単語が見つかりませんでした。</div>';
+    return;
+  }
+
+  list.forEach(item => {
+    const wData = getWordData(item[1]);
+    const isCustom = item[0].startsWith('custom') || Boolean(item[3]);
+    const div = document.createElement('div');
+    div.className = `p-3 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
+      wData.learned ? 'bg-emerald-950/20 border-emerald-900/60' : 'bg-slate-800/60 border-slate-700/70 hover:border-slate-600'
+    }`;
+
+    div.innerHTML = `
+      <div class="min-w-0 flex-1">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="font-black text-white text-base sm:text-lg tracking-tight">${item[1]}</span>
+          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded border border-slate-700 bg-slate-800 text-slate-300">${getCategoryShortLabel(item[0])}</span>
+          ${wData.mistakes > 0 ? `<span class="text-[10px] font-bold bg-rose-500/20 border border-rose-500/30 text-rose-300 px-1.5 py-0.5 rounded">ミス: ${wData.mistakes}回</span>` : ''}
+          ${isCustom ? `<span class="text-[10px] font-bold bg-amber-500/20 border border-amber-500/30 text-amber-300 px-1.5 py-0.5 rounded">自作</span>` : ''}
+        </div>
+        <p class="text-xs sm:text-sm text-slate-300 mt-1 leading-snug">${item[2]}</p>
+      </div>
+      <div class="flex items-center gap-1.5 shrink-0">
+        ${isCustom ? `<button onclick="openAddWordModal('${item[3] || item[1]}')" class="p-2 rounded-xl text-slate-400 hover:text-emerald-400 hover:bg-slate-700 cursor-pointer" title="自作単語を編集">✏️</button>` : ''}
+        <button onclick="toggleListBookmark('${item[1]}')" class="p-2 rounded-xl text-slate-400 hover:text-amber-400 cursor-pointer">
+          ${wData.bookmarked ? '⭐' : '☆'}
+        </button>
+        <button onclick="speakWord('${item[1]}')" class="p-2 rounded-xl text-slate-400 hover:text-amber-400 hover:bg-slate-700 cursor-pointer" title="発音を聞く">🔊</button>
+        <button onclick="toggleListLearned('${item[1]}')" class="text-xs font-black px-3 py-1.5 rounded-xl border transition-all cursor-pointer ${
+          wData.learned ? 'bg-emerald-600 text-white border-emerald-500 shadow-sm' : 'bg-slate-700/80 text-slate-300 border-slate-600 hover:bg-slate-700'
+        }">
+          ${wData.learned ? '習得済' : '覚えた'}
+        </button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function toggleListBookmark(word) {
+  const wData = getWordData(word);
+  wData.bookmarked = !wData.bookmarked;
+  saveUserStats();
+  renderWordList();
+  showToast(wData.bookmarked ? `「${word}」をブックマークしました ⭐` : `「${word}」のブックマークを解除しました`);
+}
+
+function toggleListLearned(word) {
+  const wData = getWordData(word);
+  wData.learned = !wData.learned;
+  if (wData.learned) recordLearnedToday();
+  saveUserStats();
+  refreshQueue();
+  renderWordList();
+  showToast(`「${word}」を${wData.learned ? '習得済' : '未習得'}に切り替えました`);
+}
+
+function handleSearchInput() {
+  renderWordList();
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  renderWordList();
+}
+
+// 6. ANALYTICS LOGIC
+function renderAnalytics() {
+  const allWords = getAllWords();
+  const calcLevel = filterFn => {
+    const list = allWords.filter(item => filterFn(item[0]));
+    const total = list.length;
+    const learned = list.filter(item => getWordData(item[1]).learned).length;
+    const pct = total > 0 ? Math.round((learned / total) * 100) : 0;
+    return { total, learned, pct };
+  };
+
+  const s600 = calcLevel(l => l === '600');
+  const s730 = calcLevel(l => l === '730');
+  const s860 = calcLevel(l => l === '860');
+  const s990 = calcLevel(l => l === '990');
+  const sExtra = calcLevel(l => l.startsWith('extra_'));
+  const sIdiom = calcLevel(l => l.startsWith('idiom_') || l === 'idiom');
+  const sCustom = {
+    total: customWords.length,
+    learned: customWords.filter(item => getWordData(item[1]).learned).length,
+    pct: customWords.length > 0 ? Math.round((customWords.filter(item => getWordData(item[1]).learned).length / customWords.length) * 100) : 0
+  };
+
+  const totalAll = allWords.length;
+  const learnedAll = allWords.filter(item => getWordData(item[1]).learned).length;
+  const mistakesAll = allWords.filter(item => (getWordData(item[1]).mistakes || 0) > 0).length;
+  const bookmarkedAll = allWords.filter(item => getWordData(item[1]).bookmarked).length;
+  const overallPct = totalAll > 0 ? Math.round((learnedAll / totalAll) * 100) : 0;
+
+  document.getElementById('statOverallPct').innerText = `${overallPct}%`;
+  document.getElementById('statLearnedRatio').innerText = `${learnedAll} / ${totalAll}語`;
+
+  const streakData = getStreakData();
+  document.getElementById('statTodayCount').innerText = streakData.todayCount || 0;
+  document.getElementById('statStreakDays').innerText = `継続ストリーク: ${streakData.streak}日`;
+  document.getElementById('statMistakesTotal').innerText = mistakesAll;
+  document.getElementById('statBookmarksTotal').innerText = bookmarkedAll;
+
+  // Prediction
+  let pred = '600点 レベル到達見込み ✨';
+  if (s600.pct >= 85 && s730.pct >= 80 && s860.pct >= 75 && s990.pct >= 70) {
+    pred = '900点〜990点 満点射程圏内 🔥';
+  } else if (s600.pct >= 85 && s730.pct >= 80 && s860.pct >= 70) {
+    pred = '860点 レベル到達見込み 🚀';
+  } else if (s600.pct >= 80 && s730.pct >= 70) {
+    pred = '730点 レベル到達見込み 🎯';
+  }
+  document.getElementById('statScorePredictionText').innerText = pred;
+
+  // Progress Bars
+  const barsContainer = document.getElementById('analyticsBarsContainer');
+  const levels = [
+    { label: '600点 レベル (400語)', stats: s600, color: 'from-emerald-500 to-teal-400' },
+    { label: '730点 レベル (300語)', stats: s730, color: 'from-sky-500 to-cyan-400' },
+    { label: '860点 レベル (200語)', stats: s860, color: 'from-amber-500 to-yellow-400' },
+    { label: '990点 レベル (100語)', stats: s990, color: 'from-rose-500 to-pink-400' },
+    { label: '必須イディオム・熟語 (200項目)', stats: sIdiom, color: 'from-fuchsia-500 to-purple-400' },
+    { label: '重要付録 (134項目)', stats: sExtra, color: 'from-indigo-500 to-blue-400' },
+    { label: `マイトレーニング (${customWords.length}語)`, stats: sCustom, color: 'from-emerald-400 to-lime-400' }
+  ];
+
+  barsContainer.innerHTML = levels
+    .map(
+      lvl => `
+    <div class="space-y-1">
+      <div class="flex items-center justify-between text-xs font-bold">
+        <span class="text-slate-300">${lvl.label}</span>
+        <span class="text-white font-mono">${lvl.stats.learned} / ${lvl.stats.total} (${lvl.stats.pct}%)</span>
+      </div>
+      <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-700/50">
+        <div class="bg-gradient-to-r ${lvl.color} h-full transition-all duration-500" style="width: ${lvl.stats.pct}%"></div>
+      </div>
+    </div>
+  `
+    )
+    .join('');
+
+  // Weakest 10 words
+  const weakWords = allWords.filter(item => (getWordData(item[1]).mistakes || 0) > 0)
+    .sort((a, b) => (getWordData(b[1]).mistakes || 0) - (getWordData(a[1]).mistakes || 0))
+    .slice(0, 10);
+
+  const weakContainer = document.getElementById('analyticsWeakList');
+  weakContainer.innerHTML = '';
+  if (weakWords.length === 0) {
+    document.getElementById('analyticsWeakestBox').classList.add('hidden');
+  } else {
+    document.getElementById('analyticsWeakestBox').classList.remove('hidden');
+    weakWords.forEach((item, i) => {
+      const wData = getWordData(item[1]);
+      const row = document.createElement('div');
+      row.className = 'flex items-center justify-between p-2.5 rounded-xl bg-slate-900/60 border border-rose-900/40';
+      row.innerHTML = `
+        <div class="min-w-0 pr-2">
+          <span class="font-mono text-slate-500 mr-1">#${i + 1}</span>
+          <span class="font-extrabold text-white mr-2">${item[1]}</span>
+          <span class="text-slate-400 truncate block text-[11px]">${item[2]}</span>
+        </div>
+        <span class="bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[10px] font-black px-2 py-0.5 rounded-md shrink-0">
+          ${wData.mistakes}回ミス
+        </span>
+      `;
+      weakContainer.appendChild(row);
+    });
+  }
+}
+
+function startWeaknessFromAnalytics() {
+  currentLevel = 'weakness';
+  document.getElementById('levelSelect').value = 'weakness';
+  populatePartOptions();
+  switchTab('card');
+  refreshQueue();
+}
+
+// Navigation & Tab Switching
+function switchTab(tabId) {
+  currentTab = tabId;
+  ['card', 'quiz', 'spell', 'speed', 'list', 'analytics'].forEach(t => {
+    const view = document.getElementById(`view${t.charAt(0).toUpperCase() + t.slice(1)}`);
+    const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);
+    if (t === tabId) {
+      view.classList.remove('hidden');
+      btn.className = 'flex-1 min-w-[72px] py-2 rounded-lg text-center transition-all bg-amber-500 text-slate-950 font-black shadow-md flex items-center justify-center gap-1 cursor-pointer';
+    } else {
+      view.classList.add('hidden');
+      btn.className = 'flex-1 min-w-[72px] py-2 rounded-lg text-center transition-all text-slate-400 hover:text-white flex items-center justify-center gap-1 cursor-pointer';
+    }
+  });
+
+  const subFilter = document.getElementById('subFilterRow');
+  const subBar = document.getElementById('subProgressBarRow');
+  if (tabId === 'analytics') {
+    subFilter.classList.add('hidden');
+    subBar.classList.add('hidden');
+  } else {
+    subFilter.classList.remove('hidden');
+    subBar.classList.remove('hidden');
+  }
+
+  if (tabId === 'card') renderCurrentCard();
+  if (tabId === 'spell') renderCurrentSpell();
+  if (tabId === 'quiz') resetQuizScreen();
+  if (tabId === 'list') renderWordList();
+  if (tabId === 'analytics') renderAnalytics();
+}
+
+function handleLevelChange() {
+  currentLevel = document.getElementById('levelSelect').value;
+  populatePartOptions();
+  refreshQueue();
+}
+
+function handlePartChange() {
+  currentPart = document.getElementById('partSelect').value;
+  currentCardIndex = 0;
+  refreshQueue();
+}
+
+function populatePartOptions() {
+  const partSelect = document.getElementById('partSelect');
+  partSelect.innerHTML = '';
+  const parts = getPartsForLevel(currentLevel);
+
+  parts.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p.id;
+    opt.textContent = p.label;
+    partSelect.appendChild(opt);
+  });
+  currentPart = parts.length > 0 ? parts[0].id : '0';
+}
+
+function advanceToNextSection() {
+  const parts = getPartsForLevel(currentLevel);
+  const currentIndex = parts.findIndex(p => p.id === currentPart);
+  if (currentIndex !== -1 && currentIndex + 1 < parts.length - 1) {
+    currentPart = parts[currentIndex + 1].id;
+    document.getElementById('partSelect').value = currentPart;
+    refreshQueue();
+    showToast('次のPartへ進みました 🚀');
+  } else {
+    showToast('このレベルの全Partを修了しました！おめでとうございます！🎉');
+  }
+}
+
+// Add / Edit Custom Word Modal Logic
+let currentEditCustomId = null;
+
+function openAddWordModal(editId = null) {
+  currentEditCustomId = editId;
+  const modal = document.getElementById('addWordModal');
+  const title = document.getElementById('addWordModalTitle');
+  const icon = document.getElementById('addWordModalIcon');
+  const wordInp = document.getElementById('customWordInput');
+  const meanInp = document.getElementById('customMeaningInput');
+  const deleteBtn = document.getElementById('btnDeleteCustomWord');
+
+  if (editId) {
+    const existing = customWords.find(w => w[3] === editId || w[1] === editId);
+    if (existing) {
+      title.innerText = '自作単語・熟語の編集';
+      icon.innerText = '✏️';
+      wordInp.value = existing[1];
+      meanInp.value = existing[2];
+      const tag = existing[0].replace('custom_', '') || 'custom';
+      selectCustomTag(tag);
+      deleteBtn.classList.remove('hidden');
+    }
+  } else {
+    title.innerText = '自作単語・熟語の登録';
+    icon.innerText = '➕';
+    wordInp.value = '';
+    meanInp.value = '';
+    selectCustomTag('custom');
+    deleteBtn.classList.add('hidden');
+  }
+
+  modal.classList.remove('hidden');
+  setTimeout(() => wordInp.focus(), 100);
+}
+
+function closeAddWordModal() {
+  document.getElementById('addWordModal').classList.add('hidden');
+  currentEditCustomId = null;
+}
+
+function selectCustomTag(tag) {
+  document.getElementById('customSelectedTag').value = tag;
+  const btns = document.querySelectorAll('.custom-tag-btn');
+  btns.forEach(btn => {
+    if (btn.getAttribute('data-tag') === tag) {
+      btn.className = 'custom-tag-btn px-2.5 py-1.5 rounded-lg border text-xs font-bold cursor-pointer bg-amber-500 text-slate-950 border-amber-400';
+    } else {
+      btn.className = 'custom-tag-btn px-2.5 py-1.5 rounded-lg border text-xs font-bold cursor-pointer bg-slate-800 text-slate-400 border-slate-700 hover:text-white';
+    }
+  });
+}
+
+function saveCustomWordModal() {
+  const wordInp = (document.getElementById('customWordInput').value || '').trim();
+  const meanInp = (document.getElementById('customMeaningInput').value || '').trim();
+  const tag = document.getElementById('customSelectedTag').value || 'custom';
+
+  if (!wordInp) {
+    showToast('英単語・フレーズを入力してください');
+    return;
+  }
+  if (!meanInp) {
+    showToast('日本語の意味・訳語を入力してください');
+    return;
+  }
+
+  const category = tag === 'custom' ? 'custom' : `custom_${tag}`;
+
+  if (currentEditCustomId) {
+    const idx = customWords.findIndex(w => w[3] === currentEditCustomId || w[1] === currentEditCustomId);
+    if (idx !== -1) {
+      const oldWord = customWords[idx][1];
+      customWords[idx] = [category, wordInp, meanInp, currentEditCustomId, true];
+      if (oldWord !== wordInp && userStats[oldWord]) {
+        userStats[wordInp] = { ...userStats[oldWord] };
+        delete userStats[oldWord];
+        saveUserStats();
+      }
+      showToast(`「${wordInp}」を更新しました ✨`);
+    }
+  } else {
+    const newId = 'custom_' + Date.now();
+    customWords.push([category, wordInp, meanInp, newId, true]);
+    showToast(`「${wordInp}」を単語帳に追加しました 🎉`);
+  }
+
+  saveCustomWords();
+  closeAddWordModal();
+  if (currentLevel === 'custom') {
+    populatePartOptions();
+  }
+  refreshQueue();
+  if (currentTab === 'list') renderWordList();
+}
+
+function deleteCurrentCustomWord() {
+  if (!currentEditCustomId) return;
+  const idx = customWords.findIndex(w => w[3] === currentEditCustomId || w[1] === currentEditCustomId);
+  if (idx !== -1) {
+    const removedWord = customWords[idx][1];
+    customWords.splice(idx, 1);
+    saveCustomWords();
+    closeAddWordModal();
+    if (currentLevel === 'custom') populatePartOptions();
+    refreshQueue();
+    if (currentTab === 'list') renderWordList();
+    showToast(`「${removedWord}」を削除しました`);
+  }
+}
+
+// Backup & Transfer
+function openBackupModal() {
+  document.getElementById('backupModal').classList.remove('hidden');
+}
+
+function closeBackupModal() {
+  document.getElementById('backupModal').classList.add('hidden');
+}
+
+function copyTransferCode() {
+  try {
+    const payload = {
+      version: 'kinfre-v5',
+      timestamp: new Date().toISOString(),
+      stats: userStats,
+      customWords: customWords
+    };
+    const jsonStr = JSON.stringify(payload);
+    const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+    navigator.clipboard.writeText(encoded);
+    showToast('引き継ぎコードをクリップボードにコピーしました！📋');
+  } catch {
+    showToast('コードのコピーに失敗しました');
+  }
+}
+
+function restoreFromTransferCode() {
+  const input = document.getElementById('transferCodeInput').value.trim();
+  if (!input) {
+    showToast('復元コードを入力してください');
+    return;
+  }
+  try {
+    const jsonStr = decodeURIComponent(escape(atob(input)));
+    const data = JSON.parse(jsonStr);
+    if (data && data.stats) {
+      userStats = data.stats;
+      saveUserStats();
+      if (Array.isArray(data.customWords)) {
+        customWords = data.customWords;
+        saveCustomWords();
+      }
+      refreshQueue();
+      showToast('学習データと自作単語を完全に復元しました！🎉');
+      document.getElementById('transferCodeInput').value = '';
+      closeBackupModal();
+    } else {
+      showToast('無効な復元コードです');
+    }
+  } catch {
+    showToast('コードの解析に失敗しました。正しいコードか確認してください');
+  }
+}
+
+function exportBackupJson() {
+  const payload = {
+    version: 'kinfre-v5',
+    date: new Date().toLocaleDateString('ja-JP'),
+    stats: userStats,
+    customWords: customWords
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `TOEIC_Kinfre_Backup_${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('バックアップJSONを書き出しました 💾');
+}
+
+function importBackupJson(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      if (parsed && parsed.stats) {
+        userStats = parsed.stats;
+        saveUserStats();
+        if (Array.isArray(parsed.customWords)) {
+          customWords = parsed.customWords;
+          saveCustomWords();
+        }
+        refreshQueue();
+        showToast('JSONファイルからデータと自作単語を復元しました！');
+        closeBackupModal();
+      } else {
+        showToast('正しいバックアップファイルではありません');
+      }
+    } catch {
+      showToast('ファイルの読み込みに失敗しました');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// Confirmation Modal (No window.alert/confirm)
+let modalCallback = null;
+function openModal(title, msg, callback) {
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalMessage').innerText = msg;
+  modalCallback = callback;
+  document.getElementById('customModal').classList.remove('hidden');
+}
+
+function closeModal(result) {
+  document.getElementById('customModal').classList.add('hidden');
+  if (modalCallback) {
+    modalCallback(result);
+    modalCallback = null;
+  }
+}
+
+function confirmResetSectionModal() {
+  openModal(
+    'セクションの未習得復帰',
+    'このセクションの単語をすべて未習得に戻してもう一度学習しますか？（※ミス回数やブックマークの記録は保持されます）',
+    confirmed => {
+      if (confirmed) resetSectionStatus();
+    }
+  );
+}
+
+function resetSectionStatus() {
+  const list = getBaseSectionList();
+  list.forEach(item => {
+    if (userStats[item[1]]) {
+      userStats[item[1]].learned = false;
+      // IMPORTANT: wData.mistakes and wData.bookmarked are 100% PRESERVED!
+    }
+  });
+  saveUserStats();
+  currentCardIndex = 0;
+  currentQueueFilter = 'unlearned';
+  refreshQueue();
+  showToast('セクションを未習得に戻しました（ミス記録は保持）🔄');
+}
+
+function confirmResetAllData() {
+  openModal(
+    '全データの初期化',
+    '全1,134単語の学習進捗、ミス回数、ブックマークを完全に初期化します。よろしいですか？',
+    confirmed => {
+      if (confirmed) {
+        userStats = {};
+        saveUserStats();
+        currentCardIndex = 0;
+        cardActionHistory = [];
+        updateUndoButtonState();
+        refreshQueue();
+        closeBackupModal();
+        showToast('全データを初期化しました');
+      }
+    }
+  );
+}
+
+// Toast
+let toastTimeout = null;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastText').innerText = msg;
+  toast.style.opacity = '1';
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    toast.style.opacity = '0';
+  }, 2300);
+}
+
+// Keyboard Shortcuts
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+    if (e.target.id === 'spellInput' && e.key === 'Enter') {
+      e.preventDefault();
+      checkSpelling();
+    }
+    return;
+  }
+
+  if (currentTab === 'card') {
+    if (e.code === 'Space') {
+      e.preventDefault();
+      toggleCardFlip();
+    } else if (e.code === 'ArrowRight' || e.key === 'j') {
+      e.preventDefault();
+      navigateCard(1);
+    } else if (e.code === 'ArrowLeft' || e.key === 'k') {
+      e.preventDefault();
+      navigateCard(-1);
+    } else if (e.key === '1') {
+      e.preventDefault();
+      handleMarkCard(false);
+    } else if (e.key === '2') {
+      e.preventDefault();
+      playCurrentAudio();
+    } else if (e.key === '3') {
+      e.preventDefault();
+      handleMarkCard(true);
+    } else if (e.key === 'z' || (e.ctrlKey && e.key === 'z') || e.key === 'u') {
+      e.preventDefault();
+      handleUndoLastAction();
+    }
+  } else if (currentTab === 'speed' && speedPlaying) {
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === '1') {
+      e.preventDefault();
+      handleSpeedAnswer(false);
+    } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === '2') {
+      e.preventDefault();
+      handleSpeedAnswer(true);
+    }
+  }
+});
+
+// Touch Swipe on Flashcard
+let touchStartX = 0;
+let touchEndX = 0;
+window.addEventListener('DOMContentLoaded', () => {
+  const cardEl = document.getElementById('cardInner');
+  if (cardEl) {
+    cardEl.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    cardEl.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 60) {
+        if (diff < 0) navigateCard(1);
+        else navigateCard(-1);
+      }
+    }, { passive: true });
+  }
+
+  populatePartOptions();
+  updateStreakUI();
+  refreshQueue();
+});
+
+</script>
+</body>
+</html>
